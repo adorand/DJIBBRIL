@@ -19,8 +19,8 @@
         <script src="js/ie/excanvas.js"></script>
         <![endif]-->
 
-
         <link rel="stylesheet" href="css/index.css" type="text/css"/>
+        <link rel="stylesheet" href="css/product.css" type="text/css"/>
     </head>
     <body class="" data-spy=scroll data-target=#header>
 
@@ -109,9 +109,9 @@
                                 </li>
                                 <li class=" dropdown active m-r">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <span class="thumb avatar bg-gradient pull-left">
-                                            <img src="images/a0.png"  class="dker" alt="...">
-                                        </span>
+                                <span class="thumb avatar bg-gradient pull-left">
+                                    <img src="images/a0.png"  class="dker" alt="...">
+                                </span>
                                         <b class="caret"></b>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-left animated fadeInRight">
@@ -151,253 +151,89 @@
                         <div class="semiboxshadow text-center">
                             <img src="images/shp.png" class="img-responsive" alt="">
                         </div>
-                        <div class="container liste-section">
-                            <div class="row  m-b-lg">
-                                <div class="col-sm-9">
-                                    <a href="#" class="btn btn-sm btn-primary m-b-xs m-r">Mes Listes</a>
-                                    <a href="historique.html" class="btn btn-sm btn-default m-b-xs">Historique</a>
-                                    <br>
-                                </div>
-                                <div class="col-sm-3 text-right text-left-xs">
-                                    <div class="btn-group m-r">
-                                        <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle">
-                                            <span class="dropdown-label" data-placeholder="Tout">Tout</span>
-                                            <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu animated fadeInLeft dropdown-select">
-                                            <li><a href="#"><input type="checkbox" name="d-s-c-1">Option1</a></li>
-                                            <li><a href="#"><input type="checkbox" name="d-s-c-2">Option2</a></li>
-                                            <li><a href="#"><input type="checkbox" name="d-s-c-3">Option3</a></li>
-                                            <li><a href="#"><input type="checkbox" name="d-s-c-4">Option4</a></li>
-                                            <li><a href="#"><input type="checkbox" name="d-s-c-5">Option5</a></li>
+                        <div class="container">
+                            <h1 class="fontpacifico text-danger text-center text-u-l ">Zone d'administration</h1>
+                            <div class="row m-t-lg m-b-lg">
+                                <section class="m-t-md panel panel-primary box-shadow border-radius">
+                                    <header class="panel-heading text-right bg-primary">
+                                        <ul class="nav nav-tabs bg-primary pull-left">
+                                            <li><a href="#informations" data-toggle="tab"><i class="fa fa-info-circle"></i> <span class="hidden-xs">INNFORMATIONS</span> </a></li>
+                                            <li class="active no-borders"><a href="#profile-2" data-toggle="tab"><i class="fa fa-user text-muted"></i> <span class="hidden-xs">PARAMÈTRES</span></a></li>
+                                            <li><a href="#promos" data-toggle="tab"><i class="fa fa-shopping-cart text-muted"></i> <span class="hidden-xs">PROMOS</span></a></li>
                                         </ul>
+                                        <span class="text-u-c text-ellipsis">paramétrage</span>
+                                    </header>
+                                    <div class="panel-body bg-primary">
+                                        <div class="tab-content">
+                                            <div class="tab-pane fade" id="informations">informations</div>
+                                            <div class="tab-pane fade active in " id="profile-2">
+                                                <div class="row text-center text-white text-u-c m-t-lg">
+                                                    <div class="col-sm-12"><h1>PARAMÈTRES DE CONFIDENTIALITE</h1></div>
+                                                    <div class="container">
+                                                        <form role="form" class="m-l-lg m-r-lg m-t-lg text-center">
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group m-t-lg">
+                                                                    <label class="pull-left col-xs-12 text-left m-l-n">Mot de passe actuel</label>
+                                                                    <div class="col-sm-12 input-group" style="border: 1px solid #cbd5dd;">
+                                                                        <input type="text" class="form-control input-sm" style="border: 1px solid transparent;" placeholder="Mot de passe actuel">
+                                                                        <span class="input-group-btn" >
+                                                                            <button class="btn btn-sm bg-white b-white btn-icon"><i class="fa fa-key"></i></button>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group m-t-lg">
+                                                                    <label class="pull-left col-xs-12 text-left m-l-n">Nouveau mot de passe</label>
+                                                                    <div class="col-sm-12 input-group" style="border: 1px solid #cbd5dd;">
+                                                                        <input type="text" class="form-control input-sm" style="border: 1px solid transparent;" placeholder="Nouveau mot de passe">
+                                                                        <span class="input-group-btn" >
+                                                                            <button class="btn btn-sm bg-white b-white btn-icon"><i class="fa fa-keyboard-o"></i></button>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group m-t-lg">
+                                                                    <label class="pull-left col-xs-12 text-left m-l-n">Répéter le nouveau mot de passe</label>
+                                                                    <div class="col-sm-12 input-group" style="border: 1px solid #cbd5dd;">
+                                                                        <input type="text" class="form-control input-sm" style="border: 1px solid transparent;" placeholder="Répéter le nouveau mot de passe">
+                                                                        <span class="input-group-btn" >
+                                                                            <button class="btn btn-sm bg-white b-white btn-icon"><i class="fa fa-keyboard-o"></i></button>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group m-t-lg">
+                                                                    <label class="pull-left col-xs-12 text-left m-l-n">Adresse email de réception</label>
+                                                                    <div class="col-sm-12 input-group" style="border: 1px solid #cbd5dd;">
+                                                                        <input type="email" class="form-control input-sm" style="border: 1px solid transparent;" placeholder="Adresse email de réception">
+                                                                        <span class="input-group-btn" >
+                                                                            <button class="btn btn-sm bg-white b-white btn-icon"><i class="fa fa-keyboard-o"></i></button>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="pull-right ">
+                                                                <div class="col-sm-12 text-right">
+                                                                    <div class="btn-group m-t-lg m-b-lg">
+                                                                        <a href="#" class="btn btn-md btn-danger border-radius m-r-lg" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                                                            <i class="fa fa-times"></i> <span class="hidden-xs">annuler</span>
+                                                                        </a>
+                                                                        <a href="#" class="btn btn-md btn-danger border-radius" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                                                            <i class="fa fa-save"></i> <span class="hidden-xs">sauvegarder</span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="promos">promos</div>
+                                        </div>
                                     </div>
-                                    <div class="btn-group">
-                                        <a class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">Filtrer <span class="caret"></span></a>
-                                        <ul class="dropdown-menu animated fadeInRight text-left pull-right pull-none-xs">
-                                            <li><a href="#">Nombre de produit</a></li>
-                                            <li><a href="#">Date de création</a></li>
-                                            <li><a href="#">Dernière modification</a></li>
-                                            <li><a href="#">Prix</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row m-b">
-                                <div class="col-xs-12 col-sm-6 col-md-4">
-                                    <section class="panel b-a">
-                                        <div class="panel-heading no-border bg-primary lt">
-                                            <div class=" pull-right  dk m-t-none btn btn-sm btn-rounded text-white" data-toggle="tooltip" data-placement="top" title="Nbre de produits" style="margin-top: 5px;"><strong>4</strong> <i class="fa fa-product-hunt"></i></div>
-                                            <a href="#" class="h4 text-lt m-t-sm m-b-sm block font-bold">Course pour bb</a>
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="">
-                                                <ul class="list-group gutter list-group-lg list-group-sp sortable scrollable" style="height: 200px;">
-                                                    <li class="list-group-item bg-primary  list-course-item">
-                                                        <span class="pull-right thumb avatar m-l m-r-n-xs bg-gradient box-shadow">
-                                                            <img src="images/PRODUITS/cereal.png" class="dker img-responsive" alt="...">
-                                                        </span>
-                                                        <span class="pull-right" >
-                                                          <a href="#"><i class="fa fa-plus fa-fw m-r-xs"></i></a>
-                                                          <a href="#"><span class="m-r-xs" readonly="true">0</span></a>
-                                                          <a href="#"><i class="fa fa-minus fa-fw"></i></a>
-                                                        </span>
-                                                        <div class="clear text-ellipsis text-white">Céréal Cérélac</div>
-                                                    </li>
-                                                    <li class="list-group-item bg-primary m-t-md list-course-item">
-                                                        <span class="pull-right thumb avatar m-l m-r-n-xs bg-gradient box-shadow">
-                                                            <img src="images/PRODUITS/laitcrans.png" class="dker img-responsive" alt="...">
-                                                        </span>
-                                                        <span class="pull-right" >
-                                                          <a href="#"><i class="fa fa-plus fa-fw m-r-xs"></i></a>
-                                                          <a href="#"><span class="m-r-xs" readonly="true">0</span></a>
-                                                          <a href="#"><i class="fa fa-minus fa-fw"></i></a>
-                                                        </span>
-                                                        <div class="clear text-ellipsis text-white">Laitcrans</div>
-                                                    </li>
-                                                    <li class="list-group-item bg-primary m-t-md list-course-item">
-                                                        <span class="pull-right thumb avatar m-l m-r-n-xs bg-gradient">
-                                                            <img src="images/PRODUITS/lait_en_poudre.png" class="dker img-responsive" alt="...">
-                                                        </span>
-                                                        <span class="pull-right" >
-                                                          <a href="#"><i class="fa fa-plus fa-fw m-r-xs"></i></a>
-                                                          <a href="#"><span class="m-r-xs" readonly="true">0</span></a>
-                                                          <a href="#"><i class="fa fa-minus fa-fw"></i></a>
-                                                        </span>
-                                                        <div class="clear text-ellipsis text-white">Nido 150g</div>
-                                                    </li>
-
-                                                    <li class="list-group-item bg-primary m-t-md list-course-item">
-                                                        <span class="pull-right thumb avatar m-l m-r-n-xs bg-gradient">
-                                                            <img src="images/PRODUITS/lait_liquide.png" class="dker img-responsive" alt="...">
-                                                        </span>
-                                                        <span class="pull-right" >
-                                                          <a href="#"><i class="fa fa-plus fa-fw m-r-xs"></i></a>
-                                                          <a href="#"><span class="m-r-xs" readonly="true">0</span></a>
-                                                          <a href="#"><i class="fa fa-minus fa-fw"></i></a>
-                                                        </span>
-                                                        <div class="clear text-ellipsis text-white">Dano 1L</div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix panel-footer">
-                                            <div class="text-center text-black">Total: <span>4500 Ffcfa</span></div>
-                                        </div>
-                                    </section>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 col-md-4">
-                                    <section class="panel b-a">
-                                        <div class="panel-heading no-border bg-primary lt">
-                                            <div class=" pull-right  dk m-t-none btn btn-sm btn-rounded text-white" data-toggle="tooltip" data-placement="left" title="Nbre de produits" style="margin-top: 5px;"><strong>2</strong> <i class="fa fa-product-hunt"></i></div>
-                                            <a href="#" class="h4 text-lt m-t-sm m-b-sm block font-bold">15/08/2017</a>
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="">
-                                                <ul class="list-group gutter list-group-lg list-group-sp sortable scrollable" style="height: 200px;">
-                                                    <li class="list-group-item bg-primary list-course-item">
-                                                        <span class="pull-right thumb avatar m-l m-r-n-sm bg-gradient box-shadow">
-                                                            <img src="images/PRODUITS/sucre.png" class="dker img-responsive" alt="...">
-                                                        </span>
-                                                        <span class="pull-right" >
-                                                          <a href="#"><i class="fa fa-plus fa-fw m-r-xs"></i></a>
-                                                          <a href="#"><span class="m-r-xs" readonly="true">0</span></a>
-                                                          <a href="#"><i class="fa fa-minus fa-fw"></i></a>
-                                                        </span>
-                                                        <div class="clear text-white">Sucre Saint Louis</div>
-                                                    </li>
-                                                    <li class="list-group-item bg-primary m-t-md list-course-item">
-                                                        <span class="pull-right thumb avatar m-l m-r-n-xs bg-gradient">
-                                                            <img src="images/PRODUITS/savon.png" class="dker img-responsive" alt="...">
-                                                        </span>
-                                                        <span class="pull-right" >
-                                                          <a href="#"><i class="fa fa-plus fa-fw m-r-xs"></i></a>
-                                                          <a href="#"><span class="m-r-xs" readonly="true">0</span></a>
-                                                          <a href="#"><i class="fa fa-minus fa-fw"></i></a>
-                                                        </span>
-                                                        <div class="clear text-ellipsis text-white">Savonnette Protex</div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix panel-footer">
-                                            <div class="text-center text-black">Total: <span>4500 Ffcfa</span></div>
-                                        </div>
-                                    </section>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 col-md-4">
-                                    <section class="panel b-a">
-                                        <div class="panel-heading no-border bg-primary lt">
-                                            <div class=" pull-right  dk m-t-none btn btn-sm btn-rounded text-white" data-toggle="tooltip" data-placement="left" title="Nbre de produits" style="margin-top: 5px;"><strong>3</strong> <i class="fa fa-product-hunt"></i></div>
-                                            <a href="#" class="h4 text-lt m-t-sm m-b-sm block font-bold">Course du Week end</a>
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="">
-                                                <ul class="list-group gutter list-group-lg list-group-sp sortable scrollable" style="height: 200px;">
-                                                    <li class="list-group-item bg-primary list-course-item">
-                                                        <span class="pull-right thumb avatar m-l m-r-n-xs bg-gradient box-shadow">
-                                                            <img src="images/PRODUITS/Huile.png" class="dker img-responsive" alt="...">
-                                                        </span>
-                                                        <span class="pull-right" >
-                                                          <a href="#"><i class="fa fa-plus fa-fw m-r-xs"></i></a>
-                                                          <a href="#"><span class="m-r-xs" readonly="true">0</span></a>
-                                                          <a href="#"><i class="fa fa-minus fa-fw"></i></a>
-                                                        </span>
-                                                        <div class="clear text-white">Huile Lessieur 1L</div>
-                                                    </li>
-                                                    <li class="list-group-item bg-primary m-t-md list-course-item">
-                                                        <span class="pull-right thumb avatar m-l m-r-n-xs bg-gradient">
-                                                            <img src="images/PRODUITS/lessive.png" class="dker img-responsive" alt="...">
-                                                        </span>
-                                                        <span class="pull-right" >
-                                                          <a href="#"><i class="fa fa-plus fa-fw m-r-xs"></i></a>
-                                                          <a href="#"><span class="m-r-xs" readonly="true">0</span></a>
-                                                          <a href="#"><i class="fa fa-minus fa-fw"></i></a>
-                                                        </span>
-
-                                                        <div class="clear text-white">Lessive Madar 1,5L</div>
-                                                    </li>
-
-                                                    <li class="list-group-item bg-primary m-t-md list-course-item">
-                                                        <span class="pull-right thumb avatar m-l m-r-n-sm bg-gradient">
-                                                            <img src="images/PRODUITS/nescafe.png" class="dker img-responsive" alt="...">
-                                                        </span>
-                                                        <span class="pull-right" >
-                                                          <a href="#"><i class="fa fa-plus fa-fw m-r-xs"></i></a>
-                                                          <a href="#"><span class="m-r-xs" readonly="true">0</span></a>
-                                                          <a href="#"><i class="fa fa-minus fa-fw"></i></a>
-                                                        </span>
-
-                                                        <div class="clear text-white">Café Nescafé</div>
-                                                    </li>
-
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix panel-footer">
-                                            <div class="text-center text-black">Total: <span>4500 Ffcfa</span></div>
-                                        </div>
-                                    </section>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 col-md-4">
-                                    <section class="panel b-a">
-                                        <div class="panel-heading no-border bg-primary lt">
-                                            <div class=" pull-right  dk m-t-none btn btn-sm btn-rounded text-white" data-toggle="tooltip" data-placement="left" title="Nbre de produits" style="margin-top: 5px;"><strong>3</strong> <i class="fa fa-product-hunt"></i></div>
-                                            <a href="#" class="h4 text-lt m-t-sm m-b-sm block font-bold">Course pour bb</a>
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="">
-                                                <ul class="list-group gutter list-group-lg list-group-sp sortable scrollable" style="height: 200px;">
-                                                    <li class="list-group-item bg-primary list-course-item">
-                                                        <span class="pull-right thumb avatar m-l m-r-n-sm bg-gradient box-shadow">
-                                                            <img src="images/PRODUITS/pates.png" class="dker img-responsive" alt="...">
-                                                        </span>
-                                                        <span class="pull-right" >
-                                                          <a href="#"><i class="fa fa-plus fa-fw m-r-xs"></i></a>
-                                                          <a href="#"><span class="m-r-xs" readonly="true">0</span></a>
-                                                          <a href="#"><i class="fa fa-minus fa-fw"></i></a>
-                                                        </span>
-                                                        <div class="clear text-white">Pattes</div>
-                                                    </li>
-                                                    <li class="list-group-item bg-primary m-t-md list-course-item">
-                                                        <span class="pull-right thumb avatar m-l m-r-n-sm bg-gradient">
-                                                            <img src="images/PRODUITS/halib.png" class="dker img-responsive" alt="...">
-                                                        </span>
-                                                        <span class="pull-right" >
-                                                          <a href="#"><i class="fa fa-plus fa-fw m-r-xs"></i></a>
-                                                          <a href="#"><span class="m-r-xs" readonly="true">0</span></a>
-                                                          <a href="#"><i class="fa fa-minus fa-fw"></i></a>
-                                                        </span>
-                                                        <div class="clear text-white">Lait Halib</div>
-                                                    </li>
-                                                    <li class="list-group-item bg-primary m-t-md list-course-item">
-                                                        <span class="pull-right thumb avatar m-l m-r-n-sm bg-gradient">
-                                                            <img src="images/PRODUITS/chips.png" class="dker img-responsive" alt="...">
-                                                        </span>
-                                                        <span class="pull-right" >
-                                                          <a href="#"><i class="fa fa-plus fa-fw m-r-xs"></i></a>
-                                                          <a href="#"><span class="m-r-xs" readonly="true">0</span></a>
-                                                          <a href="#"><i class="fa fa-minus fa-fw"></i></a>
-                                                        </span>
-                                                        <div class="clear text-white">Chips Pringles</div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix panel-footer">
-                                            <div class="text-center text-black">Total: <span>4500 Ffcfa</span></div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="btn-group pull-right">
-                                    <button type="button" class="btn btn-sm btn-default btn-rounded"><i class="i i-arrow-left4"></i></button>
-                                    <button type="button" class="btn btn-sm btn-default btn-rounded"><i class="i i-arrow-right4"></i></button>
-                                </div>
+                                </section>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -565,6 +401,7 @@
             </div>
         </footer>
         <!-- / footer -->
+
 
         <script src="js/app.v1.js"></script>
         <script src="js/appear/jquery.appear.js"></script>

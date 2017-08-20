@@ -1,5 +1,9 @@
 $(function ()
 {
+    location.href.match('index') ?
+    setTimeout(function () {
+        $( "#aff_sidebar_form" ).trigger( "click" );
+    },2000) : ''
 
     function close_form()
     {

@@ -4,13 +4,10 @@
     margin-bottom: 30px;
     background-color: #e9eaec;
 }
-.produit-section{
-    background-color: white;
-}
 
 .product-block {
-    padding-right: 15px;
-    padding-left: 0;
+    padding-right: 30px;
+    padding-left: 15px;
 }
 
 .img-product{
@@ -33,15 +30,6 @@
     height: 200px;
 }
 
-.product-price{
-    padding: 0 5px;
-    background-color: #FF5722;
-    color: #FFFFFF;
-}
-.product-name{
-    font-size: 14px;
-    color: #000000;
-}
 
 .floation-img{
     display: none;
@@ -84,6 +72,17 @@
     padding: 0;
 }
 
+.pagination{
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.product-section .panel-footer{
+    padding: 0;
+    min-height: 126px;
+    border-top: 0;
+}
+
 .panel .list-group .list-group-item:first-child{
     border-radius: 0;
 }
@@ -117,11 +116,6 @@
 }
 
 
-.product-section .panel-footer{
-    padding: 0;
-    height: 100%;
-    border: 0;
-}
 
 .panel > .list-group:first-child .list-group-item:first-child {
     border-radius: 0;
@@ -135,19 +129,24 @@
 }
 
 .rayon-block{
-    max-height: 550px;
     padding-right: 0px;
     margin-bottom: 10px;
+    max-height: 786px;
 }
 
 .rayon-block .rayon-row{
-    background-color: #ffffff;
-    padding: 15px 0;
+    padding: 0 7px;
     margin-bottom: 5px;
     text-align: center;
 }
-
-.rayon-row:hover{
+.rayon-row .content{
+    background-color: #ffffff;
+    height: 100%;
+    padding: 15px 0;
+    border: 1px solid #eaeef1;
+    box-shadow: 0 1px 1px #eaeef1;
+}
+.content:hover {
     background-color: rgba(100, 181, 246, 0.38);
     cursor: pointer;
 }
@@ -155,20 +154,21 @@
 .rayon-row .alert{
     background-color: #FFF;
     margin: auto;
-    height: 20%;
+    height: 28px;
     width: 80%;
     text-align: center;
     padding: 5px 0;
     border: 0;
     box-shadow: none;
     margin-top: 5px;
-    overflow-wrap: break-word;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 
 .rayon-row img{
     width: 80%;
-    height: 90%;
+    height: 120px;
 }
 
 .rayon-img{
@@ -183,42 +183,95 @@
     height: 100%;
 }
 
-.rayon-info{
-    margin-bottom: 7px;
+.rayon-info .list-group{
+    max-height: 658px;
 }
 
-.rayon-info .list-group{
+.rayon-info .panel{
+    margin-bottom: 0;
+}
+
+.img-product:nth-child(odd) .pull-right > .dropdown-menu {
+    left: 3.5rem;
+    top: -200%;
+}
+.img-product:nth-child(even) .pull-right > .dropdown-menu{
+    right: 3.5rem;
+    top: -200%;
+}
+
+.list-courses, .list-courses > .list-group .list-group-item{
+    width: 100%;
+}
+
+.list-courses .list-group{
     max-height: 200px;
+    width: 100%;
+}
+
+.popover, .popover-content, .popover-title{
+    border-radius: 0;
 }
 
 @media screen and (max-width: 1200px) {
+    .product-section{
+        padding-left: 15px;
+    }
     .rayon-block{
-        padding-right: 11px;
+        padding-left: 0;
+        max-height: 600px;
+        min-height: 100px;
+        margin-bottom: 0;
     }
 
-    .rayon-img img{
-        width: 66%;
-        height: 66%;
+    .rayon-info .list-group{
+        height: 200px;
     }
-}
 
-.pull-right > .dropdown-menu{
-    left: 3.5rem;
-    top: -200%;
+    .rayon-block .rayon-row {
+        padding-left: 0;
+        padding-right: 15px;
+        margin-bottom: 15px;
+    }
+
+    .rayon-info{
+        margin-right: 15px;
+        margin-bottom: 15px;
+    }
+
+    .product-block{
+        padding-right: 30px;
+        padding-left: 0;
+        padding-top: 15px;
+    }
+    .popover{
+        width: 170px;
+    }
+    .popover-content{
+        width: 140px;
+    }
+    .popover-content select{
+        width: 70px;
+    }
+    .img-product{
+        margin-top: -15px;
+    }
 }
 
 
 @media screen and (max-width: 500px){
-    .rayon-img img{
-        width: 100%;
-        height: 100%;
-    }
-
-    .pull-right > .dropdown-menu{
-        left: -96px;
-    }
 
     .rayon-info .list-group{
-        max-height: 68px;
+        max-height: 200px;
+    }
+    .img-product{
+        width: 100%;
+        margin-right: 7px;
+    }
+
+    .img-product:nth-child(odd) .pull-right > .dropdown-menu{
+        left: -17rem;
+        top: -200%;
+        width: 100%;
     }
 }
