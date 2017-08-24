@@ -1,0 +1,24 @@
+/*
+Theme Name: KDI
+Theme URI: http://www.kdi.sn
+Author: Golden Pair
+Author URI: http://www.ksi.sn
+Description: A nice theme
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: black, brown, orange, tan, white, yellow, light, one-column, two-columns, right-sidebar, flexible-width, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, translation-ready
+Text Domain: KDI
+
+*/
+
+@import url("css/bootstrap.css");
+@import url("css/landing.css");
+@import url("css/animate.css");
+@import url("css/font-awesome.min.css");
+@import url("css/icon.css");
+@import url("css/font.css");
+@import url("css/app.v1.css");
+
+@import url("css/index.css");
+@import url("css/product.css");

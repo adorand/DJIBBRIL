@@ -1,14 +1,9 @@
 $(function ()
 {
     location.href.match('index') ?
-    setTimeout(function () {
-        $( "#aff_sidebar_form" ).trigger( "click" );
-    },2000) : ''
-
-    function close_form()
-    {
-
-    }
+        setTimeout(function () {
+            $( "#aff_sidebar_form" ).trigger( "click" );
+        },2000) : '';
 
     $(window).scroll(function()
     {
@@ -25,7 +20,10 @@ $(function ()
     $('#btn-scroll').click(function() {
         $('body,html').animate({
             scrollTop :  $('#rayons').offset().top
-        }, 500);
+        }, 700);
     });
+
+
+
 
 });
