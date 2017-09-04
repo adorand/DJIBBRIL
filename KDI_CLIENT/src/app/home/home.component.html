@@ -1,0 +1,43 @@
+
+  <div class="text-center m-t-xl">
+      <div class="container">
+          <h1 class="fontpacifico text-black">
+              <span class="text-primary">Bienvenue sur</span> <span class="text-danger">KDI</span>
+          </h1>
+          <h1 class="fontpacifico text-black">
+              <span class="text-primary m-t-md">Vos courses de chez vous...à vous</span>
+          </h1>
+          <div class="text-white m-t">
+              <a id="btn-scroll" class=" btn btn-danger border-radius m-t card">
+                  <i class="fa fa-arrow-down"></i> <b>Commencer vos achats</b> <i class="fa fa-arrow-down"></i>
+              </a>
+          </div>
+          <p class="m-b-n-xxs"  style="z-index: 0;position: relative;">
+              <br /> <br /><br />
+              <img class="img-responsive marginzeroauto" src="assets/images/panier.jpg" />
+              <span id="header_shadow" style="top: 100%;"></span>
+          </p>
+      </div>
+  </div>
+  <div  id="rayons"  style="background-color: #e9eaec;">
+      <div class="row">
+          <br/><br />
+          <div class="wrapsemibox card">
+              <div class="semiboxshadow text-center">
+                  <img src="assets/images/shp.png" class="img-responsive" alt="">
+              </div>
+              <br/>
+              <div class="container">
+                  <section class="scrollable" style="height:500px;">
+
+                      <div *ngFor="let surface of surfaces" class="col-xs-6 col-sm-4 col-md-3 m-t-lg" style="height: 225px;">
+                          <div class="thumbnail card box-shadow-materialize" style="height: 100%;padding: 20% 0;">
+                              <a routerLink="/produits-surface/{{surface.name}}"><img src="{{surface.logo}}" style="height:100%;width: 50%;" alt=""></a>
+                          </div>
+                      </div>
+
+                  </section>
+              </div>
+        </div>
+      </div>
+  </div>

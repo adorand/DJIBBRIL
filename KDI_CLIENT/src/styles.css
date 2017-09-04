@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'assets/css/bootstrap.css';
+@import 'assets/css/landing.css';
+@import 'assets/css/animate.css';
+@import 'assets/css/font-awesome.min.css';
+@import 'assets/css/font.css';
+@import 'assets/css/app.v1.css';
+
+@import 'assets/css/index.css';
+@import 'assets/css/product.css';
