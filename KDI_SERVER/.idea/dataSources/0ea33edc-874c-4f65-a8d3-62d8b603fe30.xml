@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="database.sqlite">
+  <database-model serializer="dbm" rdbms="SQLITE" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="categories"/>
+    <table id="7" parent="2" name="commandes"/>
+    <table id="8" parent="2" name="details_commandes"/>
+    <table id="9" parent="2" name="details_listes"/>
+    <table id="10" parent="2" name="listes"/>
+    <table id="11" parent="2" name="migrations"/>
+    <table id="12" parent="2" name="password_resets"/>
+    <table id="13" parent="2" name="permissions"/>
+    <table id="14" parent="2" name="produits"/>
+    <table id="15" parent="2" name="role_surface"/>
+    <table id="16" parent="2" name="roles"/>
+    <table id="17" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <table id="18" parent="2" name="sqlite_sequence">
+      <System>1</System>
+    </table>
+    <table id="19" parent="2" name="surfaces"/>
+    <table id="20" parent="2" name="users"/>
+    <column id="21" parent="6" name="code">
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="22" parent="6" name="nom">
+      <Position>1</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="6" name="description">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="24" parent="6" name="code_parent">
+      <Position>3</Position>
+      <DataType>varchar|0</DataType>
+    </column>
+    <column id="25" parent="6" name="surface_code">
+      <Position>4</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="6" name="created_at">
+      <Position>5</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="27" parent="6" name="updated_at">
+      <Position>6</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <index id="28" parent="6" name="sqlite_autoindex_categories_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>code</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="29" parent="6">
+      <ColNames>code</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_categories_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="30" parent="6">
+      <ColNames>code_parent</ColNames>
+      <RefTableName>categories</RefTableName>
+      <RefColNames>code</RefColNames>
+    </foreign-key>
+    <foreign-key id="31" parent="6">
+      <ColNames>surface_code</ColNames>
+      <RefTableName>surfaces</RefTableName>
+      <RefColNames>code</RefColNames>
+    </foreign-key>
+    <column id="32" parent="7" name="code">
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="7" name="etat">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="7" name="client_code">
+      <Position>2</Position>
+      <DataType>varchar|0</DataType>
+    </column>
+    <column id="35" parent="7" name="created_at">
+      <Position>3</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="36" parent="7" name="updated_at">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <index id="37" parent="7" name="sqlite_autoindex_commandes_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>code</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="38" parent="7">
+      <ColNames>code</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_commandes_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="39" parent="7">
+      <ColNames>client_code</ColNames>
+      <RefTableName>users</RefTableName>
+      <RefColNames>code</RefColNames>
+    </foreign-key>
+    <column id="40" parent="8" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="41" parent="8" name="commande_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="8" name="produit_id">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="43" parent="8" name="quantite">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="44" parent="8" name="created_at">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="45" parent="8" name="updated_at">
+      <Position>5</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <key id="46" parent="8">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="47" parent="8">
+      <ColNames>commande_id</ColNames>
+      <RefTableName>commandes</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="48" parent="8">
+      <ColNames>produit_id</ColNames>
+      <RefTableName>produits</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="49" parent="9" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="50" parent="9" name="liste_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="9" name="produit_id">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="52" parent="9" name="quantite">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="53" parent="9" name="created_at">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="54" parent="9" name="updated_at">
+      <Position>5</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <key id="55" parent="9">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="56" parent="9">
+      <ColNames>liste_id</ColNames>
+      <RefTableName>listes</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="57" parent="9">
+      <ColNames>produit_id</ColNames>
+      <RefTableName>produits</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="58" parent="10" name="code">
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="59" parent="10" name="libelle">
+      <Position>1</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="60" parent="10" name="etat">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="61" parent="10" name="client_code">
+      <Position>3</Position>
+      <DataType>varchar|0</DataType>
+    </column>
+    <column id="62" parent="10" name="created_at">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="63" parent="10" name="updated_at">
+      <Position>5</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <index id="64" parent="10" name="sqlite_autoindex_listes_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>code</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="65" parent="10">
+      <ColNames>code</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_listes_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="66" parent="10">
+      <ColNames>client_code</ColNames>
+      <RefTableName>users</RefTableName>
+      <RefColNames>code</RefColNames>
+    </foreign-key>
+    <column id="67" parent="11" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="68" parent="11" name="migration">
+      <Position>1</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="69" parent="11" name="batch">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="70" parent="11">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="71" parent="12" name="email">
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="72" parent="12" name="token">
+      <Position>1</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="73" parent="12" name="created_at">
+      <Position>2</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <index id="74" parent="12" name="password_resets_email_index">
+      <ColNames>email</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="75" parent="12" name="password_resets_token_index">
+      <ColNames>token</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <column id="76" parent="13" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="77" parent="13" name="type">
+      <Position>1</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="78" parent="13" name="action">
+      <Position>2</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="79" parent="13" name="resource">
+      <Position>3</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="80" parent="13" name="user_id">
+      <Position>4</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="81" parent="13" name="created_at">
+      <Position>5</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="82" parent="13" name="updated_at">
+      <Position>6</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <index id="83" parent="13" name="permissions_user_id_index">
+      <ColNames>user_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="84" parent="13">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="85" parent="14" name="code">
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="86" parent="14" name="designation">
+      <Position>1</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="87" parent="14" name="description">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="88" parent="14" name="quantite">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="89" parent="14" name="prix">
+      <Position>4</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="90" parent="14" name="image">
+      <Position>5</Position>
+      <DataType>blob|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="91" parent="14" name="categorie_code">
+      <Position>6</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="92" parent="14" name="created_at">
+      <Position>7</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="93" parent="14" name="updated_at">
+      <Position>8</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <index id="94" parent="14" name="sqlite_autoindex_produits_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>code</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="95" parent="14">
+      <ColNames>code</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_produits_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="96" parent="14">
+      <ColNames>categorie_code</ColNames>
+      <RefTableName>categories</RefTableName>
+      <RefColNames>code</RefColNames>
+    </foreign-key>
+    <column id="97" parent="15" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="98" parent="15" name="role_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="99" parent="15" name="surface_code">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="100" parent="15" name="created_at">
+      <Position>3</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="101" parent="15" name="updated_at">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <key id="102" parent="15">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="103" parent="16" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="104" parent="16" name="name">
+      <Position>1</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="105" parent="16" name="created_at">
+      <Position>2</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="106" parent="16" name="updated_at">
+      <Position>3</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <key id="107" parent="16">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="108" parent="17" name="type">
+      <DataType>text|0</DataType>
+    </column>
+    <column id="109" parent="17" name="name">
+      <Position>1</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="110" parent="17" name="tbl_name">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="111" parent="17" name="rootpage">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+    </column>
+    <column id="112" parent="17" name="sql">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="113" parent="18" name="name"/>
+    <column id="114" parent="18" name="seq">
+      <Position>1</Position>
+    </column>
+    <column id="115" parent="19" name="code">
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="116" parent="19" name="name">
+      <Position>1</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="117" parent="19" name="email">
+      <Position>2</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="118" parent="19" name="password">
+      <Position>3</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="119" parent="19" name="logo">
+      <Position>4</Position>
+      <DataType>blob|0</DataType>
+    </column>
+    <column id="120" parent="19" name="remember_token">
+      <Position>5</Position>
+      <DataType>varchar|0</DataType>
+    </column>
+    <column id="121" parent="19" name="created_at">
+      <Position>6</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="122" parent="19" name="updated_at">
+      <Position>7</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <index id="123" parent="19" name="sqlite_autoindex_surfaces_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>code</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="124" parent="19" name="surfaces_name_unique">
+      <ColNames>name</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="125" parent="19" name="surfaces_email_unique">
+      <ColNames>email</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="126" parent="19" name="surfaces_password_unique">
+      <ColNames>password</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="127" parent="19">
+      <ColNames>code</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_surfaces_1</UnderlyingIndexName>
+    </key>
+    <column id="128" parent="20" name="code">
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="129" parent="20" name="username">
+      <Position>1</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="130" parent="20" name="email">
+      <Position>2</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="131" parent="20" name="telephone">
+      <Position>3</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="132" parent="20" name="password">
+      <Position>4</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="133" parent="20" name="created_at">
+      <Position>5</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="134" parent="20" name="updated_at">
+      <Position>6</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <index id="135" parent="20" name="sqlite_autoindex_users_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>code</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="136" parent="20" name="users_username_unique">
+      <ColNames>username</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="137" parent="20" name="users_email_unique">
+      <ColNames>email</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="138" parent="20" name="users_telephone_unique">
+      <ColNames>telephone</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="139" parent="20">
+      <ColNames>code</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_users_1</UnderlyingIndexName>
+    </key>
+  </database-model>
+</dataSource>
