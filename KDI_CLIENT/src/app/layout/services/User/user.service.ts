@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
+import {HttpClient} from '@angular/common/http';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -15,7 +16,7 @@ export class UserService {
         'Accept': 'application/json'});
     private usersUrl = '/ext/add-user';
 
-    constructor(private http: Http) { }
+    constructor(private http: Http, private httpcli: HttpClient) { }
 
     getall(): Promise<UserClass[]> {
         return Promise.resolve(USERS);
@@ -45,6 +46,19 @@ export class UserService {
             .toPromise()
             .then(res => res.json().data as UserClass)
             .catch(this.handleError);
+    }
+
+    save(user: UserClass): void{
+        this.httpcli.post('/ext/add-user/',JSON.stringify(user)).subscribe(data => {
+            console.log(data);
+        });
+
+
+
+        /*fetchdata(): void {
+            this.httpcli.get('/ext/add-user/{"code":"","name":"fgf","email":"m@test.com","password":"fffdf","telephone":"gfgfg","commandes":[],"listes":[]}').subscribe(data => {
+            console.log(data);
+        });*/
     }
 
     create(user: UserClass): Promise<UserClass> {

@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 
 import { SurfaceClass } from './layout/services/surface/surface.class';
 import { SurfaceService } from './layout/services/surface/surface.service';
@@ -22,18 +21,9 @@ export class AppComponent implements OnInit{
 
 
 
-    constructor(private surfaceService: SurfaceService, private http: HttpClient)
+    constructor(private surfaceService: SurfaceService)
     {
 
-    }
-
-    fetchdata(): void {
-        /*this.http.get('/ext/add-user/{"code":"","name":"fgf","email":"m@test.com","password":"fffdf","telephone":"gfgfg","commandes":[],"listes":[]}')
-            .toPromise()
-            .then(response => console.log(response.json().data));*/
-        this.http.get('/ext/add-user/{"code":"","name":"fgf","email":"m@test.com","password":"fffdf","telephone":"gfgfg","commandes":[],"listes":[]}').subscribe(data => {
-            console.log(data);
-        });
     }
 
     ngOnInit(): void {
