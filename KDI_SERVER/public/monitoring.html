@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="en" class="app">
+    <head>
+        <meta charset="utf-8" />
+        <title>Monitoring</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="css/animate.css" type="text/css" />
+        <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="css/icon.css" type="text/css" />
+        <link rel="stylesheet" href="css/font.css" type="text/css" />
+        <link rel="stylesheet" href="css/app.css" />
+        <link rel="stylesheet" href="js/chosen/chosen.css" />
+    </head>
+    <body>
+        <section class="vbox">
+            <header class="bg-template header header-md navbar navbar-fixed-top-xs">
+                <div class="navbar-header aside-md dk">
+                    <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav">
+                        <i class="fa fa-bars text-white"></i>
+                    </a>
+                    <a href="accueil.html" class="navbar-brand">
+                        <img src="images/logo.png" class="m-r-sm" alt="scale">
+                        <strong class="hidden-nav-xs text-white fontpacifico">GesResto</strong>
+                    </a>
+                    <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
+                        <i class="fa fa-cog text-white"></i>
+                    </a>
+                </div>
+                <ul class="nav navbar-nav hidden-xs hidden-sm">
+                    <li class="dropdown"  data-toggle="tooltip" data-placement="bottom" data-title="- , + SIDEBAR">
+                        <a class="dropdown-toggle" href="#nav" data-toggle="class:nav-xs">
+                            <i class="i i-arrow-left2 text"></i>
+                            <i class="i i-arrow-right2 text-active"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav hidden-xs">
+                    <li class="dropdown" data-toggle="tooltip" data-placement="bottom" data-title="MENU">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="i i-grid"></i>
+                        </a>
+                        <section class="dropdown-menu aside-lg bg-white on animated fadeInRight">
+                            <div class="row m-l-none m-r-none m-t m-b text-center">
+                                <div class="col-xs-4">
+                                    <div class="padder-v">
+                                        <a href=preferences.html#">
+                                            <span class="m-b-xs block">
+                                              <i class="i i-cog2 i-2x text-success-lt"></i>
+                                            </span>
+                                            <small class="text-muted">Préférences</small>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="padder-v">
+                                        <a href="licence.html">
+                                            <span class="m-b-xs block">
+                                              <i class="i i-libreoffice i-2x text-warning-lt"></i>
+                                            </span>
+                                            <small class="text-muted">Licence</small>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="padder-v">
+                                        <a href="#">
+                                            <span class="m-b-xs block">
+                                              <i class="i i-docs i-2x text-danger-lt"></i>
+                                            </span>
+                                            <small class="text-muted">Docs</small>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </li>
+                    <li data-toggle="tooltip" data-placement="bottom" data-title="FULLSCREEN">
+                        <a class="dropdown-toggle" data-toggle="fullscreen">
+                            <i class="fa fa-arrows-alt"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user user">
+                    <li class="hidden-xs">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="i i-chat3"></i>
+                            <span class="badge badge-sm up bg-danger count">2</span>
+                        </a>
+                        <section class="dropdown-menu aside-xl animated flipInY">
+                            <section class="panel bg-white">
+                                <div class="panel-heading b-light bg-light">
+                                    <strong>Vous avez <span class="count">2</span> notifications</strong>
+                                </div>
+                                <div class=" ">
+                                    <a href="#" class="media list-group-item">
+                                        <span class="pull-left thumb-sm">
+                                            <img src="images/a0.png" alt="..." class="img-circle">
+                                        </span>
+                                        <span class="media-body block m-b-none">
+                                            Une commande de la table 4<br>
+                                            <small class="text-muted">01:10:00</small>
+                                        </span>
+                                    </a>
+                                    <a href="#" class="media list-group-item">
+                                        <span class="pull-left thumb-sm">
+                                            <img src="images/a0.png" alt="..." class="img-circle">
+                                        </span>
+                                        <span class="media-body block m-b-none">
+                                            Une commande de la table 4<br>
+                                            <small class="text-muted">01:10:00</small>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="panel-footer text-sm">
+                                    <a href="#" class="pull-right"><i class="fa fa-cog"></i></a>
+                                    <a href="#notes" data-toggle="class:show animated fadeInRight">Voir toutes les notifications</a>
+                                </div>
+                            </section>
+                        </section>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="thumb-sm avatar pull-left">
+                                <img src="images/login-w-icon.png" alt="...">
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInRight">
+                            <li>
+                                <span class="arrow top"></span>
+                                <a href="#">Paramètres</a>
+                            </li>
+                            <li>
+                                <span class="arrow top"></span>
+                                <a href="update.password.html" data-toggle="ajaxModal">Modifier Mot de Passe</a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="badge bg-danger pull-right">3</span>
+                                    Notifications
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="badge bg-danger pull-right">3</span>
+                                    Utilisateurs
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">Aide</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="index.html" >Déconnexion</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </header>
+            <section>
+                <section class="hbox stretch">
+                    <!-- .aside -->
+                    <aside class="al-sidebar aside-md hidden-print" id="nav">
+                        <section class="vbox">
+                            <section class="w-f scrollable">
+                                <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
+                                    <div class="clearfix wrapper dk nav-user hidden-xs">
+                                        <div class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                <span class="thumb avatar pull-left m-r">
+                                                    <img src="images/a0.png" class="dker" alt="...">
+                                                    <i class="on md b-black"></i>
+                                                </span>
+                                                <span class="hidden-nav-xs clear">
+                                                    <span class="block m-t-xs">
+                                                        <strong class="font-bold text-lt">Adorand</strong>
+                                                        <b class="caret"></b>
+                                                    </span>
+                                                    <span class="text-muted text-xs block">Administrateur</span>
+                                                </span>
+                                            </a>
+                                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                                <li>
+                                                    <span class="arrow top hidden-nav-xs"></span>
+                                                    <a href="#">Paramètres</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span class="badge bg-danger pull-right">3</span>
+                                                        Notifications
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span class="badge bg-danger pull-right">5</span>
+                                                        Utilisateurs
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Aide</a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <a href="index.html" >Déconnexion</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <!-- nav -->
+                                    <nav class="nav-archenis hidden-xs">
+                                        <ul class="nav nav-main" data-ride="collapse">
+                                            <li>
+                                                <a href="accueil.html" >
+                                                    <i class="i i-statistics icon">
+                                                    </i>
+                                                    <span class="font-bold">Accueil</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="commande.html">
+                                                    <span class="pull-right text-muted">
+                                                        <i class="i i-circle-sm-o text"></i>
+                                                        <i class="i i-circle-sm text-active"></i>
+                                                    </span>
+                                                    <i class="i i-stack icon"></i>
+                                                    <span class="font-bold">Commandes</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="client.html">
+                                                    <span class="pull-right text-muted">
+                                                        <i class="i i-circle-sm-o text"></i>
+                                                        <i class="i i-circle-sm text-active"></i>
+                                                    </span>
+                                                    <i class="fa fa-user icon"></i>
+                                                    <span class="font-bold">Clients</span>
+                                                </a>
+                                            </li>
+                                            <li >
+                                                <a href="menu.html">
+                                                    <span class="pull-right text-muted">
+                                                        <i class="i i-circle-sm-o text"></i>
+                                                        <i class="i i-circle-sm text-active"></i>
+                                                    </span>
+                                                    <i class="i i-menu2 icon"></i>
+                                                    <span class="font-bold">Menu</span>
+                                                </a>
+                                            </li>
+                                            <li class="active">
+                                                <a href="monitoring.html">
+                                                    <span class="pull-right text-muted">
+                                                        <i class="i i-circle-sm-o text"></i>
+                                                        <i class="i i-circle-sm text-active"></i>
+                                                    </span>
+                                                    <i class="i i-data2 icon"></i>
+                                                    <span class="font-bold">Monitoring</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="utilisateur.html">
+                                                    <span class="pull-right text-muted">
+                                                        <i class="i i-circle-sm-o text"></i>
+                                                        <i class="i i-circle-sm text-active"></i>
+                                                    </span>
+                                                    <i class="fa fa-users icon"></i>
+                                                    <span class="font-bold">Utilisateurs</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="statistique.html">
+                                                    <span class="pull-right text-muted">
+                                                        <i class="i i-circle-sm-o text"></i>
+                                                        <i class="i i-circle-sm text-active"></i>
+                                                    </span>
+                                                    <i class="fa fa-calculator icon"></i>
+                                                    <span class="font-bold">Statistiques</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="line dk hidden-nav-xs"></div>
+                                    </nav>
+                                    <!-- / nav -->
+                                </div>
+                            </section>
+                            <footer class="footer hidden-xs no-padder text-center-nav-xs">
+                                <a href="veille.html" data-toggle="ajaxModal" class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs">
+                                    <i class="i i-logout"></i>
+                                </a>
+                            </footer>
+                        </section>
+                    </aside>
+                    <!-- /aside -->
+
+                    <section id="content" class="panel">
+                        <section class="hbox stretch panel">
+                            <section class="scrollable">
+                                <section class="vbox stretch">
+
+                                    <section class="scrollable-w wrapper panel m-b-n-lg" >
+                                        <section class="row m-b-md">
+                                            <div class="col-xs-12 col-sm-4 pull-left">
+                                                <h3 class="m-b-xs text-white">Monitoring des</h3>
+                                                <small>Emplacements, tables, tablettes <i class="fa fa-map-marker fa-lg text-info"></i></small>
+                                            </div>
+                                            <div class="col-xs-2 col-sm-3 pull-right text-right m-t-md">
+                                                <a href="#" class="btn btn-icon btn-default btn-rounded hover" data-toggle="tooltip" data-placement="left" data-title="Ajouter un emplacement" onclick="showModal('modal-addemplacement')"><i class="fa fa-plus hover-rotate"></i></a>
+                                                <a href="#viewtablettes" class="btn btn-icon b-2x btn-default btn-rounded hidden-xs" data-toggle="class:show">
+                                                    <i class="fa fa-caret-right fa-lg color-template text"></i>
+                                                    <i class="fa fa-bars fa-lg color-template text-active"></i>
+                                                </a>
+                                            </div>
+                                            <div class="col-xs-10 col-sm-5 pull-right text-center m-t ">
+                                                <div class="input-group m-t-sm" >
+                                                    <input type="text" class="form-control input-sm no-borders" placeholder="Rechercher à partir d'un mot clé">
+                                                    <span class="input-group-btn border-radius">
+                                                        <button style="" type="button" class="btn btn-sm bg-white b-white btn-icon"><i class="fa fa-search"></i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <div class="row row-sm sortable" style="padding: 0px 10px 0px 0px;">
+                                            <div class="col-xs-6 col-sm-4 col-md-3 on animated slideInUp">
+                                                <div class="item-menu panel" >
+                                                    <div class="caption">
+                                                        <div class="bg-template panel-heading card m-t-n m-l-n m-r-n-sm" style="border-radius:6px;padding: 15px 15px 0px 5px; box-shadow: none;">
+                                                            <strong class="m-l-n text-ellipsis text-white  col-sm-10 m-t-n-xs" data-toggle="tooltip" data-placement="bottom" data-title="Emplacement 3">Emp 3</strong>
+                                                            <button class="btn btn-sm bg-template btn-rounded btn-icon m-r-n pull-right col-sm-2" data-toggle="tooltip" data-placement="left" data-title="Nouvelle Table" onclick="showModal('modal-addtable')">
+                                                                <i class="fa fa-plus text-white"></i>
+                                                            </button>
+                                                        </div>
+                                                        <br>
+                                                        <div class="scrollable item-emplacement" style="padding-right: 10px;">
+                                                            <div class="panel m-t box-shadow" style="margin-left: 5px;padding: 10px 10px 10px 10px;background: rgba(0, 0, 0, 0.49);">
+                                                                <span class="text-ellipsis text-u-c text-u-l text-white"><strong>Table 2</strong></span>
+                                                                <div class="row row-sm">
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="panel m-t box-shadow" style="margin-left: 5px;padding: 10px 10px 10px 10px;background: rgba(0, 0, 0, 0.49);">
+                                                                <span class="text-ellipsis text-u-c text-u-l text-white"><strong>Table 2</strong></span>
+                                                                <div class="row row-sm">
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-4 col-md-3 on animated slideInDown">
+                                                <div class="item-menu panel" style="padding-right:0px;border:none;">
+                                                    <div class="caption">
+                                                        <div class="bg-template panel-heading card m-t-n m-l-n m-r-n-sm" style="border-radius:6px;padding: 15px 15px 0px 5px; box-shadow: none;">
+                                                            <strong class="m-l-n text-ellipsis text-white  col-sm-10 m-t-n-xs" data-toggle="tooltip" data-placement="bottom" data-title="Emplacement 3">Emp 3</strong>
+                                                            <button class="btn btn-sm bg-template btn-rounded btn-icon m-r-n pull-right col-sm-2" data-toggle="tooltip" data-placement="left" data-title="Nouvelle Table" onclick="showModal('modal-addtable')">
+                                                                <i class="fa fa-plus text-white"></i>
+                                                            </button>
+                                                        </div>
+                                                        <br>
+                                                        <div class="scrollable item-emplacement" style="padding-right: 10px;">
+                                                            <div class="panel m-t box-shadow" style="margin-left: 5px;padding: 10px 10px 10px 10px;background: rgba(0, 0, 0, 0.49);">
+                                                                <span class="text-ellipsis text-u-c text-u-l text-white"><strong>Table 2</strong></span>
+                                                                <div class="row row-sm">
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="panel m-t box-shadow" style="margin-left: 5px;padding: 10px 10px 10px 10px;background: rgba(0, 0, 0, 0.49);">
+                                                                <span class="text-ellipsis text-u-c text-u-l text-white"><strong>Table 2</strong></span>
+                                                                <div class="row row-sm">
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-4 col-md-3 on animated slideInUp">
+                                                <div class="item-menu panel" style="padding-right:0px;border:none;">
+                                                    <div class="caption">
+                                                        <div class="bg-template panel-heading card m-t-n m-l-n m-r-n-sm" style="border-radius:6px;padding: 15px 15px 0px 5px; box-shadow: none;">
+                                                            <strong class="m-l-n text-ellipsis text-white  col-sm-10 m-t-n-xs" data-toggle="tooltip" data-placement="bottom" data-title="Emplacement 3">Emp 3</strong>
+                                                            <button class="btn btn-sm bg-template btn-rounded btn-icon m-r-n pull-right col-sm-2" data-toggle="tooltip" data-placement="left" data-title="Nouvelle Table" onclick="showModal('modal-addtable')">
+                                                                <i class="fa fa-plus text-white"></i>
+                                                            </button>
+                                                        </div>
+                                                        <br>
+                                                        <div class="scrollable item-emplacement" style="padding-right: 10px;">
+                                                            <div class="panel m-t box-shadow" style="margin-left: 5px;padding: 10px 10px 10px 10px;background: rgba(0, 0, 0, 0.49);">
+                                                                <span class="text-ellipsis text-u-c text-u-l text-white"><strong>Table 2</strong></span>
+                                                                <div class="row row-sm">
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="panel m-t box-shadow" style="margin-left: 5px;padding: 10px 10px 10px 10px;background: rgba(0, 0, 0, 0.49);">
+                                                                <span class="text-ellipsis text-u-c text-u-l text-white"><strong>Table 2</strong></span>
+                                                                <div class="row row-sm">
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-4 col-md-3 on animated slideInDown">
+                                                <div class="item-menu panel" style="padding-right:0px;border:none;">
+                                                    <div class="caption">
+                                                        <div class="bg-template panel-heading card m-t-n m-l-n m-r-n-sm" style="border-radius:6px;padding: 15px 15px 0px 5px; box-shadow: none;">
+                                                            <strong class="m-l-n text-ellipsis text-white  col-sm-10 m-t-n-xs" data-toggle="tooltip" data-placement="bottom" data-title="Emplacement 3">Emp 3</strong>
+                                                            <button class="btn btn-sm bg-template btn-rounded btn-icon m-r-n pull-right col-sm-2" data-toggle="tooltip" data-placement="left" data-title="Nouvelle Table" onclick="showModal('modal-addtable')">
+                                                                <i class="fa fa-plus text-white"></i>
+                                                            </button>
+                                                        </div>
+                                                        <br>
+                                                        <div class="scrollable item-emplacement" style="padding-right: 10px;">
+                                                            <div class="panel m-t box-shadow" style="margin-left: 5px;padding: 10px 10px 10px 10px;background: rgba(0, 0, 0, 0.49);">
+                                                                <span class="text-ellipsis text-u-c text-u-l text-white"><strong>Table 2</strong></span>
+                                                                <div class="row row-sm">
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="panel m-t box-shadow" style="margin-left: 5px;padding: 10px 10px 10px 10px;background: rgba(0, 0, 0, 0.49);">
+                                                                <span class="text-ellipsis text-u-c text-u-l text-white"><strong>Table 2</strong></span>
+                                                                <div class="row row-sm">
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-4 col-md-3 on animated slideInUp">
+                                                <div class="item-menu panel" style="padding-right:0px;border:none;">
+                                                    <div class="caption">
+                                                        <div class="bg-template panel-heading card m-t-n m-l-n m-r-n-sm" style="border-radius:6px;padding: 15px 15px 0px 5px; box-shadow: none;">
+                                                            <strong class="m-l-n text-ellipsis text-white  col-sm-10 m-t-n-xs" data-toggle="tooltip" data-placement="bottom" data-title="Emplacement 3">Emp 3</strong>
+                                                            <button class="btn btn-sm bg-template btn-rounded btn-icon m-r-n pull-right col-sm-2" data-toggle="tooltip" data-placement="left" data-title="Nouvelle Table" onclick="showModal('modal-addtable')">
+                                                                <i class="fa fa-plus text-white"></i>
+                                                            </button>
+                                                        </div>
+                                                        <br>
+                                                        <div class="scrollable item-emplacement" style="padding-right: 10px;">
+                                                            <div class="panel m-t box-shadow" style="margin-left: 5px;padding: 10px 10px 10px 10px;background: rgba(0, 0, 0, 0.49);">
+                                                                <span class="text-ellipsis text-u-c text-u-l text-white"><strong>Table 2</strong></span>
+                                                                <div class="row row-sm">
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="panel m-t box-shadow" style="margin-left: 5px;padding: 10px 10px 10px 10px;background: rgba(0, 0, 0, 0.49);">
+                                                                <span class="text-ellipsis text-u-c text-u-l text-white"><strong>Table 2</strong></span>
+                                                                <div class="row row-sm">
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                                                        <h2 class="typecmd_ann card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                                            <strong class=" text-white m-l-xs" >500</strong>
+                                                                            <br/>
+                                                                            <div class="btn-group">
+                                                                                <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                                                    <i class="fa fa-user-plus text-white"></i>
+                                                                                    <strong class="text-white">/</strong>
+                                                                                    <i class="fa fa-info text-white"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </h2>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </section>
+                            </section>
+
+
+                            <!-- VUE SUR LES TABLETTES -->
+                            <aside class="aside-md bg-template hide show" id="viewtablettes">
+                                <section class="vbox animated fadeInRight panel">
+                                    <section class="scrollable">
+
+                                        <div class="wrapper text-center"><h2>Tablettes</h2></div>
+
+                                        <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                            <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                <strong class=" text-white m-l-xs" >500</strong>
+                                                <br/>
+                                                <div class="btn-group">
+                                                    <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                        <i class="fa fa-user-plus text-white"></i>
+                                                        <strong class="text-white">/</strong>
+                                                        <i class="fa fa-info text-white"></i>
+                                                    </button>
+                                                </div>
+                                            </h2>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                            <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                <strong class=" text-white m-l-xs" >500</strong>
+                                                <br/>
+                                                <div class="btn-group">
+                                                    <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                        <i class="fa fa-user-plus text-white"></i>
+                                                        <strong class="text-white">/</strong>
+                                                        <i class="fa fa-info text-white"></i>
+                                                    </button>
+                                                </div>
+                                            </h2>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                            <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                <strong class=" text-white m-l-xs" >500</strong>
+                                                <br/>
+                                                <div class="btn-group">
+                                                    <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                        <i class="fa fa-user-plus text-white"></i>
+                                                        <strong class="text-white">/</strong>
+                                                        <i class="fa fa-info text-white"></i>
+                                                    </button>
+                                                </div>
+                                            </h2>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                            <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                <strong class=" text-white m-l-xs" >500</strong>
+                                                <br/>
+                                                <div class="btn-group">
+                                                    <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                        <i class="fa fa-user-plus text-white"></i>
+                                                        <strong class="text-white">/</strong>
+                                                        <i class="fa fa-info text-white"></i>
+                                                    </button>
+                                                </div>
+                                            </h2>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                            <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                <strong class=" text-white m-l-xs" >500</strong>
+                                                <br/>
+                                                <div class="btn-group">
+                                                    <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                        <i class="fa fa-user-plus text-white"></i>
+                                                        <strong class="text-white">/</strong>
+                                                        <i class="fa fa-info text-white"></i>
+                                                    </button>
+                                                </div>
+                                            </h2>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                            <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                <strong class=" text-white m-l-xs" >500</strong>
+                                                <br/>
+                                                <div class="btn-group">
+                                                    <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                        <i class="fa fa-user-plus text-white"></i>
+                                                        <strong class="text-white">/</strong>
+                                                        <i class="fa fa-info text-white"></i>
+                                                    </button>
+                                                </div>
+                                            </h2>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                            <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                <strong class=" text-white m-l-xs" >500</strong>
+                                                <br/>
+                                                <div class="btn-group">
+                                                    <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                        <i class="fa fa-user-plus text-white"></i>
+                                                        <strong class="text-white">/</strong>
+                                                        <i class="fa fa-info text-white"></i>
+                                                    </button>
+                                                </div>
+                                            </h2>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                            <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                <strong class=" text-white m-l-xs" >500</strong>
+                                                <br/>
+                                                <div class="btn-group">
+                                                    <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                        <i class="fa fa-user-plus text-white"></i>
+                                                        <strong class="text-white">/</strong>
+                                                        <i class="fa fa-info text-white"></i>
+                                                    </button>
+                                                </div>
+                                            </h2>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                            <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                <strong class=" text-white m-l-xs" >500</strong>
+                                                <br/>
+                                                <div class="btn-group">
+                                                    <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                        <i class="fa fa-user-plus text-white"></i>
+                                                        <strong class="text-white">/</strong>
+                                                        <i class="fa fa-info text-white"></i>
+                                                    </button>
+                                                </div>
+                                            </h2>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-xs-12 m-t-n-sm">
+                                            <h2 class="typecmd_nouv card text-ellipsis text-center" style="padding-top: 15px;padding-bottom:15px;border-radius: 6px;"  >
+                                                <strong class=" text-white m-l-xs" >500</strong>
+                                                <br/>
+                                                <div class="btn-group">
+                                                    <button class="b-2x btn btn-sm bg-template btn-block btn-rounded card active" onclick="showModal('modal-transfert')" data-toggle="tooltip" data-placement="top" data-html="true" data-title="<strong class=''><i class='fa fa-laptop'></i> 12345<br/><i class='fa fa-cutlery'></i> tab 1</strong>">
+                                                        <i class="fa fa-user-plus text-white"></i>
+                                                        <strong class="text-white">/</strong>
+                                                        <i class="fa fa-info text-white"></i>
+                                                    </button>
+                                                </div>
+                                            </h2>
+                                        </div>
+
+
+
+                                    </section>
+                                </section>
+                            </aside>
+                            <!-- VUE SUR LES TABLETTES -->
+
+                        </section>
+                        <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+                    </section>
+                    
+                    <!-- /CONTENU -->
+
+                </section>
+            </section>
+        </section>
+
+
+        <!--Modal pour le transfert-->
+        <div class="modal fade" id="modal-transfert">
+            <div class="modal-dialog modal-sm ">
+                <div class="modal-content bg-empty">
+                    <div class="modal-body ">
+                        <div class="row color-template " >
+                            <div class="col-sm-12 bg-template " style="margin: -15px 0px">
+                                <div class="row " style="padding-bottom: 15px; ">
+                                    <div class="m-t m-l m-r" >
+                                        <h3 class="m-t-none m-l m-b pull-left text-white text-u-c"><strong>Transfert</strong></h3>
+                                        <button data-dismiss="modal" class="b-2x b-white btn btn-sm bg-white active btn-rounded btn-icon pull-right m-r"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <div class="input-group m-b bg-white">
+                                    <select class="chosen-select" >
+                                        <option value="CU" data-title="A le droit" data-toggle="tooltip" data-placement="top">Les tablettes</option>
+                                        <option value="DU">supprimer un utilisateur</option>
+                                        <option value="MT">monitorer les tablettes</option>
+                                        <option value="AU">Ajouter un utilisateur</option>
+                                    </select>
+                                    <span class="input-group-btn border-radius">
+                                        <button style="" type="button" class="btn btn-sm bg-white b-white btn-icon">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group ">
+                                        <i class="fa fa-tablet text-white"></i>
+                                        <strong class="text-white text-u-c">tablette 1</strong>
+                                    </div>
+                                    <div class="form-group">
+                                        <i class="fa fa-ellipsis-h text-white"></i>
+                                        <strong class="text-white text-u-c">adr mac</strong>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group text-right">
+                                        <i class="fa fa-table text-white"></i>
+                                        <strong class="text-white text-u-c">table 1</strong>
+                                    </div>
+                                    <div class="form-group text-right">
+                                        <i class="fa fa-clock-o text-white"></i>
+                                        <strong class="text-white text-u-c">date 1</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal add Emplacement -->
+        <div class="modal fade" id="modal-addemplacement">
+            <div class="modal-dialog modal-compose">
+                <div class="modal-content">
+                    <div class="compose-header">
+                        <span> Nouvel Emplacement </span>
+                        <span class="header-controls">
+                            <i class="fa fa-times-circle" data-dismiss="modal"></i>
+                        </span>
+                    </div>
+                    <div class="modal-body wrapper-lg">
+                        <form role="form">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Nom</label>
+                                        <input type="email" class="form-control" placeholder="nom de la fonction">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Type</label>
+                                        <select style="width:260px" multiple class="chosen-select">
+                                            <option value="FI">Fidèle</option>
+                                            <option value="SI">Simple</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="footer-motif">
+                                        <button type="button" class="btn btn-with-icon" href="#"><i class="fa fa-check"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal add Table -->
+        <div class="modal fade" id="modal-addtable">
+            <div class="modal-dialog modal-compose">
+                <div class="modal-content">
+                    <div class="compose-header">
+                        <span> Nouvelle table </span>
+                        <span class="header-controls">
+                            <i class="fa fa-times-circle" data-dismiss="modal"></i>
+                        </span>
+                    </div>
+                    <div class="modal-body wrapper-lg">
+                        <form role="form">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Nom</label>
+                                        <input type="email" class="form-control" placeholder="nom de la fonction">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="footer-motif">
+                                        <button type="button" class="btn btn-with-icon" href="#"><i class="fa fa-check"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <script src="js/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="js/bootstrap.js"></script>
+        <!-- Scroll -->
+        <script src="js/slimscroll/jquery.slimscroll.min.js"></script>
+        <!--Notifications-->
+        <script src="js/toastr/toastr.js"></script>
+        <!-- App -->
+        <script src="js/app.js"></script>
+
+
+        <!--Chosen-->
+        <script src="js/chosen/chosen.jquery.min.js"></script>
+        <!-- Config Plugins-->
+        <script src="js/app.plugin.js"></script>
+    </body>
+</html>

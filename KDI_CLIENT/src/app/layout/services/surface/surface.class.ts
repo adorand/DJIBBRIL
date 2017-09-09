@@ -7,6 +7,7 @@ export class SurfaceClass {
     password: string;
     logo: string;
     categories: CategorieClass[];
+
 }
 
 

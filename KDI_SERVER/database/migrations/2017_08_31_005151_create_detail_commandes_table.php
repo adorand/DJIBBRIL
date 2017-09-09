@@ -15,8 +15,8 @@ class CreateDetailCommandesTable extends Migration
     {
         Schema::create('details_commandes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('commande_code')->unsigned();
-            $table->integer('produit_code')->unsigned();
+            $table->string('commande_code')->unsigned();
+            $table->string('produit_code')->unsigned();
             $table->integer('quantite')->unsigned();
 
             $table->foreign('commande_code')->references('code')->on('commandes');

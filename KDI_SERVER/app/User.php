@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Liste;
+use App\Commande;
 
 class User extends Model
 {
@@ -16,12 +18,9 @@ class User extends Model
     public $incrementing = false;
 
     public function commandes() {
-        return $this->hasMany('App\Commande', 'foreign_key');
+        return $this->hasMany(Commande::class, 'client_code', 'code');
     }
     public function listes() {
-        return $this->hasMany('App\Liste', 'foreign_key');
-    }
-    public function paiements() {
-        return $this->hasMany('App\Paiement', 'foreign_key');
+        return $this->hasMany(Liste::class, 'client_code', 'code');
     }
 }

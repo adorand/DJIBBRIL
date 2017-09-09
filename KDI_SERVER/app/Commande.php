@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\DetailsCommande;
+use App\User;
 
 class Commande extends Model
 {
@@ -16,10 +18,11 @@ class Commande extends Model
     public $incrementing = false;
 
     public function produits() {
-        return $this->hasMany('App\DetailsCommande', 'foreign_key');
+        return $this->hasMany(DetailsCommande::class, 'commande_code', 'code');
     }
 
     public function user() {
-        return $this->belongsTo('App\User');
+        return $this->hasOne(User::class, 'code', 'client_code');
     }
+
 }

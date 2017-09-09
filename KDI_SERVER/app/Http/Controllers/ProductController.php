@@ -27,35 +27,7 @@ class ProductController extends Controller
         return view('product')->with('categories', $categorie);
     }
 
-    public function categorie()
-    {
-        $nom = Input::get('nom');
-        $desc = Input::get('description');
-        $parent = Input::get('id_parent');
-        $code = '';
-        do {
-            $code = substr(str_shuffle(env('CODE_POOL')), 0, env('CODE_LENGTH'));
-            $categorie = Categorie::where('code', $code)->first();
-        } while($categorie != null);
-
-        $categorie = new Categorie();
-        $categorie->code = $code;
-        $categorie->nom = $nom;
-        $categorie->surface_code = Auth::user()->code;
-
-        if (!empty($desc)) $categorie->description = $desc;
-        if (!empty($parent)) $categorie->code_parent = $parent;
-        $categorie->save();
-
-        return redirect('categories');
-    }
-
-    public function categories()
-    {
-        return json_encode(Categorie::all());
-    }
-
-    public function product()
+    public function create()
     {
         $code = '';
         do {
@@ -76,7 +48,33 @@ class ProductController extends Controller
         return json_encode($produit);
     }
 
-    public function products() {
+    public function fetch() {
         return view('products')->with('products', Produit::all());
+    }
+
+    public function get($code) {
+        if (!empty($produit = Produit::where('code', $code)->first())) return $produit->categorie->parent;
+        return null;
+    }
+
+    public function update($code) {
+        $produit = Produit::where('code', $code)->first();
+
+        if (Input::get('designation')) $produit->designation = Input::get('designation');
+        if (Input::get('description')) $produit->description = Input::get('description');
+        if (Input::get('quantite')) $produit->quantite = Input::get('quantite');
+        if (Input::get('prix')) $produit->prix = Input::get('prix');
+        if (Input::get('categorie')) $produit->categorie_code = Input::get('categorie');
+        if (Input::get('image')) $produit->image = Outils::image(Input::file('image'));
+        $produit->save();
+
+        return 'Le produit a  bien été mise a jour';
+    }
+
+    public function delete($code) {
+        $produit = Produit::where('code', $code)->first();
+        $produit->delete();
+
+        return 'Le produit a  bien été supprimé';
     }
 }

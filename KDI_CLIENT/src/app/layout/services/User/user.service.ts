@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, URLSearchParams } from '@angular/http';
 import {HttpClient} from '@angular/common/http';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -14,9 +15,9 @@ export class UserService {
         'Access-Control-Allow-Methods' : 'POST, GET, OPTIONS, PUT' ,
         'Content-Type': 'application/json',
         'Accept': 'application/json'});
-    private usersUrl = '/ext/add-user';
+    private usersUrl = '/front/add-user/';
 
-    constructor(private http: Http, private httpcli: HttpClient) { }
+    constructor(private http: Http, private httpclient: HttpClient, public toastr: ToastsManager) { }
 
     getall(): Promise<UserClass[]> {
         return Promise.resolve(USERS);
@@ -39,21 +40,19 @@ export class UserService {
             .catch(this.handleError);
     }
 
+
     createget(user: UserClass): Promise<UserClass> {
-        const url = `${this.usersUrl}/${JSON.stringify(user)}`;
-        return this.http
-            .get(url, {headers: this.headers})
-            .toPromise()
-            .then(res => res.json().data as UserClass)
-            .catch(this.handleError);
+        let data = new URLSearchParams();
+        data.append('data', JSON.stringify(user) );
+        return this.http.post(this.usersUrl, data ).toPromise().then(res => res.json() as UserClass );
     }
 
     save(user: UserClass): void{
-        this.httpcli.post('/ext/add-user/',JSON.stringify(user)).subscribe(data => {
-            console.log(data);
-        });
+        // this.httpcli.post('/ext/add-user/',JSON.stringify(user)).subscribe(data => {
+        //     console.log(data);
+        // });
 
-
+        this.toastr.success('You are awesome!', 'Success!');
 
         /*fetchdata(): void {
             this.httpcli.get('/ext/add-user/{"code":"","name":"fgf","email":"m@test.com","password":"fffdf","telephone":"gfgfg","commandes":[],"listes":[]}').subscribe(data => {
@@ -61,12 +60,10 @@ export class UserService {
         });*/
     }
 
-    create(user: UserClass): Promise<UserClass> {
-        return this.http
-            .post(this.usersUrl, JSON.stringify(user), {headers: this.headers})
-            .toPromise()
-            .then(res => res.json().data as UserClass)
-            .catch(this.handleError);
+    create(user: UserClass): void {
+         this.httpclient.post(this.usersUrl, JSON.stringify(user), this.headers).subscribe(data => {
+             console.log(data);
+        });
     }
 
     update(user: UserClass): Promise<UserClass> {

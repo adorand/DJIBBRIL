@@ -57,4 +57,8 @@ class Surface extends Authenticatable
 
         return $hasRole;
     }
+
+    public function categories() {
+        return $this->hasMany(Categorie::class, 'surface_code');
+    }
 }

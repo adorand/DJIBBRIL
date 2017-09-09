@@ -11,19 +11,45 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+/*Home*/
+Route::get('/', 'HomeController@index');
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-Route::resource('users', 'UsersController');
+/*Categories*/
+Route::get('/categorie', 'CategorieController@index');
+Route::get('/categorie', 'CategorieController@create');
+Route::get('/categories', 'CategorieController@fetch');
+Route::get('/categorie/{code}', 'CategorieController@get');
+Route::put('/categorie/{code}', 'CategorieController@update');
+Route::delete('/categorie/{code}', 'CategorieController@delete');
+
+/*Produits*/
 Route::get('/produit', 'ProductController@index');
-Route::get('/categorie', 'ProductController@categorie');
-Route::get('/categories', 'ProductController@categories');
-Route::post('/produit', 'ProductController@product');
-Route::get('/produits', 'ProductController@products');
-Route::get('/commande', 'CommandeController@index');
-Route::post('/add-product-cmd/{code}', 'CommandeController@save');
-Route::get('/ext/add-user/{user}', 'UserController@register');
+Route::post('/produit', 'ProductController@create');
+Route::get('/produits', 'ProductController@fetch');
+Route::get('/produit/{code}', 'ProductController@get');
+Route::put('/produit/{code}', 'ProductController@update');
+Route::delete('/produit/{code}', 'ProductController@delete');
+
+/*Users*/
+Route::post('/front/add-user/', 'UserController@create');
+Route::get('/front/get-user/{data}', 'UserController@get');
+Route::get('/front/update-user/{data}', 'UserController@update');
+Route::get('/front/delete-user/{data}', 'UserController@delete');
+
+/*Commande*/
+Route::post('/front/add-to-commande/{data}', 'CommandeController@create');
+Route::post('/front/remove-from-commande/{data}', 'CommandeController@removeFromCommande');
+Route::put('/front/update-commande/{data}', 'CommandeController@update');
+Route::delete('/front/delete-commande/{data}', 'CommandeController@delete');
+
+/*Liste*/
+Route::post('/front/add-liste/{data}', 'ListeController@create');
+Route::post('/front/add-to-liste/{data}', 'ListeController@addToListe');
+Route::put('/front/update-liste/{data}', 'ListeController@update');
+Route::delete('/front/delete-liste/{data}', 'ListeController@delete');
+/*Surface*/
+Route::resource('users', 'UsersController');

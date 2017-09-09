@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" class="app">
+    <head>
+        <meta charset="utf-8" />
+        <title>Authentification</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="css/animate.css" type="text/css" />
+        <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="css/icon.css" type="text/css" />
+        <link rel="stylesheet" href="css/font.css" type="text/css" />
+        <link rel="stylesheet" href="css/app.css" />
+        <link rel="stylesheet" href="css/auth.css" type="text/css" />
+    </head>
+    <body>
+        <section class="vbox">
+            <header class="bg-template header header-md navbar navbar-fixed-top-xs">
+                <div class="navbar-header aside-md dk">
+                    <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav">
+                        <i class="fa fa-bars text-white"></i>
+                    </a>
+                    <a href="accueil.html" class="navbar-brand">
+                        <img src="images/logo.png" class="m-r-sm" alt="scale">
+                        <strong class="hidden-nav-xs text-white fontpacifico">GesResto</strong>
+                    </a>
+                    <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
+                        <i class="fa fa-cog text-white"></i>
+                    </a>
+                </div>
+                <ul class="nav navbar-nav hidden-xs hidden-sm">
+                    <li class="dropdown"  data-toggle="tooltip" data-placement="bottom" data-title="- , + SIDEBAR">
+                        <a class="dropdown-toggle" href="#nav" data-toggle="class:nav-xs">
+                            <i class="i i-arrow-left2 text"></i>
+                            <i class="i i-arrow-right2 text-active"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav hidden-xs">
+                    <li class="dropdown" data-toggle="tooltip" data-placement="bottom" data-title="MENU">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="i i-grid"></i>
+                        </a>
+                        <section class="dropdown-menu aside-lg bg-white on animated fadeInRight">
+                            <div class="row m-l-none m-r-none m-t m-b text-center">
+                                <div class="col-xs-4">
+                                    <div class="padder-v">
+                                        <a href=preferences.html#">
+                                            <span class="m-b-xs block">
+                                              <i class="i i-cog2 i-2x text-success-lt"></i>
+                                            </span>
+                                            <small class="text-muted">Préférences</small>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="padder-v">
+                                        <a href="licence.html">
+                                            <span class="m-b-xs block">
+                                              <i class="i i-libreoffice i-2x text-warning-lt"></i>
+                                            </span>
+                                            <small class="text-muted">Licence</small>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="padder-v">
+                                        <a href="#">
+                                            <span class="m-b-xs block">
+                                              <i class="i i-docs i-2x text-danger-lt"></i>
+                                            </span>
+                                            <small class="text-muted">Docs</small>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </li>
+                    <li data-toggle="tooltip" data-placement="bottom" data-title="FULLSCREEN">
+                        <a class="dropdown-toggle" data-toggle="fullscreen">
+                            <i class="fa fa-arrows-alt"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user user">
+                    <li class="hidden-xs">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="i i-chat3"></i>
+                            <span class="badge badge-sm up bg-danger count">2</span>
+                        </a>
+                        <section class="dropdown-menu aside-xl animated flipInY">
+                            <section class="panel bg-white">
+                                <div class="panel-heading b-light bg-light">
+                                    <strong>Vous avez <span class="count">2</span> notifications</strong>
+                                </div>
+                                <div>
+                                    <a href="#" class="media list-group-item">
+                                        <span class="pull-left thumb-sm">
+                                            <img src="images/a0.png" alt="..." class="img-circle">
+                                        </span>
+                                        <span class="media-body block m-b-none">
+                                            Une commande de la table 4<br>
+                                            <small class="text-muted">01:10:00</small>
+                                        </span>
+                                    </a>
+                                    <a href="#" class="media list-group-item">
+                                        <span class="pull-left thumb-sm">
+                                            <img src="images/a0.png" alt="..." class="img-circle">
+                                        </span>
+                                        <span class="media-body block m-b-none">
+                                            Une commande de la table 4<br>
+                                            <small class="text-muted">01:10:00</small>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="panel-footer text-sm">
+                                    <a href="#" class="pull-right"><i class="fa fa-cog"></i></a>
+                                    <a href="#" data-toggle="class:show animated fadeInRight">Voir toutes les notifications</a>
+                                </div>
+                            </section>
+                        </section>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="thumb-sm avatar pull-left">
+                                <img src="images/login-w-icon.png" alt="...">
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInRight">
+                            <li>
+                                <span class="arrow top"></span>
+                                <a href="#">Paramètres</a>
+                            </li>
+                            <li>
+                                <span class="arrow top"></span>
+                                <a href="update.password.html" data-toggle="ajaxModal">Modifier Mot de Passe</a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="badge bg-danger pull-right">3</span>
+                                    Notifications
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="badge bg-danger pull-right">3</span>
+                                    Utilisateurs
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">Aide</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="veille.html" data-toggle="ajaxModal" >Mettre en Veille</a>
+                            </li>
+                            <li>
+                                <a href="index.html" >Déconnexion</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </header>
+            <section>
+                <section class="hbox stretch">
+                    <!-- .aside -->
+                    <aside class="al-sidebar aside-md hidden-print" id="nav">
+                        <section class="vbox">
+                            <section class="w-f scrollable">
+                                <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
+                                    <div class="clearfix wrapper dk nav-user hidden-xs">
+                                        <div class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                <span class="thumb avatar pull-left m-r">
+                                                    <img src="images/a0.png" class="dker" alt="...">
+                                                    <i class="on md b-black"></i>
+                                                </span>
+                                                <span class="hidden-nav-xs clear">
+                                                    <span class="block m-t-xs">
+                                                        <strong class="font-bold text-white">Adorand</strong>
+                                                        <b class="caret text-white"></b>
+                                                    </span>
+                                                    <span class="text-muted text-xs block">Administrateur</span>
+                                                </span>
+                                            </a>
+                                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                                <li>
+                                                    <span class="arrow top hidden-nav-xs"></span>
+                                                    <a href="#">Paramètres</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span class="badge bg-danger pull-right">3</span>
+                                                        Notifications
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span class="badge bg-danger pull-right">5</span>
+                                                        Utilisateurs
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Aide</a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <a href="index.html" >Déconnexion</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <!-- nav -->
+                                    <nav class="nav-archenis hidden-xs">
+                                        <ul class="nav nav-main" data-ride="collapse">
+                                            <li class="active">
+                                                <a href="accueil.html" >
+                                                    <i class="i i-statistics icon">
+                                                    </i>
+                                                    <span class="font-bold">Accueil</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="commande.html">
+                                                    <span class="pull-right text-muted">
+                                                        <i class="i i-circle-sm-o text"></i>
+                                                        <i class="i i-circle-sm text-active"></i>
+                                                    </span>
+                                                    <i class="i i-stack icon"></i>
+                                                    <span class="font-bold">Commandes</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="client.html">
+                                                    <span class="pull-right text-muted">
+                                                        <i class="i i-circle-sm-o text"></i>
+                                                        <i class="i i-circle-sm text-active"></i>
+                                                    </span>
+                                                    <i class="fa fa-user icon"></i>
+                                                    <span class="font-bold">Clients</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="menu.html">
+                                                    <span class="pull-right text-muted">
+                                                        <i class="i i-circle-sm-o text"></i>
+                                                        <i class="i i-circle-sm text-active"></i>
+                                                    </span>
+                                                    <i class="i i-menu2 icon"></i>
+                                                    <span class="font-bold">Menu</span>
+                                                </a>
+                                            </li>
+                                            <li >
+                                                <a href="monitoring.html">
+                                                    <span class="pull-right text-muted">
+                                                        <i class="i i-circle-sm-o text"></i>
+                                                        <i class="i i-circle-sm text-active"></i>
+                                                    </span>
+                                                    <i class="i i-data2 icon"></i>
+                                                    <span class="font-bold">Monitoring</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="utilisateur.html">
+                                                    <span class="pull-right text-muted">
+                                                        <i class="i i-circle-sm-o text"></i>
+                                                        <i class="i i-circle-sm text-active"></i>
+                                                    </span>
+                                                    <i class="fa fa-users icon"></i>
+                                                    <span class="font-bold">Utilisateurs</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="statistique.html">
+                                                    <span class="pull-right text-muted">
+                                                        <i class="i i-circle-sm-o text"></i>
+                                                        <i class="i i-circle-sm text-active"></i>
+                                                    </span>
+                                                    <i class="fa fa-calculator icon"></i>
+                                                    <span class="font-bold">Statistiques</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="line dk hidden-nav-xs"></div>
+                                    </nav>
+                                    <!-- / nav -->
+                                </div>
+                            </section>
+                            <footer class="footer hidden-xs no-padder text-center-nav-xs">
+                                <a href="veille.html" data-toggle="ajaxModal" class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs">
+                                    <i class="i i-logout"></i>
+                                </a>
+                            </footer>
+                        </section>
+                    </aside>
+                    <!-- /aside -->
+
+                    <!-- CONTENU -->
+                    <section id="content">
+                        <section class="vbox">
+                            <section class="wrapper scrollable">
+                                <section class="hbox stretch">
+                                    <div class="auth-main">
+                                        <div class="auth-block">
+                                            <h1 class="fontpacifico">PRÉFÉRENCES</h1>
+                                            <form class="form-horizontal" action="accueil.html">
+                                                <div class="form-group animated slideInDown">
+                                                    <label for="codeAcces" class="col-sm-12 hidden-xs fontpacifico"><strong class="text-white">Code d'accès</strong></label>
+                                                    <div class="col-sm-12">
+                                                        <div class="input-group" >
+                                                            <input type="text" class="form-control" id="codeAcces" placeholder="Code d'accès">
+                                                            <span class="input-group-btn" >
+                                                                <button class="btn btn-sm bg-empty no-borders btn-icon b-white b-2x" type="button" data-toggle="tooltip" data-placement="left" data-title="Code d'accès">
+                                                                    <i class="fa fa-key text-white"></i>
+                                                                </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group animated slideInDown">
+                                                    <label for="interfaceTab" class="col-sm-12 hidden-xs fontpacifico"><strong class="text-white">Interface tablette</strong></label>
+                                                    <div class="col-sm-12">
+                                                        <div class="input-group" >
+                                                            <select class="form-control" id="interfaceTab" >
+                                                                <option value="Type1">Type 1</option>
+                                                                <option value="Type2">Type 2</option>
+                                                                <option value="Type3">Type 3</option>
+                                                            </select>
+                                                            <span class="input-group-btn" >
+                                                                <button class="btn btn-sm bg-empty no-borders btn-icon b-white b-2x" type="button" data-toggle="tooltip" data-placement="left" data-title="Interface tablette">
+                                                                    <i class="fa fa-info text-white"></i>
+                                                                </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group animated slideInUp">
+                                                    <label for="typeadr" class="col-sm-12 hidden-xs fontpacifico"><strong class="text-white">Type d'adressage</strong></label>
+                                                    <div class="col-sm-12">
+                                                        <div class="input-group" >
+                                                            <select class="form-control" id="typeadr" >
+                                                                <option value="IPV4">IPV4</option>
+                                                                <option value="IPV4">IPV6</option>
+                                                            </select>
+                                                            <span class="input-group-btn" >
+                                                                <button class="btn btn-sm bg-empty no-borders btn-icon b-white b-2x" type="button" data-toggle="tooltip" data-placement="left" data-title="Type d'adressage">
+                                                                    <i class="fa fa-th-large text-white"></i>
+                                                                </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group animated slideInUp">
+                                                    <label for="carteRx" class="col-sm-12 hidden-xs fontpacifico"><strong class="text-white">Carte Réseau</strong></label>
+                                                    <div class="col-sm-12">
+                                                        <div class="input-group" >
+                                                            <select multiple class="form-control" id="carteRx">
+                                                                <option value="enp5s0">enp5s0</option>
+                                                                <option value="eno">eno</option>
+                                                                <option value="lo">lo</option>
+                                                                <option value="lo">wlo</option>
+                                                            </select>
+                                                            <span class="input-group-btn" >
+                                                                <button class="btn btn-sm bg-empty no-borders btn-icon b-white b-2x" type="button" href="#" data-toggle="tooltip" data-placement="left" data-title="Carte Réseau">
+                                                                    <i class="fa fa-wifi text-white"></i>
+                                                                </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <div class="al-share-auth">
+                                                <a class="btn btn-info btn-block m-b-sm animated zoomIn fontpacifico">
+                                                    <i class="fa fa-check pull-left"></i>
+                                                    Enrégistrer
+                                                    <i class="fa fa-check pull-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </section>
+                        </section>
+                        <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+                    </section>
+                    <!-- /CONTENU -->
+
+                </section>
+            </section>
+        </section>
+
+
+        <script src="js/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="js/bootstrap.js"></script>
+        <!-- Scroll -->
+        <script src="js/slimscroll/jquery.slimscroll.min.js"></script>
+        <!--Notifications-->
+        <script src="js/toastr/toastr.js"></script>
+        <!-- App -->
+        <script src="js/app.js"></script>
+    </body>
+</html>

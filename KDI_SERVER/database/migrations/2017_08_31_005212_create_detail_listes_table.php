@@ -14,9 +14,9 @@ class CreateDetailListesTable extends Migration
     public function up()
     {
         Schema::create('details_listes', function (Blueprint $table) {
-            $table->increments('code');
-            $table->integer('liste_code');
-            $table->integer('produit_code');
+            $table->increments('id');
+            $table->string('liste_code');
+            $table->string('produit_code');
             $table->integer('quantite');
 
             $table->foreign('liste_code')->references('code')->on('listes');

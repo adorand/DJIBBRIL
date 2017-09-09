@@ -16,14 +16,14 @@ class Produit extends Model
     public $incrementing = false;
 
     public function categorie() {
-        return $this->belongsTo('App\Categorie');
+        return $this->belongsTo(Categorie::class);
     }
 
     public function commandes() {
-        return $this->hasMany('App\DetailsCommande', 'foreign_key');
+        return $this->hasMany('App\DetailsCommande', 'produit_code', 'code');
     }
 
     public function listes() {
-        return $this->hasMany('App\DetailsListe', 'foreign_key');
+        return $this->hasMany('App\DetailsListe', 'produit_code', 'code');
     }
 }

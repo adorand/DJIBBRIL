@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SurfaceClass} from "../layout/services/surface/surface.class"
-import {SurfaceService} from "../layout/services/surface/surface.service"
-
+import { SurfaceClass} from '../layout/services/surface/surface.class';
+import {LocalStorage, LocalStorageService, SessionStorageService} from 'ng2-webstorage';
+import {SurfaceService} from '../layout/services/surface/surface.service';
 
 @Component({
     selector: 'app-home',
@@ -9,16 +9,22 @@ import {SurfaceService} from "../layout/services/surface/surface.service"
     styleUrls: ['./home.component.css'],
     providers: [SurfaceService]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit{
 
-    surfaces: SurfaceClass[];
-    getSurfaces(): void {
-      this.surfaceService.getall().then(surfaces => this.surfaces = surfaces);
-    }
-    constructor(private surfaceService: SurfaceService) { }
+    @LocalStorage()
+    public listesurfaces: SurfaceClass[];
+
+    private surfaces: SurfaceClass[];
+
+    constructor(private storage: LocalStorageService, private surfaceservice: SurfaceService) {}
 
     ngOnInit() {
-        this.getSurfaces();
+        this.surfaceservice.getall().then(data => this.storage.store('listesurfaces', data ));
+        // Configuration
+        this.surfaces = null;
+        console.log( JSON.stringify(this.storage.retrieve('listesurfaces')));
     }
+
+
 
 }

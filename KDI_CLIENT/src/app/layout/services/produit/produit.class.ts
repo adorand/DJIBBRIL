@@ -1,7 +1,7 @@
 import {CategorieClass} from '../categorie/categorie.class';
 
 export class ProduitClass {
-    id: number;
+    code: string;
     designation: string;
     description: string;
     quantite: number;

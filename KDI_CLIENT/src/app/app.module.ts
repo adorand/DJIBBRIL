@@ -4,6 +4,9 @@ import { HttpModule } from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layout/header/header.component';
@@ -17,11 +20,12 @@ import { ProductsSearchComponent } from './products-search/products-search.compo
 import { ProductsVendorComponent } from './products-vendor/products-vendor.component';
 import { DeliveryComponent } from './delivery/delivery.component';
 import { SettingsComponent } from './settings/settings.component';
+
+
 import {UserService} from './layout/services/User/user.service';
+import {ApiService} from './layout/services/api.service';
 
-
-
-
+import {Ng2Webstorage} from 'ng2-webstorage';
 
 @NgModule({
     declarations: [
@@ -43,9 +47,12 @@ import {UserService} from './layout/services/User/user.service';
         HttpModule,
         HttpClientModule,
         AppRoutingModule,
-        FormsModule
+        FormsModule,
+        BrowserAnimationsModule,
+        ToastModule.forRoot(),
+        Ng2Webstorage
     ],
-    providers: [UserService],
+    providers: [UserService, ApiService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

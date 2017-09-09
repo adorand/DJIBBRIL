@@ -177,7 +177,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-
+        Folklore\GraphQL\ServiceProvider::class,
     ],
 
     /*
@@ -229,7 +229,8 @@ return [
         'Authority' => Efficiently\AuthorityController\Facades\Authority::class,
         'Uuid' => Webpatser\Uuid\Uuid::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'Outils' => \App\Outils::class
+        'Outils' => \App\Outils::class,
+        'GraphQL' => Folklore\GraphQL\Support\Facades\GraphQL::class,
     ],
 
 ];

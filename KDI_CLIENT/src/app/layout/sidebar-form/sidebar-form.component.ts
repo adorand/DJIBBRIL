@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import {HttpClient} from '@angular/common/http';
 
 import {UserClass} from '../services/User/user.class';
 import {UserService} from '../services/User/user.service';
@@ -13,7 +14,7 @@ export class SidebarFormComponent implements OnInit {
 
     // user = new UserClass(0, '', '', '', '', [], []);
     user: UserClass;
-    constructor(private userService: UserService, private location: Location) {
+    constructor(private userService: UserService, private location: Location, private httpclient: HttpClient) {
 
     }
 
@@ -23,19 +24,18 @@ export class SidebarFormComponent implements OnInit {
         this.user = {code: '', name: 'fgf', email: '', password: '', telephone: '', commandes: [], listes: [] };
     }
 
-    save(name: string, email: string, password: string, telephone: string): void {
-        console.log('entrer');
-        this.user.name = name;
-        this.user.email = email;
-        this.user.password = password;
-        this.user.telephone = telephone;
-        console.log(JSON.stringify(this.user));
+    save(): void {
+        this.userService.createget(this.user).then(user => console.log(this.user));
+
+        console.log(this.user.code);
     }
 
-    onSubmit(): void {
-        this.userService.createget(this.user).then(user => console.log(user));
-        console.log(JSON.stringify(this.user));
-    }
+
+
+    // onSubmit(): void {
+    //     this.userService.createget(this.user).then(user => console.log(user));
+    //     console.log(JSON.stringify(this.user));
+    // }
 
 
     goBack(): void {

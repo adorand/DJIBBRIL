@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en" class="app">
+    <head>
+        <meta charset="utf-8" />
+        <title>Statistique</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="css/animate.css" type="text/css" />
+        <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="css/icon.css" type="text/css" />
+        <link rel="stylesheet" href="css/font.css" type="text/css" />
+        <link rel="stylesheet" href="css/app.css" type="text/css" />
+        <link rel="stylesheet" href="js/chosen/chosen.css" type="text/css" />
+        <link rel="stylesheet" href="js/nestable/nestable.css" type="text/css" />
+    </head>
+    <body>
+        <section class="vbox">
+            <header class="bg-template header header-md navbar navbar-fixed-top-xs">
+                <div class="navbar-header aside-md dk">
+                    <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav">
+                        <i class="fa fa-bars text-white"></i>
+                    </a>
+                    <a href="accueil.html" class="navbar-brand">
+                        <img src="images/logo.png" class="m-r-sm" alt="scale">
+                        <strong class="hidden-nav-xs text-white fontpacifico">GesResto</strong>
+                    </a>
+                    <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
+                        <i class="fa fa-cog text-white"></i>
+                    </a>
+                </div>
+                <ul class="nav navbar-nav hidden-xs hidden-sm">
+                    <li class="dropdown"  data-toggle="tooltip" data-placement="bottom" data-title="- , + SIDEBAR">
+                        <a class="dropdown-toggle" href="#nav" data-toggle="class:nav-xs">
+                            <i class="i i-arrow-left2 text"></i>
+                            <i class="i i-arrow-right2 text-active"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav hidden-xs">
+                    <li class="dropdown" data-toggle="tooltip" data-placement="bottom" data-title="MENU">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="i i-grid"></i>
+                        </a>
+                        <section class="dropdown-menu aside-lg bg-white on animated fadeInRight">
+                            <div class="row m-l-none m-r-none m-t m-b text-center">
+                                <div class="col-xs-4">
+                                    <div class="padder-v">
+                                        <a href=preferences.html#">
+                                            <span class="m-b-xs block">
+                                              <i class="i i-cog2 i-2x text-success-lt"></i>
+                                            </span>
+                                            <small class="text-muted">Préférences</small>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="padder-v">
+                                        <a href="licence.html">
+                                            <span class="m-b-xs block">
+                                              <i class="i i-libreoffice i-2x text-warning-lt"></i>
+                                            </span>
+                                            <small class="text-muted">Licence</small>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="padder-v">
+                                        <a href="#">
+                                            <span class="m-b-xs block">
+                                              <i class="i i-docs i-2x text-danger-lt"></i>
+                                            </span>
+                                            <small class="text-muted">Docs</small>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </li>
+                    <li data-toggle="tooltip" data-placement="bottom" data-title="FULLSCREEN">
+                        <a class="dropdown-toggle" data-toggle="fullscreen">
+                            <i class="fa fa-arrows-alt"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user user">
+                    <li class="hidden-xs">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="i i-chat3"></i>
+                            <span class="badge badge-sm up bg-danger count">2</span>
+                        </a>
+                        <section class="dropdown-menu aside-xl animated flipInY">
+                            <section class="panel bg-white">
+                                <div class="panel-heading b-light bg-light">
+                                    <strong>Vous avez <span class="count">2</span> notifications</strong>
+                                </div>
+                                <div class=" ">
+                                    <a href="#" class="media list-group-item">
+                                        <span class="pull-left thumb-sm">
+                                            <img src="images/a0.png" alt="..." class="img-circle">
+                                        </span>
+                                        <span class="media-body block m-b-none">
+                                            Une commande de la table 4<br>
+                                            <small class="text-muted">01:10:00</small>
+                                        </span>
+                                    </a>
+                                    <a href="#" class="media list-group-item">
+                                        <span class="pull-left thumb-sm">
+                                            <img src="images/a0.png" alt="..." class="img-circle">
+                                        </span>
+                                        <span class="media-body block m-b-none">
+                                            Une commande de la table 4<br>
+                                            <small class="text-muted">01:10:00</small>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="panel-footer text-sm">
+                                    <a href="#" class="pull-right"><i class="fa fa-cog"></i></a>
+                                    <a href="#notes" data-toggle="class:show animated fadeInRight">Voir toutes les notifications</a>
+                                </div>
+                            </section>
+                        </section>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="thumb-sm avatar pull-left">
+                                <img src="images/login-w-icon.png" alt="...">
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInRight">
+                            <li>
+                                <span class="arrow top"></span>
+                                <a href="#">Paramètres</a>
+                            </li>
+                            <li>
+                                <span class="arrow top"></span>
+                                <a href="update.password.html" data-toggle="ajaxModal">Modifier Mot de Passe</a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="badge bg-danger pull-right">3</span>
+                                    Notifications
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="badge bg-danger pull-right">3</span>
+                                    Utilisateurs
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">Aide</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#" data-toggle="ajaxModal" >Déconnexion</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </header>
+            <section>
+                <section class="hbox stretch">
+                    <!-- .aside -->
+                    <aside class="al-sidebar aside-md hidden-print" id="nav">
+                        <section class="vbox">
+                            <section class="w-f scrollable">
+                                <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
+                                    <div class="clearfix wrapper dk nav-user hidden-xs">
+                                        <div class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                <span class="thumb avatar pull-left m-r">
+                                                    <img src="images/a0.png" class="dker" alt="...">
+                                                    <i class="on md b-black"></i>
+                                                </span>
+                                                <span class="hidden-nav-xs clear">
+                                                    <span class="block m-t-xs">
+                                                        <strong class="font-bold text-lt">Adorand</strong>
+                                                        <b class="caret"></b>
+                                                    </span>
+                                                    <span class="text-muted text-xs block">Administrateur</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- nav -->
+                                    <nav class="nav-archenis hidden-xs">
+                                        <ul class="nav nav-main" data-ride="collapse">
+                                            <li>
+                                                <a href="accueil.html" >
+                                                    <i class="i i-statistics icon">
+                                                    </i>
+                                                    <span class="font-bold">Accueil</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="commande.html">
+                                                    <span class="pull-right text-muted">
+                                                        <i class="i i-circle-sm-o text"></i>
+                                                        <i class="i i-circle-sm text-active"></i>
+                                                    </span>
+                                                    <i class="i i-stack icon"></i>
+                                                    <span class="font-bold">Commandes</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="client.html">
+                                                    <span class="pull-right text-muted">
+                                                        <i class="i i-circle-sm-o text"></i>
+                                                        <i class="i i-circle-sm text-active"></i>
+                                                    </span>
+                                                    <i class="fa fa-user icon"></i>
+                                                    <span class="font-bold">Clients</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="menu.html">
+                                                    <span class="pull-right text-muted">
+                                                        <i class="i i-circle-sm-o text"></i>
+                                                        <i class="i i-circle-sm text-active"></i>
+                                                    </span>
+                                                    <i class="i i-menu2 icon"></i>
+                                                    <span class="font-bold">Menu</span>
+                                                </a>
+                                            </li>
+                                            <li >
+                                                <a href="monitoring.html">
+                                                    <span class="pull-right text-muted">
+                                                        <i class="i i-circle-sm-o text"></i>
+                                                        <i class="i i-circle-sm text-active"></i>
+                                                    </span>
+                                                    <i class="i i-data2 icon"></i>
+                                                    <span class="font-bold">Monitoring</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="utilisateur.html">
+                                                    <span class="pull-right text-muted">
+                                                        <i class="i i-circle-sm-o text"></i>
+                                                        <i class="i i-circle-sm text-active"></i>
+                                                    </span>
+                                                    <i class="fa fa-users icon"></i>
+                                                    <span class="font-bold">Utilisateurs</span>
+                                                </a>
+                                            </li>
+                                            <li class="active">
+                                                <a href="statistique.html">
+                                                    <span class="pull-right text-muted">
+                                                        <i class="i i-circle-sm-o text"></i>
+                                                        <i class="i i-circle-sm text-active"></i>
+                                                    </span>
+                                                    <i class="fa fa-calculator icon"></i>
+                                                    <span class="font-bold">Statistiques</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="line dk hidden-nav-xs"></div>
+                                    </nav>
+                                    <!-- / nav -->
+                                </div>
+                            </section>
+                            <footer class="footer hidden-xs no-padder text-center-nav-xs">
+                                <a href="veille.html" data-toggle="ajaxModal" class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs">
+                                    <i class="i i-logout"></i>
+                                </a>
+                            </footer>
+                        </section>
+                    </aside>
+                    <!-- /aside -->
+
+                    <!-- CONTENU -->
+                    <section id="content">
+                        <section class="hbox stretch panel">
+                            <section>
+                                <section class="vbox">
+                                    <section class="scrollable wrapper">
+                                        <div class="content-top clearfix " style="padding-right: 21px;padding-left: 21px;">
+                                            <h1 class="al-title">STATISTIQUES</h1>
+                                            <ul class="breadcrumb al-breadcrumb" style="border:none;">
+                                                <li>
+                                                    <a href="accueil.html" style="color: #209e91;text-decoration: none !important; transition: color 0.2s ease;">GesResto</a></li>
+                                                <li>statistiques</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="panel  b-a" style="background-size: 1593px 896px; background-position: 0px -201px;">
+                                                <div class="row panel" style="margin:0 auto;">
+                                                    <div class="col-xs-6 col-sm-3 col-md-3">
+                                                        <a href="#" class="block padder-v hover">
+                                                            <span class="i-s i-s-2x pull-left m-r-sm">
+                                                                <i class="i i-hexagon2 i-s-base text-danger hover-rotate"></i>
+                                                                <i class="i i-folder-plus i-1x text-white"></i>
+                                                            </span>
+                                                            <span class="clear">
+                                                                <span class="h3 block m-t-xs text-danger">2,000</span>
+                                                                <small class="text-muted text-u-c text-ellipsis"><strong data-toggle="tooltip" data-placement="top" data-title="Nouvelles commandes">Nouvelles commande</strong></small>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-3 col-md-3">
+                                                        <a href="#" class="block padder-v hover">
+                                                            <span class="i-s i-s-2x pull-right m-r-sm">
+                                                                <i class="i i-hexagon2 i-s-base text-success-lt hover-rotate"></i>
+                                                                <i class="fa fa-book i-sm text-white"></i>
+                                                            </span>
+                                                            <span class="clear">
+                                                                <span class="h3 block m-t-xs text-success">75%</span>
+                                                                <small class="text-muted text-u-c text-ellipsis"><strong data-toggle="tooltip" data-placement="top" data-title="ventes">Ventes</strong></small>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-3 col-md-3">
+                                                        <a href="#" class="block padder-v hover">
+                                                            <span class="i-s i-s-2x pull-left m-r-sm">
+                                                                <i class="i i-hexagon2 i-s-base text-info hover-rotate"></i>
+                                                                <i class="i i-users3 i-sm text-white"></i>
+                                                            </span>
+                                                            <span class="clear">
+                                                                <span class="h3 block m-t-xs text-info">25 <span class="text-sm"></span></span>
+                                                                <small class="text-muted text-u-c text-ellipsis"><strong data-toggle="tooltip" data-placement="top" data-title="Gérants">Gerants</strong></small>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-3 col-md-3">
+                                                        <a href="#" class="block padder-v hover">
+                                                            <span class="i-s i-s-2x pull-right m-r-sm">
+                                                                <i class="i i-hexagon2 i-s-base text-primary hover-rotate"></i>
+                                                                <i class="i i-alarm i-sm text-white"></i>
+                                                            </span>
+                                                            <span class="clear">
+                                                                <span class="h3 block m-t-xs text-primary">9:30</span>
+                                                                <small class="text-muted text-u-c text-ellipsis"><strong data-toggle="tooltip" data-placement="top" data-title="Trier par Heure">Trier par Heure</strong></small>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <section class="panel">
+                                                        <header class="panel panel-heading font-bold">
+                                                            <span class="badge bg-template pull-right">12</span>
+                                                            <a href="#" class="text-u-c"><strong class="text-white">Les Critères</strong></a>
+                                                        </header>
+                                                        <div class="panel-body">
+                                                            <form class="bs-example form-horizontal m-r m-l">
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-2 control-label text-ellipsis" data-toggle="tooltip" data-placement="bottom" data-title="Critère 1">Critère 1</label>
+                                                                    <div class="col-sm-10">
+                                                                        <input type="text" class="form-control" placeholder="Critère 1">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-2 control-label text-ellipsis" data-toggle="tooltip" data-placement="bottom" data-title="Critère 2">Critère 2</label>
+                                                                    <div class="col-sm-10">
+                                                                        <input type="text" class="form-control" placeholder="Critère 2">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-2 control-label text-ellipsis" data-toggle="tooltip" data-placement="bottom" data-title="Critère 3">Critère 3</label>
+                                                                    <div class="col-sm-10">
+                                                                        <input type="text" class="form-control" placeholder="Critère 3">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="col-lg-offset-2 col-lg-10">
+                                                                        <div class="checkbox i-checks">
+                                                                            <label>
+                                                                                <input type="checkbox" checked><i></i> valeur 1
+                                                                            </label>
+                                                                            <label class="pull-right">
+                                                                                <input type="checkbox" checked><i></i> valeur 2
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="col-lg-offset-2 col-lg-10">
+                                                                        <a href="#" class="btn bg-template btn-sm pull-right"><i class="fa fa-check-circle"></i> Valider</a>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <section class="panel b-a">
+                                                        <div class="panel panel-heading b-b">
+                                                            <a href="#" class="text-u-c"><strong class="text-white">Résumé</strong></a>
+                                                        </div>
+                                                        <ul class="m-r m-l panel list-group list-group-lg no-bg auto">
+                                                            <a href="#" class="list-group-item clearfix">
+                                                                <span class="pull-left thumb-sm avatar m-r">
+                                                                    <img src="images/critere.png" alt="...">
+                                                                    <i class="b-white bottom"></i>
+                                                                </span>
+                                                                <span class="clear">
+                                                                    <span class="text-white">Critère 1</span>
+                                                                    <small class="text-muted clear text-ellipsis">Description du critère</small>
+                                                                </span>
+                                                            </a>
+                                                            <a href="#" class="list-group-item clearfix">
+                                                                <span class="pull-left thumb-sm avatar m-r">
+                                                                    <img src="images/critere.png" alt="...">
+                                                                    <i class="b-white bottom"></i>
+                                                                </span>
+                                                                <span class="clear">
+                                                                    <span class="text-white">Critère 2</span>
+                                                                    <small class="text-muted clear text-ellipsis">Description du critère 2</small>
+                                                                </span>
+                                                            </a>
+                                                            <a href="#" class="list-group-item clearfix">
+                                                                <span class="pull-left thumb-sm avatar m-r">
+                                                                    <img src="images/critere.png" alt="...">
+                                                                    <i class="b-white bottom"></i>
+                                                                </span>
+                                                                <span class="clear">
+                                                                    <span class="text-white">Critère 3</span>
+                                                                    <small class="text-muted clear text-ellipsis">Description du critère 3</small>
+                                                                </span>
+                                                            </a>
+                                                        </ul>
+                                                        <div class=" panel-footer">
+                                                            <div class="input-group" style="margin-top: -7px;">
+                                                                <input type="text" class="form-control input-sm btn-rounded" placeholder="Rechercher">
+                                                                <span class="input-group-btn" >
+                                                                    <button type="submit" class="btn bg-template btn-sm btn-rounded"><i class="text-white fa fa-search"></i></button>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row"></div>
+                                        <div class="row panel dk m-b" style="padding-right: 15px;padding-left: 15px;">
+                                            <div class="row">
+                                                <div class="col-md-6 dker">
+                                                    <section>
+                                                        <header class="font-bold padder-v">
+                                                            <div class="pull-right">
+                                                                <div class="btn-group">
+                                                                    <button data-toggle="dropdown" class="btn btn-sm btn-rounded bg-template dropdown-toggle">
+                                                                        <span class="dropdown-label text-white">Semaines</span>
+                                                                        <span class="caret text-white"></span>
+                                                                    </button>
+                                                                    <ul class="dropdown-menu dropdown-select">
+                                                                        <li><a href="#"><input type="radio" name="b">Mois</a></li>
+                                                                        <li><a href="#"><input type="radio" name="b">Semaines</a></li>
+                                                                        <li><a href="#"><input type="radio" name="b">Jours</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <a href="#" class="btn btn-default btn-icon btn-rounded btn-sm" ><i class="fa fa-search"></i></a>
+                                                            </div>
+                                                            Statistics
+                                                        </header>
+                                                        <div class="panel-body">
+                                                            <div id="flot-sp1ine" style="height:210px"></div>
+                                                        </div>
+                                                        <div class="row text-center no-gutter">
+                                                            <div class="col-xs-3">
+                                                                <span class="h4 font-bold m-t block">5,860</span>
+                                                                <small class="text-muted m-b block">Orders</small>
+                                                            </div>
+                                                            <div class="col-xs-3">
+                                                                <span class="h4 font-bold m-t block">10,450</span>
+                                                                <small class="text-muted m-b block">Sellings</small>
+                                                            </div>
+                                                            <div class="col-xs-3">
+                                                                <span class="h4 font-bold m-t block">21,230</span>
+                                                                <small class="text-muted m-b block">Items</small>
+                                                            </div>
+                                                            <div class="col-xs-3">
+                                                                <span class="h4 font-bold m-t block">7,230</span>
+                                                                <small class="text-muted m-b block">Customers</small>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                </div>
+
+                                                <div class="col-md-6 panel">
+                                                    <section>
+                                                        <header class="font-bold padder-v">
+                                                            <div class="btn-group pull-right">
+                                                                <button data-toggle="dropdown" class="btn btn-sm btn-rounded bg-template dropdown-toggle">
+                                                                    <span class="dropdown-label text-white">Les dernières 24h</span>
+                                                                    <span class="caret text-white"></span>
+                                                                </button>
+                                                                <ul class="dropdown-menu dropdown-select">
+                                                                    <li><a href="#"><input type="radio" name="a">Aujourd'hui</a></li>
+                                                                    <li><a href="#"><input type="radio" name="a">Les dernières 24h</a></li>
+                                                                    <li><a href="#"><input type="radio" name="a">hier</a></li>
+                                                                    <li><a href="#"><input type="radio" name="a">Les 7 derniers jours</a></li>
+                                                                    <li><a href="#"><input type="radio" name="a">Les 30 derniers jours</a></li>
+                                                                    <li><a href="#"><input type="radio" name="a">Le mois dernier</a></li>
+                                                                    <li><a href="#"><input type="radio" name="a">Depuis le début</a></li>
+                                                                </ul>
+                                                            </div>
+                                                            Donut Pie
+                                                        </header>
+                                                        <div class="panel-body flot-legend">
+                                                            <div id="flot-pie-donut"  style="height:240px"></div>
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                            </div>
+
+
+                                            <!--LIGNE 2-->
+                                            <div class="row ">
+                                                <div class="col-md-6 panel">
+                                                    <section>
+                                                        <header class="font-bold padder-v">
+                                                            <div class="btn-group pull-right">
+                                                                <button data-toggle="dropdown" class="btn btn-sm btn-rounded bg-template dropdown-toggle">
+                                                                    <span class="dropdown-label text-white">Les dernières 24h</span>
+                                                                    <span class="caret text-white"></span>
+                                                                </button>
+                                                                <ul class="dropdown-menu dropdown-select">
+                                                                    <li><a href="#"><input type="radio" name="a">Aujourd'hui</a></li>
+                                                                    <li><a href="#"><input type="radio" name="a">Les dernières 24h</a></li>
+                                                                    <li><a href="#"><input type="radio" name="a">hier</a></li>
+                                                                    <li><a href="#"><input type="radio" name="a">Les 7 derniers jours</a></li>
+                                                                    <li><a href="#"><input type="radio" name="a">Les 30 derniers jours</a></li>
+                                                                    <li><a href="#"><input type="radio" name="a">Le mois dernier</a></li>
+                                                                    <li><a href="#"><input type="radio" name="a">Depuis le début</a></li>
+                                                                </ul>
+                                                            </div>
+                                                            Vertical bar
+                                                        </header>
+                                                        <div class="panel-body flot-legend">
+                                                            <div id="flot-bar"  style="height:240px"></div>
+                                                        </div>
+                                                    </section>
+                                                </div>
+
+                                                <div class="col-md-6 dker">
+                                                    <section>
+                                                        <header class="font-bold padder-v">
+                                                            <div class="pull-right">
+                                                                <div class="btn-group">
+                                                                    <button data-toggle="dropdown" class="btn btn-sm btn-rounded bg-template dropdown-toggle">
+                                                                        <span class="dropdown-label text-white">Semaines</span>
+                                                                        <span class="caret text-white"></span>
+                                                                    </button>
+                                                                    <ul class="dropdown-menu dropdown-select">
+                                                                        <li><a href="#"><input type="radio" name="b">Mois</a></li>
+                                                                        <li><a href="#"><input type="radio" name="b">Semaines</a></li>
+                                                                        <li><a href="#"><input type="radio" name="b">Jours</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <a href="#" class="btn btn-default btn-icon btn-rounded btn-sm"><i class="fa fa-search"></i></a>
+                                                            </div>
+                                                            Pie Chart
+                                                        </header>
+                                                        <div class="panel-body">
+                                                            <div id="flot-pie" style="height:240px"></div>
+                                                        </div>
+                                                        <br/>
+                                                    </section>
+                                                </div>
+                                            </div>
+
+                                            <!--LIGNE 3-->
+                                            <div class="row ">
+                                                <div class="col-md-6 dker">
+                                                    <section>
+                                                        <header class="font-bold padder-v">
+                                                            <div class="btn-group pull-right">
+                                                                <button data-toggle="dropdown" class="btn btn-sm btn-rounded bg-template dropdown-toggle">
+                                                                    <span class="dropdown-label text-white">Les dernières 24h</span>
+                                                                    <span class="caret text-white"></span>
+                                                                </button>
+                                                                <ul class="dropdown-menu dropdown-select">
+                                                                    <li><a href="#"><input type="radio" name="a">Aujourd'hui</a></li>
+                                                                    <li><a href="#"><input type="radio" name="a">Les dernières 24h</a></li>
+                                                                    <li><a href="#"><input type="radio" name="a">hier</a></li>
+                                                                    <li><a href="#"><input type="radio" name="a">Les 7 derniers jours</a></li>
+                                                                    <li><a href="#"><input type="radio" name="a">Les 30 derniers jours</a></li>
+                                                                    <li><a href="#"><input type="radio" name="a">Le mois dernier</a></li>
+                                                                    <li><a href="#"><input type="radio" name="a">Depuis le début</a></li>
+                                                                </ul>
+                                                            </div>
+                                                            Horizontal bar
+                                                        </header>
+                                                        <div class="panel-body flot-legend">
+                                                            <div id="flot-bar-h"  style="height:240px"></div>
+                                                        </div>
+                                                    </section>
+                                                </div>
+
+                                                <div class="col-md-6 panel">
+                                                    <section>
+                                                        <header class="font-bold padder-v">
+                                                            <div class="pull-right">
+                                                                <div class="btn-group">
+                                                                    <button data-toggle="dropdown" class="btn btn-sm btn-rounded bg-template dropdown-toggle">
+                                                                        <span class="dropdown-label text-white">Semaines</span>
+                                                                        <span class="caret text-white"></span>
+                                                                    </button>
+                                                                    <ul class="dropdown-menu dropdown-select">
+                                                                        <li><a href="#"><input type="radio" name="b">Mois</a></li>
+                                                                        <li><a href="#"><input type="radio" name="b">Semaines</a></li>
+                                                                        <li><a href="#"><input type="radio" name="b">Jours</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <a href="#" class="btn btn-default btn-icon btn-rounded btn-sm"><i class="fa fa-search"></i></a>
+                                                            </div>
+                                                            Pie
+                                                        </header>
+                                                        <div class="panel-body text-center">
+                                                            <div class="sparkline inline" data-type="pie" data-height="154" data-slice-colors="['#1ccacc','#f2f2f2']">60,40</div>
+                                                            <div class="line pull-in"></div>
+                                                            <div class="text-xs">
+                                                                <i class="fa fa-circle text-info"></i> 60%
+                                                                <i class="fa fa-circle text-muted"></i> 40%
+                                                            </div>
+                                                        </div>
+                                                        <br/>
+                                                    </section>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </section>
+                                </section>
+                            </section>
+
+                        </section>
+                        <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+                    </section>
+                    <!-- /CONTENU -->
+
+                </section>
+            </section>
+        </section>
+
+
+
+        <script src="js/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="js/bootstrap.js"></script>
+        <!-- Scroll -->
+        <script src="js/slimscroll/jquery.slimscroll.min.js"></script>
+        <!--Notifications-->
+        <script src="js/toastr/toastr.js"></script>
+        <!-- App -->
+        <script src="js/app.js"></script>
+
+
+        <!-- Charts-->
+        <script src="js/charts/easypiechart/jquery.easy-pie-chart.js"></script>
+        <script src="js/charts/sparkline/jquery.sparkline.min.js"></script>
+        <script src="js/charts/flot/jquery.flot.min.js"></script>
+        <script src="js/charts/flot/jquery.flot.tooltip.min.js"></script>
+        <script src="js/charts/flot/jquery.flot.spline.js"></script>
+        <script src="js/charts/flot/jquery.flot.pie.min.js"></script>
+        <script src="js/charts/flot/jquery.flot.resize.js"></script>
+        <script src="js/charts/flot/jquery.flot.grow.js"></script>
+        <script src="js/charts/flot/demo.js"></script>
+        <!-- Calendar-->
+        <script src="js/calendar/bootstrap_calendar.js"></script>
+        <script src="js/calendar/demo.js"></script>
+        <!-- Config Plugins-->
+        <script src="js/app.plugin.js"></script>
+    </body>
+</html>

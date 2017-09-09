@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import {LocalStorageService} from 'ng2-webstorage';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+    selector: 'app-list',
+    templateUrl: './list.component.html',
+    styleUrls: ['./list.component.css'],
+    providers: []
 })
-export class ListComponent implements OnInit {
+export class ListComponent {
 
-  constructor() { }
+    attribute: string;
+    constructor(private storage: LocalStorageService) { }
 
-  ngOnInit() {
-  }
+    retrieveValue() {
+        this.attribute = JSON.stringify(this.storage.retrieve('listesurfaces'));
+    }
 
 }

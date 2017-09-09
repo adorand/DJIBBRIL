@@ -1,0 +1,208 @@
+@import "app.variables.scss";
+@import "app.mixins.scss";
+
+.bg-gradient
+{
+    @include vertical(rgba(40,50,60,0), rgba(40,50,60,0.05), 0, 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0028323c', endColorstr='#0c28323c', GradientType=0);
+    //filter:none;
+}
+
+
+.bg-light
+{
+
+    @include color-variant($brand-light, 1.5%, 3%, 2.5%, 5%);
+    color: $text-color;
+}
+
+.bg-dark
+{
+    @include color-variant($brand-dark, 5%, 10%, 5%, 10%);
+    @include font-variant($brand-dark, lighten($brand-dark,40%), lighten($brand-dark,50%), #fff);
+}
+
+.bg-black
+{
+    @include color-variant($brand-black, 5%, 10%, 5%, 10%);
+    @include font-variant($brand-black, lighten($brand-black,40%), lighten($brand-black,50%), #fff);
+}
+
+.bg-primary
+{
+    @include color-variant($brand-primary, 5%, 10%, 5%, 10%);
+    &-ltest
+    {
+        background-color: $brand-primary-ltest;
+    }
+    @include font-variant($brand-primary, lighten($brand-primary,40%), lighten($brand-primary,50%), #fff);
+}
+
+.bg-success
+{
+  @include color-variant($brand-success, 5%, 10%, 5%, 10%);
+  &-ltest
+  {
+      background-color: $brand-success-ltest;
+  }
+  @include font-variant($brand-success, lighten($brand-success,40%), lighten($brand-success,50%), #fff);
+}
+
+.bg-info
+{
+    @include color-variant($brand-info, 5%, 10%, 5%, 10%);
+    &-ltest
+    {
+        background-color: $brand-info-ltest;
+    }
+    @include font-variant($brand-info, lighten($brand-info,40%), lighten($brand-info,50%), #fff);
+}
+
+.bg-warning
+{
+    @include color-variant($brand-warning, 5%, 10%, 5%, 10%);
+    &-ltest
+    {
+        background-color: $brand-warning-ltest;
+    }
+    @include font-variant($brand-warning, lighten($brand-warning,40%), lighten($brand-warning,50%), #fff);
+}
+
+.bg-danger
+{
+    @include color-variant($brand-danger, 5%, 10%, 5%, 10%);
+    &-ltest
+    {
+        background-color: $brand-danger-ltest;
+    }
+    @include font-variant($brand-danger, lighten($brand-danger,40%), lighten($brand-danger,50%), #fff);
+}
+
+.bg-white
+{
+    background-color: #fff;
+    color: $text-color;
+    a
+    {
+        color: $link-color;
+        &:hover
+        {
+            color: darken($link-color, 10%);
+        }
+    }
+    .text-muted
+    {
+        color: $text-muted !important;
+    }
+}
+
+.bg-white-only
+{
+    background-color:#fff;
+}
+
+.bg-empty
+{
+    background-color: transparent;
+}
+
+@include text-wariant($brand-primary, primary);
+@include text-wariant($brand-info, info);
+@include text-wariant($brand-success, success);
+@include text-wariant($brand-warning, warning);
+@include text-wariant($brand-danger, danger);
+@include text-wariant($brand-dark, dark);
+
+.text-black
+{
+    color: #000;
+    color: rgba(0,0,0,0.8)
+}
+
+.text-white
+{
+    color: #fff;
+    color: rgba(255,255,255,0.8)
+}
+.text-muted
+{
+    color: $text-muted;
+}
+
+
+.bg-templateblue
+{
+    background-color:#1ccacc !important;
+}
+
+.bg-templateblue-transparent
+{
+    background-color: rgba(28, 202, 204, 0.88) !important;
+}
+
+.bg-template
+{
+    background-color: $archenis-color1;
+    box-shadow: 2px 0px 3px rgba(0, 0, 0, 0.5);
+}
+
+.color-template
+{
+    color: $archenis-color1;
+}
+
+
+
+.al-sidebar
+{
+    left: 0;
+    z-index: 904;
+    display: block;
+    min-height: 100%;
+    background-color: $bg-al-sidebar;
+}
+
+
+/*Définition des éléments basiques du template*/
+.typecmd_nouv
+{
+    background-color: $cmd_color_1 !important;
+    .colorcmd_nouv
+    {
+        color: $cmd_color_1;
+    }
+}
+
+.typecmd_val
+{
+    background-color: $cmd_color_2 !important;
+    .colorcmd_val
+    {
+        color: $cmd_color_2;
+    }
+}
+
+.typecmd_ann
+{
+    background-color: $cmd_color_3 !important;
+
+    .colorcmd_ann
+    {
+        color: $cmd_color_3;
+    }
+}
+
+.typecmd_reg
+{
+    background-color: $cmd_color_4 !important;
+    .colorcmd_reg
+    {
+        color: $cmd_color_4;
+    }
+}
+
+
+
+
+
+
