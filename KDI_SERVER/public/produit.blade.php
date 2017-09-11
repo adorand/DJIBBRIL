@@ -35,11 +35,11 @@
                     <div class="input-group m-t m-b m-l m-r" >
                         <input type="text" class="form-control input-sm no-borders" placeholder="Rechercher une catégorie">
                         <span class="input-group-btn border-radius">
-                                <button style="" type="button" class="btn btn-sm bg-white b-white btn-icon"><i class="fa fa-search"></i></button>
-                            </span>
+                            <button style="" type="button" class="btn btn-sm bg-white b-white btn-icon"><i class="fa fa-search"></i></button>
+                        </span>
                     </div>
                     <ul class="list-group gutter list-group-lg list-group-sp panel scrollable" style="height:540px;">
-                        <li class="list-group-item  typecmd_ann panel on animated zoomIn m-t m-r m-l">
+                        <li class="list-group-item  typecmd_ann panel on animated zoomIn m-t m-r m-l" style="border-radius: 5px;">
                             <span class="pull-right">
                                 <button class="btn btn-sm bg-white btn-rounded btn-icon m-t-n-xs" data-toggle="tooltip" data-placement="left" data-title="Ajouter une catégorie">
                                     <i class="fa fa-edit"></i>
@@ -53,7 +53,7 @@
                             </span>
                             <strong class="text-ellipsis">Catégorie 1 dsbkdnsdks shdjsd</strong>
                         </li>
-                        <li class="list-group-item panel typecmd_ann on animated zoomIn m-t m-r m-l">
+                        <li class="list-group-item panel typecmd_ann on animated zoomIn m-t m-r m-l" style="border-radius: 5px;">
                             <span class="pull-right">
                                 <button class="btn btn-sm bg-white btn-rounded btn-icon m-t-n-xs" data-toggle="tooltip" data-placement="left" data-title="Ajouter une catégorie">
                                     <i class="fa fa-edit"></i>
@@ -92,7 +92,7 @@
                             </span>
                     </div>
                     <ul class="list-group gutter list-group-lg list-group-sp panel scrollable" style="height:540px;">
-                        <li class="list-group-item  typecmd_val panel on animated zoomIn m-t m-r m-l">
+                        <li class="list-group-item  typecmd_val panel on animated zoomIn m-t m-r m-l" style="border-radius: 5px;">
                             <span class="pull-right">
                                 <button class="btn btn-sm bg-white btn-rounded btn-icon m-t-n-xs" data-toggle="tooltip" data-placement="left" data-title="Ajouter une catégorie">
                                     <i class="fa fa-edit"></i>
@@ -106,7 +106,7 @@
                             </span>
                             <strong class="text-ellipsis">Catégorie 1 dsbkdnsdks shdjsd</strong>
                         </li>
-                        <li class="list-group-item panel typecmd_val on animated zoomIn m-t m-r m-l">
+                        <li class="list-group-item panel typecmd_val on animated zoomIn m-t m-r m-l" style="border-radius: 5px;">
                             <span class="pull-right">
                                 <button class="btn btn-sm bg-white btn-rounded btn-icon m-t-n-xs" data-toggle="tooltip" data-placement="left" data-title="Ajouter une catégorie">
                                     <i class="fa fa-edit"></i>
@@ -155,22 +155,24 @@
                                 <div class="caption">
                                     <p class="text-ellipsis text-white" style="font-size:20px;" data-toggle="tooltip" data-placement="bottom" data-title="Produit 1">Produit 1</p>
                                     <p class="text-ellipsis m-b-none text-white m-t-md">
-                                        <nav class="menu">
-                                            <label class="menu-open-button" for="menu-open">
-                                                <span class="hamburger hamburger-plats hamburger-1"></span>
-                                                <span class="hamburger hamburger-plats hamburger-2"></span>
-                                                <span class="hamburger hamburger-plats hamburger-3"></span>
-                                            </label>
-                                        </nav>
+                                        <button class="btn btn-sm bg-white btn-rounded btn-icon m-t-n-xs" data-toggle="tooltip" data-placement="left" data-title="Ajouter une catégorie">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-sm bg-white btn-rounded btn-icon m-t-n-xs" data-toggle="tooltip" data-placement="left" data-title="Ajouter une catégorie">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                        <button class="btn btn-sm bg-white btn-rounded btn-icon m-t-n-xs" data-toggle="tooltip" data-placement="left" data-title="Ajouter une catégorie">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
                                     </p>
                                 </div>
                                 <a href="#">
-                                    <img src="images/menus/sr-1.jpg" alt="">
+                                    <img src="images/p1.jpg" alt="">
                                 </a>
                             </div>
                         </div>
                         <div class="col-xs-6 col-sm-4 col-md-4 on animated zoomIn" >
-                            <div class="item-menu typecmd_reg panel" style="border:none;">
+                            <div class="item-menu typecmd_reg panel" style="border:none;"> <!--onmouseenter="addmenu(event)" onmouseleave="removemenu(event)"-->
                                 <div class="caption">
                                     <p class="text-ellipsis text-white" style="font-size:20px;" data-toggle="tooltip" data-placement="bottom" data-title="Produit 2">Produit 2</p>
                                     <p class="text-ellipsis m-b-none text-white m-t-md">
@@ -184,7 +186,7 @@
                                     </p>
                                 </div>
                                 <a href="#">
-                                    <img src="images/menus/sr-1.jpg" alt="">
+                                    <img src="images/p1.jpg" alt="">
                                 </a>
                             </div>
                         </div>
@@ -197,3 +199,4 @@
         </div>
     </section>
 </section>
+

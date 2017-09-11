@@ -16,6 +16,7 @@
         <script src="js/angular/angular.min.js"></script>
         <script src="js/angular/angular-route.min.js"></script>
         <script src="js/angular/angular-sanitize.min.js"></script>
+        <script src="js/angular/angular-loadscript.js"></script>
         <script src="js/angular/BACKOFFICE.js"></script>
 
 
@@ -121,7 +122,10 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="index.html" >Déconnexion</a>
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
                             </li>
                         </ul>
                     </li>
@@ -272,6 +276,9 @@
         <script src="js/toastr/toastr.js"></script>
         <!-- App -->
         <script src="js/app.js"></script>
+
+
+        <script src="js/angular/functions-design.js"></script>
 
     </body>
 </html>

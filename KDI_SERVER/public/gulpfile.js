@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 var sync = require('browser-sync').create();
-var port = "8000";
+var port = "8080";
 
 var sass = require('gulp-sass');
 
