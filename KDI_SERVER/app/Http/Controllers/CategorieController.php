@@ -18,26 +18,28 @@ class CategorieController extends Controller
         return view('categorie');
     }
 
-    public function create () {
-        $nom = Input::get('nom');
-        $desc = Input::get('description');
-        $parent = Input::get('id_parent');
+    public function create ()
+    {
         $code = '';
-        do {
-            $code = substr(str_shuffle(env('CODE_POOL')), 0, env('CODE_LENGTH'));
+        do
+        {
+            $code = \App\Utilities::generatecode();
             $categorie = Categorie::where('code', $code)->first();
-        } while($categorie != null);
+        }
+        while($categorie != null);
 
         $categorie = new Categorie();
         $categorie->code = $code;
-        $categorie->nom = $nom;
+        $categorie->nom = Input::get('nom');
+        $categorie->description = Input::get('description') || '';
+        $categorie->code_parent = Input::get('id_parent') || '';
         $categorie->surface_code = Auth::user()->code;
 
-        if (!empty($desc)) $categorie->description = $desc;
-        if (!empty($parent)) $categorie->code_parent = $parent;
+        /*if (!empty($desc)) $categorie->description = $desc;
+        if (!empty($parent)) $categorie->code_parent = $parent;*/
         $categorie->save();
-
-        return redirect('categories');
+        return json_encode($categorie);
+        //return redirect('categories');
     }
 
     public function fetch () {

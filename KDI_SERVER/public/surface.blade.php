@@ -3,7 +3,7 @@
 
 
 <section class="vbox stretch on animated fadeIn" >
-    <header class="bg-templateblue header panel clearfix">
+    <header class="bg-templateblue header panel clearfix animated fadeInDown">
         <p class="h4 font-thin pull-left m-r m-b-sm font-bold">Surfaces</p>
         <button class="btn btn-sm bg-white btn-rounded btn-icon" ng-click="showModalAdd('Slider')" data-toggle="tooltip" data-placement="bottom" data-title="Ajouter un Slider"><i class="fa fa-plus"></i></button>
         <button class="m-l-sm btn btn-sm bg-white btn-rounded btn-icon" ng-click="trierElement('Publicite','')" data-toggle="tooltip" data-placement="bottom" data-title="Actualiser" ><i class="fa fa-refresh"></i></button>
@@ -19,7 +19,32 @@
             </div>
         </div>
     </header>
-    <section class="scrollable wrapper" style="height: 100%;">
+    <section class="scrollable panel wrapper" style="margin-bottom: 0px !important;">
+        <section class="panel-default">
+            <div class="row row-sm">
+                <div class="col-xs-6 col-sm-4 col-md-2 m-t-lg on animated zoomIn">
+                    <div class="thumbnail text-center panel" style="margin-bottom: -2px;">
+                        <div class="multiplebtn" style="z-index: 10;position: relative;">
+                            <button  class="btn btn-sm btn-cli bg-templateblue-transparent">
+                                <i class="fa fa-edit text-white"></i>
+                            </button>
+                            <button  class="btn btn-sm btn-cli-middle bg-templateblue-transparent active">
+                                <i class="fa fa-home text-white" ></i>
+                                <i class="fa fa-eye text-white"></i>
+                            </button>
+                            <button  class="btn btn-sm btn-cli bg-templateblue-transparent">
+                                <i class="fa fa-trash-o text-white"></i>
+                            </button>
+                        </div>
+                        <img src="<?='images/p9.jpg'?>" style="width:100%;height: 150px;margin-top: -40px;z-index:100;" class="img-responsive" alt="">
+                    </div>
+                    <div class="tp-bannershadow tp-shadow1" style="width: 95%; margin: 0 auto;"></div>
+                </div>
+
+            </div>
+        </section>
+    </section>
+    <!--<section class="scrollable wrapper" style="height: 100%;">
         <div class="row">
             <div class="col-md-12">
                 <div class="row row-sm">
@@ -40,5 +65,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 </section>

@@ -1,4 +1,10 @@
 @charset "UTF-8";
+.tp-bannershadow.tp-shadow1 {
+  background: url(../images/shadow.png) no-repeat;
+  background-size: 100% 100%;
+  width: 890px;
+  height: 40px; }
+
 /*****************PAGE 404*****************/
 .page-not-found {
   width: 638px;
@@ -763,8 +769,8 @@ body.container {
   box-shadow: 10px 0px 15px 3px rgba(0, 0, 0, 0.25);
   background-color: #1ccacc;
   color: #fff;
-  margin: 0px 15px;
-  border-radius: 5px; }
+  margin: 0px 10px;
+  border-radius: 5px 30px 30px 5px; }
 
 @media (min-width: 768px) {
   .visible-nav-xs {
@@ -1153,6 +1159,13 @@ body.container {
 .thumbnail .caption {
   box-shadow: 0 17px 40px 0 rgba(0, 0, 0, 0.25) !important; }
 
+.thumbnail .btn-cli-middle {
+  opacity: 0; }
+
+/*AFFOCHAGE DU BOUTTON LORS DU SURVOL*/
+.thumbnail:hover .btn-cli-middle {
+  opacity: 1; }
+
 .clientbtns button:focus {
   outline: 0px; }
 
@@ -1179,7 +1192,7 @@ body.container {
   visibility: visible;
   -webkit-transform: translateX(-60px) translateY(20px);
   -ms-transform: translateX(-60px) translateY(20px);
-  transform: translateX(-46px) translateY(20px);
+  transform: translateX(-36px) translateY(20px);
   transition-delay: 400ms; }
 
 .clientbtns button:nth-child(3) {
@@ -1194,8 +1207,68 @@ body.container {
   visibility: visible;
   -webkit-transform: translateX(15px) translateY(20px);
   -ms-transform: translateX(15px) translateY(20px);
-  transform: translateX(1px) translateY(20px);
+  transform: translateX(-9px) translateY(20px);
   transition-delay: 400ms; }
+
+/*SPECIFICATIONS OF BUTTONS OF THE PAGE CUSTOMER*/
+.btn-cli {
+  margin-top: -40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px; }
+  .btn-cli-middle {
+    margin-top: -40px;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px; }
+
+.multiplebtn button:nth-child(2) > .fa + .fa, .multiplebtn button:nth-child(2):hover > .fa,
+.multiple-btnicon .time-icon:nth-child(2) > .fa + .fa, .multiple-btnicon .time-icon:nth-child(2):hover > .fa {
+  display: none; }
+
+.multiplebtn button:nth-child(2):hover > .fa + .fa,
+.multiple-btnicon span:nth-child(2):hover > .fa + .fa {
+  display: inherit; }
+
+.multiplebtn button:focus,
+.multiple-btnicon span:focus {
+  outline: 0px; }
+
+.multiplebtn button,
+.multiple-btnicon span {
+  /*opacity: 1;*/
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out; }
+
+.multiplebtn button:nth-child(1),
+multiple-btnicon span:nth-child(1) {
+  -webkit-transform: translateX(60px);
+  -ms-transform: translateX(60px);
+  transform: translateX(60px);
+  opacity: 0; }
+
+.multiplebtn:hover button:first-child,
+.multiple-btnicon span:first-child {
+  opacity: 1;
+  -webkit-transform: translateX(0px);
+  -ms-transform: translateX(0px);
+  transform: translateX(0px);
+  transition-delay: 200ms; }
+
+.multiplebtn button:nth-child(3),
+.multiple-btnicon span:nth-child(3) {
+  -webkit-transform: translateX(-60px);
+  -ms-transform: translateX(-60px);
+  transform: translateX(-60px);
+  opacity: 0; }
+
+.multiplebtn:hover button:last-child,
+.multiple-btnicon span:last-child {
+  opacity: 1;
+  -webkit-transform: translateX(0px);
+  -ms-transform: translateX(0px);
+  transform: translateX(0px);
+  transition-delay: 200ms; }
 
 /*******************************************************************/
 /***************************** WIDGETS ***************************/

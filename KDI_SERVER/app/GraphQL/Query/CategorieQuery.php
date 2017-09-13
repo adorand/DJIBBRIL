@@ -51,7 +51,12 @@ class CategorieQuery extends Query
                 'nom' => $ctg->nom,
                 'description' => $ctg->description,
                 'produits' => $ctg->products,
-                'souscategories' => $ctg->souscategories,
+                'souscategories' => $ctg->souscategories->map(function (Categorie $ssctg){
+                    return [
+                        'code' => $ssctg->code,
+                        'produits' => $ssctg->products
+                    ];
+                }),
                 'parent' => $ctg->parent
             ];
         });

@@ -3,7 +3,7 @@
 
 <section class="vbox">
     <section class="wrapper scrollable">
-        <div class="content-top clearfix" style="padding-right: 21px;padding-left: 21px;">
+        <div class="content-top clearfix animated zoomIn" style="padding-right: 21px;padding-left: 21px;">
             <h1 class="al-title">
                 PRODUITS
                 <button class="btn btn-sm bg-white btn-rounded btn-icon" data-toggle="tooltip" data-placement="right" data-title="Synchroniser les tablettes" style="margin-top: -5px;">
@@ -27,7 +27,7 @@
                             <div class="text-white text-u-c pull-left m-t-n-xxs">
                                 <i class="fa fa-th-large"></i> <strong>Catégories</strong>
                             </div>
-                            <button class="btn btn-sm bg-white btn-rounded btn-icon pull-right" data-toggle="tooltip" data-placement="left" data-title="Ajouter une catégorie" onclick="showModal('modal-addssctg')">
+                            <button class="btn btn-sm bg-white btn-rounded btn-icon pull-right" data-toggle="tooltip" data-placement="left" title="Ajouter une catégorie" ng-click="showModalAdd('categorie')">
                                 <i class="fa fa-plus"></i>
                             </button>
                         </div>
@@ -39,7 +39,7 @@
                         </span>
                     </div>
                     <ul class="list-group gutter list-group-lg list-group-sp panel scrollable" style="height:540px;">
-                        <li class="list-group-item  typecmd_ann panel on animated zoomIn m-t m-r m-l" style="border-radius: 5px;">
+                        <li ng-repeat="categorie in categories track by $index" class="list-group-item  typecmd_ann panel on animated zoomIn m-t m-r m-l" style="border-radius: 5px;">
                             <span class="pull-right">
                                 <button class="btn btn-sm bg-white btn-rounded btn-icon m-t-n-xs" data-toggle="tooltip" data-placement="left" data-title="Ajouter une catégorie">
                                     <i class="fa fa-edit"></i>
@@ -51,21 +51,7 @@
                                     <i class="fa fa-plus"></i>
                                 </button>
                             </span>
-                            <strong class="text-ellipsis">Catégorie 1 dsbkdnsdks shdjsd</strong>
-                        </li>
-                        <li class="list-group-item panel typecmd_ann on animated zoomIn m-t m-r m-l" style="border-radius: 5px;">
-                            <span class="pull-right">
-                                <button class="btn btn-sm bg-white btn-rounded btn-icon m-t-n-xs" data-toggle="tooltip" data-placement="left" data-title="Ajouter une catégorie">
-                                    <i class="fa fa-edit"></i>
-                                </button>
-                                <button class="btn btn-sm bg-white btn-rounded btn-icon m-t-n-xs" data-toggle="tooltip" data-placement="left" data-title="Ajouter une catégorie">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                                <button class="btn btn-sm bg-white btn-rounded btn-icon m-t-n-xs" data-toggle="tooltip" data-placement="left" data-title="Ajouter une catégorie">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                            </span>
-                            <strong class="text-ellipsis">Catégorie 1 dsbkdnsdks shdjsd</strong>
+                            <strong class="text-ellipsis">{{categorie.nom}}</strong>
                         </li>
                     </ul>
                 </div>
@@ -80,7 +66,7 @@
                             <div class="text-white text-u-c pull-left m-t-n-xxs">
                                 <i class="fa fa-th-list"></i> <strong>Sous-Catégories</strong>
                             </div>
-                            <button class="btn btn-sm bg-white btn-rounded btn-icon pull-right" data-toggle="tooltip" data-placement="left" data-title="Ajouter une catégorie" onclick="showModal('modal-addssctg')">
+                            <button class="btn btn-sm bg-white btn-rounded btn-icon pull-right" data-toggle="tooltip" data-placement="left" data-title="Ajouter une sous-catégorie" ng-click="showModalAdd('souscategorie')">
                                 <i class="fa fa-plus"></i>
                             </button>
                         </div>
@@ -88,38 +74,26 @@
                     <div class="input-group m-t m-b m-l m-r" >
                         <input type="text" class="form-control input-sm no-borders" placeholder="Rechercher une sous-catégorie">
                         <span class="input-group-btn border-radius">
-                                <button style="" type="button" class="btn btn-sm bg-white b-white btn-icon"><i class="fa fa-search"></i></button>
-                            </span>
+                            <button style="" type="button" class="btn btn-sm bg-white b-white btn-icon"><i class="fa fa-search"></i></button>
+                        </span>
                     </div>
                     <ul class="list-group gutter list-group-lg list-group-sp panel scrollable" style="height:540px;">
-                        <li class="list-group-item  typecmd_val panel on animated zoomIn m-t m-r m-l" style="border-radius: 5px;">
-                            <span class="pull-right">
-                                <button class="btn btn-sm bg-white btn-rounded btn-icon m-t-n-xs" data-toggle="tooltip" data-placement="left" data-title="Ajouter une catégorie">
-                                    <i class="fa fa-edit"></i>
-                                </button>
-                                <button class="btn btn-sm bg-white btn-rounded btn-icon m-t-n-xs" data-toggle="tooltip" data-placement="left" data-title="Ajouter une catégorie">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                                <button class="btn btn-sm bg-white btn-rounded btn-icon m-t-n-xs" data-toggle="tooltip" data-placement="left" data-title="Ajouter une catégorie">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                            </span>
-                            <strong class="text-ellipsis">Catégorie 1 dsbkdnsdks shdjsd</strong>
-                        </li>
-                        <li class="list-group-item panel typecmd_val on animated zoomIn m-t m-r m-l" style="border-radius: 5px;">
-                            <span class="pull-right">
-                                <button class="btn btn-sm bg-white btn-rounded btn-icon m-t-n-xs" data-toggle="tooltip" data-placement="left" data-title="Ajouter une catégorie">
-                                    <i class="fa fa-edit"></i>
-                                </button>
-                                <button class="btn btn-sm bg-white btn-rounded btn-icon m-t-n-xs" data-toggle="tooltip" data-placement="left" data-title="Ajouter une catégorie">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                                <button class="btn btn-sm bg-white btn-rounded btn-icon m-t-n-xs" data-toggle="tooltip" data-placement="left" data-title="Ajouter une catégorie">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                            </span>
-                            <strong class="text-ellipsis">Catégorie 1 dsbkdnsdks shdjsd</strong>
-                        </li>
+                        <div ng-repeat="categorie in categories">
+                            <li ng-repeat="souscategorie in categorie.souscategories track by $index" class="list-group-item  typecmd_val panel on animated zoomIn m-t m-r m-l" style="border-radius: 5px;">
+                                <span class="pull-right">
+                                    <button class="btn btn-sm bg-white btn-rounded btn-icon m-t-n-xs" data-toggle="tooltip" data-placement="left" data-title="Ajouter une catégorie">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm bg-white btn-rounded btn-icon m-t-n-xs" data-toggle="tooltip" data-placement="left" data-title="Ajouter une catégorie">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                    <button class="btn btn-sm bg-white btn-rounded btn-icon m-t-n-xs" data-toggle="tooltip" data-placement="left" data-title="Ajouter une catégorie">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </span>
+                                <strong class="text-ellipsis">{{souscategorie.nom}}</strong>
+                            </li>
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -138,7 +112,7 @@
                             <div class="text-white text-u-c pull-left m-t-n-xxs">
                                 <i class="fa fa-product-hunt"></i> <strong>PRODUITS</strong>
                             </div>
-                            <button class="btn btn-sm bg-white btn-rounded btn-icon" data-toggle="tooltip" data-placement="left" data-title="Ajouter un Plat" onclick="showModal('modal-addssctg')">
+                            <button class="btn btn-sm bg-white btn-rounded btn-icon" data-toggle="tooltip" data-placement="left" data-title="Ajouter un produit" ng-click="showModalAdd('produit')">
                                 <i class="fa fa-plus"></i>
                             </button>
                             <div class="input-group pull-right m-t-n-xs" style="width: 40%">

@@ -20,19 +20,19 @@ Auth::routes();
 
 /*Categories*/
 Route::get('/categorie', 'CategorieController@index');
-Route::get('/categorie', 'CategorieController@create');
+Route::post('/categorie', 'CategorieController@create');
 Route::get('/categories', 'CategorieController@fetch');
 Route::get('/categorie/{code}', 'CategorieController@get');
 Route::put('/categorie/{code}', 'CategorieController@update');
 Route::delete('/categorie/{code}', 'CategorieController@delete');
 
 /*Produits*/
-Route::get('/produit', 'ProductController@index');
-Route::post('/produit', 'ProductController@create');
-Route::get('/produits', 'ProductController@fetch');
-Route::get('/produit/{code}', 'ProductController@get');
-Route::put('/produit/{code}', 'ProductController@update');
-Route::delete('/produit/{code}', 'ProductController@delete');
+Route::get('/produit', 'ProduitController@index');
+Route::post('/produit', 'ProduitController@create');
+Route::get('/produits', 'ProduitController@fetch');
+Route::get('/produit/{code}', 'ProduitController@get');
+Route::put('/produit/{code}', 'ProduitController@update');
+Route::delete('/produit/{code}', 'ProduitController@delete');
 
 /*Users*/
 Route::post('/front/add-user/', 'UserController@create');

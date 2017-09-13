@@ -116,9 +116,21 @@
     box-shadow: 0 17px 40px 0 rgba(0, 0, 0, 0.25) !important;
 }
 
+.thumbnail .btn-cli-middle
+{
+    opacity: 0;
+}
+
+/*AFFOCHAGE DU BOUTTON LORS DU SURVOL*/
+.thumbnail:hover .btn-cli-middle
+{
+    opacity: 1;
+}
+
 .clientbtns button:focus
 {
     outline: 0px;
+
 }
 
 .clientbtns button
@@ -147,8 +159,6 @@
 }
 
 
-
-
 .clientbtns button:nth-child(1)
 {
     -webkit-transform: translateX(20px) translateY(20px);
@@ -164,7 +174,7 @@
     visibility: visible;
     -webkit-transform: translateX(-60px) translateY(20px);
     -ms-transform: translateX(-60px) translateY(20px);
-    transform: translateX(-46px) translateY(20px);
+    transform: translateX(-36px) translateY(20px);
     transition-delay:400ms;
 }
 
@@ -184,6 +194,94 @@
     visibility: visible;
     -webkit-transform: translateX(15px) translateY(20px);
     -ms-transform: translateX(15px) translateY(20px);
-    transform:  translateX(1px) translateY(20px);
+    transform:  translateX(-9px) translateY(20px);
     transition-delay:400ms;
+}
+
+
+
+
+/*SPECIFICATIONS OF BUTTONS OF THE PAGE CUSTOMER*/
+.btn-cli
+{
+    margin-top:-$btn_tab_rounded;
+    width: ($btn_tab_rounded);
+    height: ($btn_tab_rounded);
+    border-radius: $btn_tab_rounded/2;
+    &-middle
+    {
+        margin-top:-$btn_tab_rounded;
+        width: ($btn_tab_rounded)*2;
+        height: ($btn_tab_rounded)*2;
+        border-radius: ($btn_tab_rounded);
+    }
+}
+
+//Adorand
+
+.multiplebtn button:nth-child(2) > .fa + .fa, .multiplebtn button:nth-child(2):hover > .fa,
+.multiple-btnicon .time-icon:nth-child(2) > .fa + .fa, .multiple-btnicon .time-icon:nth-child(2):hover > .fa
+{
+    display: none;
+}
+
+.multiplebtn button:nth-child(2):hover > .fa + .fa,
+.multiple-btnicon span:nth-child(2):hover > .fa + .fa
+{
+    display: inherit;
+}
+
+.multiplebtn button:focus,
+.multiple-btnicon span:focus
+{
+    outline: 0px;
+}
+
+.multiplebtn button,
+.multiple-btnicon span
+{
+    /*opacity: 1;*/
+    -webkit-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out;
+
+}
+
+
+
+.multiplebtn button:nth-child(1),
+multiple-btnicon span:nth-child(1)
+{
+    -webkit-transform: translateX(60px);
+    -ms-transform: translateX(60px);
+    transform: translateX(60px);
+    opacity: 0;
+}
+
+.multiplebtn:hover button:first-child,
+.multiple-btnicon span:first-child
+{
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    transform: translateX(0px);
+    transition-delay:200ms;
+}
+
+.multiplebtn button:nth-child(3),
+.multiple-btnicon span:nth-child(3)
+{
+    -webkit-transform: translateX(-60px);
+    -ms-transform: translateX(-60px);
+    transform: translateX(-60px);
+    opacity: 0;
+}
+
+.multiplebtn:hover button:last-child,
+.multiple-btnicon span:last-child
+{
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    transform: translateX(0px);
+    transition-delay:200ms;
 }

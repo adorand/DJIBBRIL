@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
-class ProductController extends Controller
+class ProduitController extends Controller
 {
     public function __construct()
     {
@@ -30,10 +30,12 @@ class ProductController extends Controller
     public function create()
     {
         $code = '';
-        do {
-            $code = substr(str_shuffle(env('CODE_POOL')), 0, env('CODE_LENGTH'));
+        do
+        {
+            $code = \App\Utilities::generatecode();
             $produit = Produit::where('code', $code)->first();
-        } while($produit != null);
+        }
+        while($produit != null);
 
         $produit = new Produit();
         $produit->code = $code;
@@ -44,11 +46,11 @@ class ProductController extends Controller
         $produit->categorie_code = Input::get('categorie');
         $produit->image = Outils::image(Input::file('image'));
         $produit->save();
-
         return json_encode($produit);
     }
 
-    public function fetch() {
+    public function fetch()
+    {
         return view('products')->with('products', Produit::all());
     }
 

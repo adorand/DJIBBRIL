@@ -11,13 +11,9 @@
         <link rel="stylesheet" href="css/icon.css" type="text/css" />
         <link rel="stylesheet" href="css/font.css" type="text/css" />
         <link rel="stylesheet" href="css/app.css" type="text/css" />
+        <link rel="stylesheet" href="js/chosen/chosen.css" />
 
 
-        <script src="js/angular/angular.min.js"></script>
-        <script src="js/angular/angular-route.min.js"></script>
-        <script src="js/angular/angular-sanitize.min.js"></script>
-        <script src="js/angular/angular-loadscript.js"></script>
-        <script src="js/angular/BACKOFFICE.js"></script>
 
 
     </head>
@@ -189,53 +185,44 @@
                                     <nav class="nav-archenis hidden-xs">
                                         <ul class="nav nav-main" data-ride="collapse">
                                             <li>
-                                                <a href="#!/"  >
+                                                <a href="#!/" >
                                                     <i class="fa fa-home text"></i>
-                                                    <i class="fa fa-home color-template text-active"></i>
                                                     <span class="font-bold">Accueil</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#!/produit" ng-class="{active:linknav=='/produit'}">
+                                                <a href="#!/produit" >
                                                     <span class="pull-right text-muted">
-                                                        <i class="i i-circle-sm-o text"></i>
-                                                        <i class="i i-circle-sm color-template text-active"></i>
+                                                        <i class="i i-circle-sm-o"></i>
                                                     </span>
-                                                    <i class="fa fa-product-hunt text"></i>
-                                                    <i class="fa fa-product-hunt color-template text-active"></i>
+                                                    <i class="fa fa-product-hunt"></i>
                                                     <span class="font-bold">Produit</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#!/surface" ng-class="{active:linknav=='/surface'}">
+                                                <a href="#!/surface">
                                                     <span class="pull-right text-muted">
-                                                        <i class="i i-circle-sm-o text"></i>
-                                                        <i class="i i-circle-sm color-template text-active"></i>
+                                                        <i class="i i-circle-sm-o"></i>
                                                     </span>
                                                     <i class="fa fa-home text"></i>
-                                                    <i class="fa fa-industry color-template text-active"></i>
                                                     <span class="font-bold">Surface</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#!/membre" ng-class="{active:linknav=='/membre'}">
+                                                <a href="#!/membre">
                                                     <span class="pull-right text-muted">
                                                         <i class="i i-circle-sm-o text"></i>
-                                                        <i class="i i-circle-sm color-template text-active"></i>
                                                     </span>
                                                     <i class="i i-users3 text"></i>
-                                                    <i class="i i-users3 color-template text-active"></i>
                                                     <span class="font-bold">Membres</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#!/utilisateur" ng-class="{active:linknav=='/utilisateur'}">
+                                                <a href="#!/utilisateur">
                                                     <span class="pull-right text-muted">
                                                         <i class="i i-circle-sm-o text"></i>
-                                                        <i class="i i-circle-sm color-template text-active"></i>
                                                     </span>
                                                     <i class="fa fa-user-secret text"></i>
-                                                    <i class="a fa-user-secret color-template text-active"></i>
                                                     <span class="font-bold">Utilisateurs</span>
                                                 </a>
                                             </li>
@@ -265,6 +252,143 @@
         </section>
 
 
+        <!--MODAL CATEGORIE-->
+        <div class="modal fade" id="modal_addcategorie">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content bg-empty">
+                    <div class="modal-body ">
+                        <div class="row" >
+                            <div class="col-sm-12 typecmd_ann m-t-n m-b-n">
+                                <div class="row " style="padding-bottom: 15px; ">
+                                    <div class="m-t" >
+                                        <h3 class="m-t-xs m-l m-b pull-left text-white text-u-c"><strong>Catégorie</strong></h3>
+                                        <button data-dismiss="modal" class="b-2x b-white btn btn-sm bg-white active btn-rounded btn-icon pull-right m-r"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <form id="form_addcategorie" role="form" enctype="multipart/form-data" accept-charset="UTF-8" ng-submit="addElement($event,'categorie')">
+
+                                        <input type="hidden" id="code_categorie" name="code" value="">
+                                        {{ csrf_field() }}
+                                        <div class="col-sm-12 m-b">
+                                            <input type="text" id="nomcategorie" name="nom" class="form-control input-sm no-borders" placeholder="Nom de la catégorie" required>
+                                        </div>
+                                        <div class="col-sm-12 text-right m-b">
+                                            <button type="submit" class="b-2x b-white btn btn-sm typecmd_ann btn-icon"><i class="fa fa-check text-white"></i></button>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--MODAL SOUS-CATEGORIE-->
+        <div class="modal fade" id="modal_addsouscategorie">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content bg-empty">
+                    <div class="modal-body ">
+                        <div class="row" >
+                            <div class="col-sm-12 typecmd_val m-t-n m-b-n">
+                                <div class="row " style="padding-bottom: 15px; ">
+                                    <div class="m-t" >
+                                        <h3 class="m-t-xs m-l m-b pull-left text-white text-u-c"><strong>Sous-catégorie</strong></h3>
+                                        <button data-dismiss="modal" class="b-2x b-white btn btn-sm bg-white active btn-rounded btn-icon pull-right m-r"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <form id="form_addsouscategorie" method="POST" role="form" accept-charset="UTF-8" ng-submit="addElement($event,'souscategorie')">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" id="code_souscategorie" name="code" value="">
+                                        <div class="col-sm-12 m-b">
+                                            <input type="text" id="nomsouscategorie" name="nom" class="form-control input-sm no-borders" placeholder="Nom de la sous-catégorie" required>
+                                        </div>
+                                        <div class="col-sm-12 m-b">
+                                            <select class="chosen-select" >
+                                                <option disabled selected>Catégorie</option>
+                                                <option value="DU">supprimer un utilisateur</option>
+                                                <option value="MT">monitorer les tablettes</option>
+                                                <option value="AU">Ajouter un utilisateur</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-12 text-right m-b">
+                                            <button type="submit" class="b-2x b-white btn btn-sm typecmd_val btn-icon"><i class="fa fa-check text-white"></i></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--MODAL PRODUIT-->
+        <div class="modal fade" id="modal_addproduit">
+            <div class="modal-dialog modal-compose">
+                <div class="modal-content bg-empty">
+                    <div class="modal-body ">
+                        <div class="row" >
+                            <div class="col-sm-12 typecmd_reg m-t-n m-b-n">
+                                <div class="row " style="padding-bottom: 15px; ">
+                                    <div class="m-t" >
+                                        <h3 class="m-t-xs m-l m-b pull-left text-white text-u-c"><strong>PRODUIT</strong></h3>
+                                        <button data-dismiss="modal" class="b-2x b-white btn btn-sm bg-white active btn-rounded btn-icon pull-right m-r"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <form id="form_addproduit" method="POST" role="form" enctype="multipart/form-data" accept-charset="UTF-8" ng-submit="addElement($event,'produit')">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" id="code_produit" name="code_produit" value="">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <input type="text" id="designationproduit" name="designation" class="form-control input-sm no-borders" placeholder="Désignation" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <select class="chosen-select" id="souscategorieproduit" name="souscategorie">
+                                                    <option disabled selected>Sous-catégorie</option>
+                                                    <option value="DU">supprimer un utilisateur</option>
+                                                    <option value="MT">monitorer les tablettes</option>
+                                                    <option value="AU">Ajouter un utilisateur</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input type="number" id="quantiteproduit" name="quantite" class="form-control input-sm no-borders" placeholder="Quantité" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="number" id="prixproduit" name="prix" class="form-control input-sm no-borders" placeholder="Prix" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="file" accept='image/*' id="imgproduit" name="image" class="filestyle" data-icon="true" data-classButton="btn bg-white" data-classInput="form-control inline v-middle input-modal" onchange='Chargerphoto("produit")' required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div id="afffichiergalerie" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);">
+                                                <img alt="" class="thumbnail" style="width: 100%;height: 135px;margin-bottom: 10px;" id="affimgproduit" >
+                                            </div>
+                                            <div class="text-right m-b">
+                                                <button type="submit" class="b-2x b-white btn btn-sm typecmd_reg btn-icon"><i class="fa fa-check text-white"></i></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
 
         <script src="js/jquery.min.js"></script>
@@ -279,6 +403,21 @@
 
 
         <script src="js/angular/functions-design.js"></script>
+
+        <!-- BTN UPLOAD -->
+        <script src="js/file-input/bootstrap-filestyle.min.js"></script>
+        <!--Chosen-->
+        <script src="js/chosen/chosen.jquery.min.js"></script>
+        <!-- Config Plugins-->
+        <script src="js/app.plugin.js"></script>
+
+
+        <script src="js/angular/angular.min.js"></script>
+        <script src="js/angular/angular-route.min.js"></script>
+        <script src="js/angular/angular-sanitize.min.js"></script>
+        <script src="js/angular/angular-loadscript.js"></script>
+        <script src="js/angular/BACKOFFICE.js"></script>
+
 
     </body>
 </html>
