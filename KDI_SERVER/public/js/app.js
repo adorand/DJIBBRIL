@@ -444,7 +444,8 @@ Date.now = Date.now || function() { return +new Date; };
                 menu.append('<input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>');
 
             });
-            
+
+
             $('.item-menu').on('mouseleave',function()
             {
                 var menu=$(this).find('.menu');

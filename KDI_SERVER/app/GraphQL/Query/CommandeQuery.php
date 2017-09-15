@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cedric
- * Date: 06/09/17
- * Time: 05:18
- */
 
 namespace App\GraphQL\Query;
 use App\Commande;
@@ -40,9 +34,9 @@ class CommandeQuery extends Query
         return $query->get()->map(function (Commande $commande)
         {
             return [
-                'code' => $commande->code,
-                'etat' => $commande->etat,
-                'client' => $commande->user,
+                'code'    => $commande->code,
+                'etat'    => $commande->etat,
+                'membre'  => $commande->membre,
                 'details' => $commande->produits
             ];
         });

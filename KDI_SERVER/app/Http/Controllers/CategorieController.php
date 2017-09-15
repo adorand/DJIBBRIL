@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Categorie;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
@@ -20,26 +19,33 @@ class CategorieController extends Controller
 
     public function create ()
     {
-        $code = '';
-        do
-        {
-            $code = \App\Utilities::generatecode();
+        $code = Input::get('code');
+        if(!empty($code))
             $categorie = Categorie::where('code', $code)->first();
+        else
+        {
+            do
+            {
+                $code=\App\Outils::generatecode();
+                $categorie = Categorie::where('code', $code)->first();
+            }
+            while($categorie != null);
+            $categorie = new Categorie();
+            $categorie->code=$code;
         }
-        while($categorie != null);
 
-        $categorie = new Categorie();
-        $categorie->code = $code;
-        $categorie->nom = Input::get('nom');
-        $categorie->description = Input::get('description') || '';
-        $categorie->code_parent = Input::get('id_parent') || '';
-        $categorie->surface_code = Auth::user()->code;
+        $categorie->nom          = Input::get('nom');
+        $categorie->description  = !empty(Input::get('description')) ? Input::get('description') : '';
+        $categorie->code_parent  = !empty(Input::get('code_parent')) ? Input::get('code_parent') : '';
+        empty($categorie->created_at) ? $categorie->surface_code =  Auth::user()->code : '' ;
 
-        /*if (!empty($desc)) $categorie->description = $desc;
-        if (!empty($parent)) $categorie->code_parent = $parent;*/
         $categorie->save();
-        return json_encode($categorie);
-        //return redirect('categories');
+
+        //$addcritere = Auth::user()->hasrole('surface')==1 ? ', surface_code : "'.Auth::user()->code.'")' : '';
+
+        $path = empty($categorie->code_parent) ? '{ categories( code : "'.$categorie->code.'") { code, nom, description, created_at, updated_at, surface_code, souscategories { code, nom, description, created_at, updated_at, parent { code, nom }, produits { code, designation, description, quantite, prix image, created_at, updated_at, souscategorie { code,nom } } } } }'
+            :'{ souscategories(code : "'.$categorie->code.'") { code, nom, description, created_at, updated_at, parent { code, nom }, produits { code, designation, description, quantite, prix image, created_at, updated_at, souscategorie { code,nom } } } }';
+        return redirect('graphql?query='.urlencode($path));
     }
 
     public function fetch () {
@@ -52,24 +58,10 @@ class CategorieController extends Controller
         return null;
     }
 
-    public function update($code) {
-
+    public function delete ($code)
+    {
         $cat = Categorie::where('code', $code)->first();
-
-        if (Input::get('nom')) $cat->nom = Input::get('nom');
-        if (Input::get('description')) $cat->description = Input::get('description');
-        if (Input::get('code_parent')) $cat->code_parent = Input::get('code_parent');
-
-        $cat->save();
-
-        return 'La categorie a  bien été mise a jour';
-    }
-
-    public function delete ($code) {
-        $cat = Categorie::where('code', $code)->first();
-        $cat->delete();
-
-        return 'La categorie a  bien été mise a jour';
+        return json_encode($cat->delete());
     }
 
 }

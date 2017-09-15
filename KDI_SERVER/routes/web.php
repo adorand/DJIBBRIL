@@ -19,22 +19,24 @@ Route::get('/', 'HomeController@index');
 Auth::routes();
 
 /*Categories*/
-Route::get('/categorie', 'CategorieController@index');
 Route::post('/categorie', 'CategorieController@create');
-Route::get('/categories', 'CategorieController@fetch');
-Route::get('/categorie/{code}', 'CategorieController@get');
-Route::put('/categorie/{code}', 'CategorieController@update');
 Route::delete('/categorie/{code}', 'CategorieController@delete');
 
 /*Produits*/
-Route::get('/produit', 'ProduitController@index');
 Route::post('/produit', 'ProduitController@create');
-Route::get('/produits', 'ProduitController@fetch');
-Route::get('/produit/{code}', 'ProduitController@get');
-Route::put('/produit/{code}', 'ProduitController@update');
 Route::delete('/produit/{code}', 'ProduitController@delete');
 
+/*Surfaces*/
+Route::post('/surface', 'SurfaceController@create');
+Route::delete('/surface/{code}', 'SurfaceController@delete');
+
+/*Membres*/
+Route::post('/membre', 'MembreController@create');
+Route::delete('/membre/{code}', 'MembreController@delete');
+
 /*Users*/
+Route::post('/auth', 'UserController@auth');
+Route::post('/alltables', 'UserController@auth');
 Route::post('/front/add-user/', 'UserController@create');
 Route::get('/front/get-user/{data}', 'UserController@get');
 Route::get('/front/update-user/{data}', 'UserController@update');

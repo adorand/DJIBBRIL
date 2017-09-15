@@ -18,16 +18,16 @@
                             <header class="header panel b-b clearfix">
                                 <div class="row m-t-sm">
                                     <div class=" col-xs-7 col-sm-8 m-b-xs">
-                                        <a href="#" class="btn btn-sm bg-templateblue" data-toggle="tooltip" data-placement="top" title="Rafraichir">
+                                        <a class="btn btn-sm bg-templateblue cursor-pointer" data-toggle="tooltip" data-placement="top" title="Rafraichir" ng-click="trierElement('membre','','')">
                                             <i class="fa fa-refresh text-white"></i>
                                         </a>
-                                        <a href="#" class="btn btn-sm bg-templateblue" data-toggle="tooltip" data-placement="top" title="Ajouter un utilisateur" >
+                                        <a class="btn btn-sm bg-templateblue cursor-pointer" data-toggle="tooltip" data-placement="top" title="Ajouter un utilisateur" ng-click="showModalAdd('membre')" >
                                             <i class="fa fa-user-plus text-white"></i>
                                         </a>
                                     </div>
                                     <div class=" col-xs-5 col-sm-4 m-b-xs">
                                         <div class="input-group">
-                                            <input type="text" class="form-control input-sm no-borders" placeholder="Rechercher">
+                                            <input type="text" class="form-control input-sm no-borders" placeholder="Rechercher" id="searchnommembre" ng-model="searchnommembre">
                                             <span class="input-group-btn">
                                                 <button type="button" class="btn btn-sm bg-white">
                                                     <i class="fa fa-search"></i>
@@ -39,68 +39,32 @@
                             </header>
 
                             <section class="scrollable wrapper w-f">
-                                <div class="col-xs-6 col-sm-4 col-md-2 m-t-lg on animated zoomIn client">
+                                <div ng-repeat="membre in membres | filter : { nom : searchnommembre } | orderBy:'-updated_at' track by $index" class="col-xs-6 col-sm-4 col-md-2 m-t-lg on animated zoomIn client">
                                     <div class="thumbnail text-center panel ">
                                         <div class="row m-t-n-lg clientbtns " style="margin-top: -45px;">
-                                            <button  class="btn btn-sm btn-client bg-info on animated fadeIn" type="button" onclick="showModal('modal-addclient')">
-                                                <i class="fa fa-edit text-white" data-toggle="tooltip" data-placement="top" title="Editer l'utilisateur"></i>
+                                            <button  class="btn btn-sm btn-client bg-templateblue on animated fadeIn" type="button" ng-click="showModalUpdate('membre', membre)">
+                                                <i class="fa fa-edit text-white" data-toggle="tooltip" data-placement="top" title="Editer le membre"></i>
                                             </button>
                                             <button  class="btn btn-sm btn-client-middle" type="button" style="background:transparent;border-radius: 50%;">
-                                                <img src="images/marel.png" class="img-circle" style="height: 90px;width: 90px;box-shadow: inset 0 0 2px 1px rgba(255, 255, 255, 0.08), 0 18px 10px -5px rgba(0, 0, 0, 0.6)">
+                                                <img src="data:image/png;base64,{{membre.image}}" class="img-circle" style="height: 90px;width: 90px;box-shadow: inset 0 0 2px 1px rgba(255, 255, 255, 0.08), 0 18px 10px -5px rgba(0, 0, 0, 0.6)">
                                             </button>
-                                            <button  class="btn btn-sm btn-client bg-info on animated fadeIn" type="button">
-                                                <i class="fa fa-user-times text-white" data-toggle="tooltip" data-placement="top" title="Supprimer l'utilisateur"></i>
+                                            <!--
+                                            <button  class="btn btn-sm btn-client-middle img-circle" type="button" style="height: 90px;width: 90px;background:url('images/djibbril.jpg') no-repeat;background-size:cover;box-shadow: inset 0 0 2px 1px rgba(255, 255, 255, 0.08), 0 18px 10px -5px rgba(0, 0, 0, 0.6);border-radius: 50%;">
+                                            </button>
+                                            -->
+                                            <button  class="btn btn-sm btn-client bg-templateblue on animated fadeIn" type="button" ng-click="deleteElement('membre', membre)">
+                                                <i class="fa fa-user-times text-white" data-toggle="tooltip" data-placement="top" title="Supprimer le membre"></i>
                                             </button>
                                         </div>
                                         <div class="caption">
-                                            <p class="text-white text-ellipsis" data-toggle="tooltip" data-placement="top" data-title="N°: Mfndfl047110">N°: Mfndfl047110</p>
-                                            <p class="text-white text-ellipsis m-b-none text-u-c text-u-l" data-toggle="tooltip" data-placement="top" data-title="Client 1"><strong>Client 1</strong></p>
+                                            <p class="text-white text-ellipsis" data-toggle="tooltip" data-placement="top" title="N° {{membre.code}}"> <i class="fa fa-user-secret fa-lg"></i> <strong class="text-u-l">{{membre.code}}</strong></p>
+                                            <p class="text-white text-ellipsis m-b-none text-u-c" data-toggle="tooltip" data-placement="top" title="{{membre.nom}}"><i class="i i-users2 fa-lg"></i> <strong class="text-u-l">{{membre.nom}}</strong></p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-6 col-sm-4 col-md-2 m-t-lg on animated zoomIn client">
-                                    <div class="thumbnail text-center panel ">
-                                        <div class="row m-t-n-lg clientbtns " style="margin-top: -45px;">
-                                            <button  class="btn btn-sm btn-client bg-template on animated fadeIn" type="button" onclick="showModal('modal-addclient')">
-                                                <i class="fa fa-edit text-white" data-toggle="tooltip" data-placement="top" data-title="Editer l'utilisateur"></i>
-                                            </button>
-                                            <button  class="btn btn-sm btn-client-middle" type="button" style="background:transparent;border-radius: 50%;">
-                                                <img src="images/djibbril.jpg" class="img-circle" style="height: 90px;width: 90px;box-shadow: inset 0 0 2px 1px rgba(255, 255, 255, 0.08), 0 18px 10px -5px rgba(0, 0, 0, 0.6)">
-                                            </button>
-                                            <!--<button  class="btn btn-sm btn-client-middle img-circle" type="button" style="height: 90px;width: 90px;background:url('images/djibbril.jpg') no-repeat;background-size:cover;box-shadow: inset 0 0 2px 1px rgba(255, 255, 255, 0.08), 0 18px 10px -5px rgba(0, 0, 0, 0.6);border-radius: 50%;">
 
-                                            </button>-->
-                                            <button  class="btn btn-sm btn-client bg-template on animated fadeIn" type="button">
-                                                <i class="fa fa-user-times text-white" data-toggle="tooltip" data-placement="top" data-title="Supprimer l'utilisateur"></i>
-                                            </button>
-                                        </div>
-                                        <div class="caption">
-                                            <p class="text-white text-ellipsis" data-toggle="tooltip" data-placement="top" data-title="N°: Mfndfl047110">N°: Mfndfl047110</p>
-                                            <p class="text-white text-ellipsis m-b-none text-u-c text-u-l" data-toggle="tooltip" data-placement="top" data-title="Client 1"><strong>Client 1</strong></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6 col-sm-4 col-md-2 m-t-lg on animated zoomIn client">
-                                    <div class="thumbnail text-center panel ">
-                                        <div class="row m-t-n-lg clientbtns " style="margin-top: -45px;">
-                                            <button  class="btn btn-sm btn-client bg-info on animated fadeIn" type="button" onclick="showModal('modal-addclient')">
-                                                <i class="fa fa-edit text-white" data-toggle="tooltip" data-placement="top" data-title="Editer l'utilisateur"></i>
-                                            </button>
-                                            <button  class="btn btn-sm btn-client-middle" type="button" style="background:transparent;border-radius: 50%;">
-                                                    <img src="images/adorand" class="img-circle" style="height: 90px;width: 90px;box-shadow: inset 0 0 2px 1px rgba(255, 255, 255, 0.08), 0 18px 10px -5px rgba(0, 0, 0, 0.6)">
-                                            </button>
-                                            <button  class="btn btn-sm btn-client bg-info on animated fadeIn" type="button">
-                                                <i class="fa fa-user-times text-white" data-toggle="tooltip" data-placement="top" data-title="Supprimer l'utilisateur"></i>
-                                            </button>
-                                        </div>
-                                        <div class="caption">
-                                            <p class="text-white text-ellipsis" data-toggle="tooltip" data-placement="top" data-title="N°: Mfndfl047110">N°: Mfndfl047110</p>
-                                            <p class="text-white text-ellipsis m-b-none text-u-c text-u-l" data-toggle="tooltip" data-placement="top" data-title="Client 1"><strong>Client 1</strong></p>
-                                        </div>
-                                    </div>
-                                </div>
                             </section>
-                            <footer class="footer bg-template">
+                            <footer class="footer bg-templateblue">
                                 <div class="row text-center-xs">
                                     <div class="col-md-6 hidden-sm">
                                         <button class="btn btn-sm bg-white m-t-sm box-shadow">Charger plus</button>

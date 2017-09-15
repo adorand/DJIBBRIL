@@ -5,11 +5,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreatePermissionsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('permissions', function (Blueprint $table) {
@@ -17,18 +12,14 @@ class CreatePermissionsTable extends Migration
             $table->string('type');
             $table->string('action');
             $table->string('resource');
-            $table->integer('user_id')->unsigned();
+            $table->string('user_code');
             $table->timestamps();
 
-            $table->index('user_id');
+            $table->index('user_code');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::drop('permissions');

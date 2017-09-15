@@ -6,11 +6,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateProduitsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('produits', function (Blueprint $table) {
@@ -21,18 +16,14 @@ class CreateProduitsTable extends Migration
             $table->double('prix');
             $table->binary('image');
             $table->string('categorie_code');
-            $table->foreign('categorie_code')->references('code')->on('categories');
+            $table->foreign('categorie_code')->references('code')->on('categories')->onDelete('cascade');
             $table->timestamps();
 
             $table->primary('code');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::dropIfExists('produits');

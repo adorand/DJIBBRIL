@@ -1,15 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cedric
- * Date: 06/09/17
- * Time: 04:33
- */
 
 namespace App\GraphQL\Query;
-use App\Categorie;
-use App\Produit;
 use App\Surface;
+use App\Outils;
 use GraphQL;
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Query;
@@ -34,29 +27,21 @@ class SurfaceQuery extends Query
 
     public function resolve($root, $args)
     {
-        $query=Surface::with('categories');
+        $query=Surface::all();
         if (isset($args['code'])) {
-            $query = $query->where('code', $args['code']);
+            $query = Surface::where('code', $args['code'])->get();
         }
-        return $query->get()->filter(function (Surface $surface){
-            return $surface->hasRole('vendor') == true;
-        })->map(function (Surface $surface)
+
+        return $query->map(function (Surface $surface)
         {
             return [
-                'code' => $surface->code,
-                'name' => $surface->name,
-                'categories' => $surface->categories->filter(function (Categorie $categorie){
-                    return $categorie->parent == null;
-                })->map(function (Categorie $categorie){
-                    return [
-                        'code' => $categorie->code,
-                        'nom' => $categorie->nom,
-                        'produits' => $categorie->products,
-                        'souscategories' => $categorie->souscategories,
-                        'parent' => $categorie->parent
-                    ];
-                }),
-                'logo' => $surface->logo
+                'code'   => $surface->code,
+                'nom'    => $surface->nom,
+                'nom'    => $surface->nom,
+                'image'  => $surface->image,
+                'created_at'  => $surface->created_at->format(Outils::formatdate()),
+                'updated_at'  => $surface->updated_at->format(Outils::formatdate()),
+                'user'  => $surface->user
             ];
         });
     }

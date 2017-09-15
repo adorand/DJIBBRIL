@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
 class UserController extends Controller
@@ -11,6 +12,11 @@ class UserController extends Controller
     public function __construct()
     {
         //$this->middleware('guest');
+    }
+
+    public function  auth() {
+        $path='{ users(code: "'.Auth::user()->code.'") { code, username, email, image, created_at, updated_at } }';
+        return redirect('graphql?query='.urlencode($path));
     }
 
     public function  create() {

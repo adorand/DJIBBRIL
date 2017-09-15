@@ -6,11 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateCategoriesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
@@ -19,19 +15,15 @@ class CreateCategoriesTable extends Migration
             $table->text('description')->nullable();
             $table->string('code_parent')->nullable();
             $table->string('surface_code');
-            $table->foreign('surface_code')->references('code')->on('surfaces');
-            $table->foreign('code_parent')->references('code')->on('categories');
+            $table->foreign('surface_code')->references('code')->on('surfaces')->onDelete('cascade');
+            $table->foreign('code_parent')->references('code')->on('categories')->onDelete('cascade');
             $table->timestamps();
 
             $table->primary('code');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::dropIfExists('categories');

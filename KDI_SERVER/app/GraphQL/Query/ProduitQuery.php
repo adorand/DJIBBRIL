@@ -1,12 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cedric
- * Date: 06/09/17
- * Time: 00:11
- */
 
 namespace App\GraphQL\Query;
+use App\GraphQL\Serializers\ProduitSerializer;
+use App\Outils;
 use App\Produit;
 use GraphQL;
 use GraphQL\Type\Definition\Type;
@@ -32,13 +28,31 @@ class ProduitQuery extends Query
 
     public function resolve($root, $args)
     {
+        $query=Produit::all();
         if (isset($args['code']))
         {
-            return Produit::where('code' , $args['code'])->get();
+            $query = Produit::where('code' , $args['code'])->get();
         }
-        else
+
+//        return ProduitSerializer::collection($query);
+        // return PenseeSerializers::collection($query->get());
+        // Si on ajoute ça, il faut ajouter devant la fonction :collection
+
+        return $query->map(function (Produit $prod)
         {
-            return Produit::all();
-        }
+//            return ProduitSerializer::collection($prod);
+            return [
+                'code'        => $prod->code,
+                'designation' => $prod->designation,
+                'description' => $prod->description,
+                'created_at'  => $prod->created_at->format(Outils::formatdate()),
+                'updated_at'  => $prod->updated_at->format(Outils::formatdate()),
+                'quantite'    => $prod->quantite,
+                'prix'        => $prod->prix,
+                'image'       => $prod->image,
+                'souscategorie'   => $prod->categorie
+            ];
+        });
+
     }
 }

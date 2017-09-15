@@ -9,11 +9,7 @@ class Categorie extends Model
 {
 
     protected $primaryKey = 'code';
-    /**
-     * Indicates if the IDs are auto-incrementing.
-     *
-     * @var bool
-     */
+
     public $incrementing = false;
 
     public function products() {

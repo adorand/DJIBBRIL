@@ -148,7 +148,10 @@ small, .small {
     border-left-color: #222733; }
 
 .thumbnail {
-  border-color: #eaeef1; }
+  border-color: #eaeef1;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 5px; }
 
 .popover-content {
   font-size: 12px;
@@ -2297,6 +2300,14 @@ small {
 
 .color-template {
   color: rgba(132, 20, 51, 0.79); }
+
+.bg-trie {
+  background-color: #fff;
+  color: #788288; }
+  .bg-trie:hover, .bg-trie.active {
+    color: #fff;
+    background-color: #1ccacc !important;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); }
 
 .al-sidebar {
   left: 0;

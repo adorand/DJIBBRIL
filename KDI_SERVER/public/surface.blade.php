@@ -5,12 +5,12 @@
 <section class="vbox stretch on animated fadeIn" >
     <header class="bg-templateblue header panel clearfix animated fadeInDown">
         <p class="h4 font-thin pull-left m-r m-b-sm font-bold">Surfaces</p>
-        <button class="btn btn-sm bg-white btn-rounded btn-icon" ng-click="showModalAdd('Slider')" data-toggle="tooltip" data-placement="bottom" data-title="Ajouter un Slider"><i class="fa fa-plus"></i></button>
-        <button class="m-l-sm btn btn-sm bg-white btn-rounded btn-icon" ng-click="trierElement('Publicite','')" data-toggle="tooltip" data-placement="bottom" data-title="Actualiser" ><i class="fa fa-refresh"></i></button>
+        <button class="btn btn-sm bg-white btn-rounded btn-icon" data-toggle="tooltip" data-placement="bottom" title="Ajouter une surface" ng-click="showModalAdd('surface')"><i class="fa fa-plus"></i></button>
+        <button class="m-l-sm btn btn-sm bg-white btn-rounded btn-icon" data-toggle="tooltip" data-placement="bottom" data-title="Actualiser" ><i class="fa fa-refresh"></i></button>
 
         <div class="form-group m-t-sm m-b-n m-r pull-right">
             <div class="input-group">
-                <input type="text" class="form-control input-sm no-border" placeholder="Rechercher un surface...">
+                <input type="text" class="form-control input-sm no-border" placeholder="Rechercher un surface..." ng-model="searchnomsurface">
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-sm bg-white b-white btn-icon">
                         <i class="fa fa-search"></i>
@@ -22,24 +22,30 @@
     <section class="scrollable panel wrapper" style="margin-bottom: 0px !important;">
         <section class="panel-default">
             <div class="row row-sm">
-                <div class="col-xs-6 col-sm-4 col-md-2 m-t-lg on animated zoomIn">
-                    <div class="thumbnail text-center panel" style="margin-bottom: -2px;">
+
+
+                <div ng-repeat="surface in surfaces | filter: {nom :searchnomsurface} | orderBy:'-updated_at' track by $index " class="col-xs-6 col-sm-4 col-md-2 m-t-lg on animated zoomIn">
+                    <div class="thumbnail text-center panel" style="background:none;box-shadow:none;margin-bottom: -2px;">
                         <div class="multiplebtn" style="z-index: 10;position: relative;">
-                            <button  class="btn btn-sm btn-cli bg-templateblue-transparent">
+                            <button  class="btn btn-sm btn-cli bg-templateblue-transparent" ng-click="showModalUpdate('surface', surface)">
                                 <i class="fa fa-edit text-white"></i>
                             </button>
                             <button  class="btn btn-sm btn-cli-middle bg-templateblue-transparent active">
                                 <i class="fa fa-home text-white" ></i>
                                 <i class="fa fa-eye text-white"></i>
                             </button>
-                            <button  class="btn btn-sm btn-cli bg-templateblue-transparent">
+                            <button  class="btn btn-sm btn-cli bg-templateblue-transparent" ng-click="deleteElement('surface', surface)">
                                 <i class="fa fa-trash-o text-white"></i>
                             </button>
                         </div>
-                        <img src="<?='images/p9.jpg'?>" style="width:100%;height: 150px;margin-top: -40px;z-index:100;" class="img-responsive" alt="">
+                        <img src="data:image/png;base64,{{surface.image}}" style="box-shadow:rgba(0,0,0,0.5) 0 15px 15px -6px;border-radius:5px;box-sizing: border-box;width:100%;height: 150px;margin-top: -40px;z-index:100;" class="img-responsive" alt="">
+                        <p class="m-t-sm m-b-sm text-ellipsis"  data-toggle="tooltip" data-placement="bottom" title="{{surface.nom}}">
+                            <strong class="text-u-c">{{surface.nom}}</strong>
+                        </p>
                     </div>
-                    <div class="tp-bannershadow tp-shadow1" style="width: 95%; margin: 0 auto;"></div>
+                    <div class="tp-bannershadow tp-shadow1" style="width: 100%; margin: 0 auto;"></div>
                 </div>
+
 
             </div>
         </section>

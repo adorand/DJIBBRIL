@@ -2,25 +2,46 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use App\Liste;
-use App\Commande;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Model
+class User extends Authenticatable
 {
 
+    use Notifiable;
+
     protected $primaryKey = 'code';
-    /**
-     * Indicates if the IDs are auto-incrementing.
-     *
-     * @var bool
-     */
+
     public $incrementing = false;
 
-    public function commandes() {
-        return $this->hasMany(Commande::class, 'client_code', 'code');
+    protected $fillable = [
+        'code','username', 'email', 'password', 'image',
+    ];
+
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+    public function roles()
+    {
+        return $this->belongsToMany(Authority\Role::class)->withTimestamps();
     }
-    public function listes() {
-        return $this->hasMany(Liste::class, 'client_code', 'code');
+
+    public function permissions()
+    {
+        return $this->hasMany(Authority\Permission::class);
+    }
+
+    public function hasRole($key)
+    {
+        $hasRole = false;
+        foreach ($this->roles as $role)
+        {
+            if ($role->name === $key) {
+                $hasRole = true;
+                break;
+            }
+        }
+        return $hasRole;
     }
 }

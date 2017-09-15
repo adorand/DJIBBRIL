@@ -87,9 +87,9 @@
                         </section>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <a class="cursor-pointer dropdown-toggle" data-toggle="dropdown">
                             <span class="thumb-sm avatar pull-left">
-                                <img src="images/login-w-icon.png" alt="...">
+                                <img src="data:image/png;base64,{{Auth::user()->image}}" alt="...">
                             </span>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight">
@@ -107,12 +107,14 @@
                                     Notifications
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <span class="badge bg-danger pull-right">3</span>
-                                    Utilisateurs
-                                </a>
-                            </li>
+                            @if(Auth::user()->hasrole('admin')==1)
+                                <li >
+                                    <a href="#">
+                                        <span class="badge bg-danger pull-right">3</span>
+                                        Utilisateurs
+                                    </a>
+                                </li>
+                            @endif
                             <li>
                                 <a href="#">Aide</a>
                             </li>
@@ -136,17 +138,24 @@
                                 <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
                                     <div class="clearfix wrapper dk nav-user hidden-xs">
                                         <div class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <a class="cursor-pointerdropdown-toggle" data-toggle="dropdown">
                                                 <span class="thumb avatar pull-left m-r">
-                                                    <img src="images/login-w-icon.png" class="dker" alt="...">
-                                                    <i class="on md b-black"></i>
+                                                    <img src="data:image/png;base64,{{Auth::user()->image}}" class="dker" alt="...">
                                                 </span>
                                                 <span class="hidden-nav-xs clear">
                                                     <span class="block m-t-xs">
-                                                        <strong class="font-bold text-lt text-white">{{ Auth::user()->name }}</strong>
+                                                        <strong class="font-bold text-lt text-white">{{ Auth::user()->username }}</strong>
                                                         <b class="caret text-white"></b>
                                                     </span>
-                                                    <span class="text-muted text-xs block">Administrateur</span>
+                                                    <strong class="text-muted text-xs block m-t-sm">
+                                                        @if(Auth::user()->hasrole('admin'))
+                                                            ADMINISTRATEUR
+                                                            <input type="hidden" id="surface_code" ng-model="surface_code" value="">
+                                                        @elseif(!Auth::user()->hasrole('admin'))
+                                                            SURFACE
+                                                            <input type="hidden" id="surface_code" ng-model="surface_code" value="{{Auth::user()->code}}">
+                                                        @endif
+                                                    </strong>
                                                 </span>
                                             </a>
                                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
@@ -160,13 +169,14 @@
                                                         Notifications
                                                     </a>
                                                 </li>
+                                                @if(Auth::user()->hasrole('admin')==1)
                                                 <li>
                                                     <a href="#">
                                                         <span class="badge bg-danger pull-right">5</span>
                                                         Utilisateurs
                                                     </a>
-
                                                 </li>
+                                                @endif
                                                 <li>
                                                     <a href="#">Aide</a>
                                                 </li>
@@ -199,6 +209,7 @@
                                                     <span class="font-bold">Produit</span>
                                                 </a>
                                             </li>
+                                            @if(Auth::user()->hasrole('admin')==1)
                                             <li>
                                                 <a href="#!/surface">
                                                     <span class="pull-right text-muted">
@@ -208,6 +219,7 @@
                                                     <span class="font-bold">Surface</span>
                                                 </a>
                                             </li>
+                                            @endif
                                             <li>
                                                 <a href="#!/membre">
                                                     <span class="pull-right text-muted">
@@ -217,6 +229,7 @@
                                                     <span class="font-bold">Membres</span>
                                                 </a>
                                             </li>
+                                            @if(Auth::user()->hasrole('admin')==1)
                                             <li>
                                                 <a href="#!/utilisateur">
                                                     <span class="pull-right text-muted">
@@ -226,6 +239,7 @@
                                                     <span class="font-bold">Utilisateurs</span>
                                                 </a>
                                             </li>
+                                            @endif
                                         </ul>
                                         <div class="line dk hidden-nav-xs"></div>
                                     </nav>
@@ -242,14 +256,15 @@
                     <!-- /Aside -->
 
                     <!-- Contenu -->
-                    <section id="content" class="menupage" ng-view>
 
+                    <section id="content" class="menupage" ng-view>
                         <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
                     </section>
                     <!-- /Contenu -->
                 </section>
             </section>
         </section>
+
 
 
         <!--MODAL CATEGORIE-->
@@ -266,16 +281,14 @@
                                     </div>
                                 </div>
                                 <div class="row ">
-                                    <form id="form_addcategorie" role="form" enctype="multipart/form-data" accept-charset="UTF-8" ng-submit="addElement($event,'categorie')">
-
-                                        <input type="hidden" id="code_categorie" name="code" value="">
+                                    <form id="form_addcategorie" role="form" accept-charset="UTF-8" ng-submit="addElement($event,'categorie')">
                                         {{ csrf_field() }}
+                                        <input type="hidden" id="codecategorie" name="code" value="">
                                         <div class="col-sm-12 m-b">
                                             <input type="text" id="nomcategorie" name="nom" class="form-control input-sm no-borders" placeholder="Nom de la catégorie" required>
                                         </div>
                                         <div class="col-sm-12 text-right m-b">
                                             <button type="submit" class="b-2x b-white btn btn-sm typecmd_ann btn-icon"><i class="fa fa-check text-white"></i></button>
-
                                         </div>
                                     </form>
                                 </div>
@@ -303,16 +316,15 @@
                                 <div class="row ">
                                     <form id="form_addsouscategorie" method="POST" role="form" accept-charset="UTF-8" ng-submit="addElement($event,'souscategorie')">
                                         {{ csrf_field() }}
-                                        <input type="hidden" id="code_souscategorie" name="code" value="">
+                                        <input type="hidden" id="codesouscategorie" name="code" value="">
+                                        <input type="hidden" id="codecategoriesouscategorie" name="codecategorie" value="">
                                         <div class="col-sm-12 m-b">
                                             <input type="text" id="nomsouscategorie" name="nom" class="form-control input-sm no-borders" placeholder="Nom de la sous-catégorie" required>
                                         </div>
                                         <div class="col-sm-12 m-b">
-                                            <select class="chosen-select" >
-                                                <option disabled selected>Catégorie</option>
-                                                <option value="DU">supprimer un utilisateur</option>
-                                                <option value="MT">monitorer les tablettes</option>
-                                                <option value="AU">Ajouter un utilisateur</option>
+                                            <select class="form-control input-sm no-borders" id="code_parentsouscategorie" name="code_parent" required>
+                                                <option disabled selected value="">Catégorie</option>
+                                                <option ng-repeat="categorie in categories" ng-value="categorie.code">@{{categorie.nom}}</option>
                                             </select>
                                         </div>
                                         <div class="col-sm-12 text-right m-b">
@@ -343,20 +355,24 @@
                                     </div>
                                 </div>
                                 <div class="row ">
-                                    <form id="form_addproduit" method="POST" role="form" enctype="multipart/form-data" accept-charset="UTF-8" ng-submit="addElement($event,'produit')">
+                                    <form id="form_addproduit" role="form" enctype="multipart/form-data" accept-charset="UTF-8" method="POST" ng-submit="addElement($event,'produit')">
                                         {{ csrf_field() }}
-                                        <input type="hidden" id="code_produit" name="code_produit" value="">
+                                        <input type="hidden" id="codeproduit" name="code">
+                                        <input type="hidden" id="codesouscategorieproduit" name="codesouscategorie" value="">
+
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <input type="text" id="designationproduit" name="designation" class="form-control input-sm no-borders" placeholder="Désignation" required>
                                             </div>
                                             <div class="form-group">
-                                                <select class="chosen-select" id="souscategorieproduit" name="souscategorie">
-                                                    <option disabled selected>Sous-catégorie</option>
-                                                    <option value="DU">supprimer un utilisateur</option>
-                                                    <option value="MT">monitorer les tablettes</option>
-                                                    <option value="AU">Ajouter un utilisateur</option>
-                                                </select>
+                                                <ng-bind>
+                                                    <select  class="form-control input-sm no-borders" id="souscategorieproduit" name="souscategorie" required>
+                                                        <option disabled selected value="">Sous-catégorie</option>
+                                                        <optgroup ng-repeat="categorie in categories" ng-if="categorie.souscategories.length!=0" label="@{{  categorie.nom | uppercase }}">
+                                                            <option ng-repeat="souscategorie in categorie.souscategories" ng-value="souscategorie.code">@{{souscategorie.nom}}</option>
+                                                        </optgroup>
+                                                    </select>
+                                                </ng-bind>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
@@ -372,7 +388,7 @@
                                         </div>
 
                                         <div class="col-sm-6">
-                                            <div id="afffichiergalerie" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);">
+                                            <div id="afffichierproduit" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);">
                                                 <img alt="" class="thumbnail" style="width: 100%;height: 135px;margin-bottom: 10px;" id="affimgproduit" >
                                             </div>
                                             <div class="text-right m-b">
@@ -390,6 +406,129 @@
 
 
 
+        <!--MODAL SURFACE-->
+        <div class="modal fade" id="modal_addsurface">
+            <div class="modal-dialog modal-compose">
+                <div class="modal-content bg-empty">
+                    <div class="modal-body ">
+                        <div class="row" >
+                            <div class="col-sm-12 bg-templateblue m-t-n m-b-n">
+                                <div class="row " style="padding-bottom: 15px; ">
+                                    <div class="m-t" >
+                                        <h3 class="m-t-xs m-l m-b pull-left text-white text-u-c"><strong>surface</strong></h3>
+                                        <button data-dismiss="modal" class="b-2x b-white btn btn-sm bg-white active btn-rounded btn-icon pull-right m-r">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <form id="form_addsurface" role="form" enctype="multipart/form-data" accept-charset="UTF-8" ng-submit="addElement($event,'surface')">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" id="codesurface" name="code">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <input type="text" id="nomsurface" name="nom" class="form-control input-sm no-borders" placeholder="Nom" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="email" id="emailsurface" name="email" class="form-control input-sm no-borders" placeholder="Adresse email" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input type="password" id="passwordsurface" name="password" class="form-control input-sm no-borders" placeholder="Mot de passe" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" id="confirmpasswordsurface" name="confirmpassword" class="form-control input-sm no-borders" placeholder="Confirmation mot de passe" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="file" accept='image/*' id="imgsurface" name="image" class="filestyle" data-icon="true" data-classButton="btn bg-white" data-classInput="form-control inline v-middle input-modal" onchange='Chargerphoto("surface")' required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div id="afffichiersurface" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);">
+                                                <img alt="" class="thumbnail" style="width: 100%;height: 135px;margin-bottom: 10px;" id="affimgsurface" >
+                                            </div>
+                                            <div class="text-right m-b">
+                                                <button type="submit" class="b-2x b-white btn btn-sm bg-templateblue btn-icon">
+                                                    <i class="fa fa-check text-white"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--MODAL MEMBRE-->
+        <div class="modal fade" id="modal_addmembre">
+            <div class="modal-dialog modal-compose">
+                <div class="modal-content bg-empty">
+                    <div class="modal-body ">
+                        <div class="row" >
+                            <div class="col-sm-12 bg-templateblue m-t-n m-b-n">
+                                <div class="row " style="padding-bottom: 15px; ">
+                                    <div class="m-t" >
+                                        <h3 class="m-t-xs m-l m-b pull-left text-white text-u-c"><strong>membre</strong></h3>
+                                        <button data-dismiss="modal" class="b-2x b-white btn btn-sm bg-white active btn-rounded btn-icon pull-right m-r">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <form id="form_addmembre" role="form" enctype="multipart/form-data" accept-charset="UTF-8" ng-submit="addElement($event,'membre')">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" id="codemembre" name="code">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <input type="text" id="nommembre" name="nom" class="form-control input-sm no-borders" placeholder="Nom" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="email" id="emailmembre" name="email" class="form-control input-sm no-borders" placeholder="Email" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input type="number" id="telephonemembre" name="telephone" class="form-control input-sm no-borders" placeholder="Telephone" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" id="passwordmembre" name="password" class="form-control input-sm no-borders" placeholder="Mot de passe" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="file" accept='image/*' id="imgmembre" name="image" class="filestyle" data-icon="true" data-classButton="btn bg-white" data-classInput="form-control inline v-middle input-modal" onchange='Chargerphoto("membre")' required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div id="afffichiermembre" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);">
+                                                <img alt="" class="thumbnail" style="width: 100%;height: 135px;margin-bottom: 10px;" id="affimgmembre" >
+                                            </div>
+                                            <div class="text-right m-b">
+                                                <button type="submit" class="b-2x b-white btn btn-sm bg-templateblue btn-icon">
+                                                    <i class="fa fa-check text-white"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <script src="js/angular/angular.min.js"></script>
+        <script src="js/angular/angular-route.min.js"></script>
+        <script src="js/angular/angular-sanitize.min.js"></script>
+        <script src="js/angular/angular-loadscript.js"></script>
+        <script src="js/angular/BACKOFFICE.js"></script>
 
         <script src="js/jquery.min.js"></script>
         <!-- Bootstrap -->
@@ -412,11 +551,6 @@
         <script src="js/app.plugin.js"></script>
 
 
-        <script src="js/angular/angular.min.js"></script>
-        <script src="js/angular/angular-route.min.js"></script>
-        <script src="js/angular/angular-sanitize.min.js"></script>
-        <script src="js/angular/angular-loadscript.js"></script>
-        <script src="js/angular/BACKOFFICE.js"></script>
 
 
     </body>

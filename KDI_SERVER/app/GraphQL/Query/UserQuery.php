@@ -1,14 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cedric
- * Date: 06/09/17
- * Time: 05:47
- */
 
 namespace App\GraphQL\Query;
 
+
+use App\Outils;
 use App\User;
+use App\Authority\Role;
 use GraphQL;
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Query;
@@ -27,24 +24,34 @@ class UserQuery extends Query
     public function args()
     {
         return [
-            'code' => ['name' => 'code', 'type' => Type::string()],
+            'id' => ['name' => 'id', 'type' => Type::id()],
         ];
     }
 
     public function resolve($root, $args)
     {
-        $query=User::with('commandes')->with('listes');
+
+        $query=User::all();
         if (isset($args['code'])) {
-            $query = $query->where('code', $args['code']);
+            $query = User::where('code', $args['code'])->get();
         }
-        return $query->get()->map(function (User $user){
+        return $query->map(function (User $user){
             return [
-                'code' => $user->code,
-                'username' => $user->username,
-                'telephone' => $user->telephone,
-                'email' => $user->email,
-                'commandes' => $user->commandes,
-                'listes' => $user->listes,
+                'code'        => $user->code,
+                'username'    => $user->username,
+                'email'       => $user->email,
+                'password'    => $user->password,
+                'image'       => $user->image,
+                'created_at'  => $user->created_at->format(Outils::formatdate()),
+                'updated_at'  => $user->updated_at->format(Outils::formatdate()),
+                'roles'  => $user->roles->map(function (Role $role){
+                    return [
+                        'id'          => $role->id,
+                        'name'        => $role->name,
+                        'created_at'  => $role->created_at->format(Outils::formatdate()),
+                        'updated_at'  => $role->updated_at->format(Outils::formatdate())
+                    ];
+                }),
             ];
         });
     }

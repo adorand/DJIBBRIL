@@ -1,19 +1,25 @@
 <?php
 use \App\GraphQL\Type\CategorieType;
+use \App\GraphQL\Type\SouscategorieType;
 use \App\GraphQL\Type\CommandeType;
 use \App\GraphQL\Type\DetailsCommandeType;
 use \App\GraphQL\Type\DetailsListeType;
 use \App\GraphQL\Type\SurfaceType;
 use \App\GraphQL\Type\ProduitType;
-use \App\GraphQL\Type\UserType;
 use \App\GraphQL\Type\ListeType;
+use \App\GraphQL\Type\UserType;
+use \App\GraphQL\Type\RoleType;
+use \App\GraphQL\Type\MembreType;
 
 use App\GraphQL\Query\ProduitQuery;
 use App\GraphQL\Query\CategorieQuery;
+use App\GraphQL\Query\SouscategorieQuery;
 use App\GraphQL\Query\SurfaceQuery;
 use App\GraphQL\Query\CommandeQuery;
 use App\GraphQL\Query\ListeQuery;
 use App\GraphQL\Query\UserQuery;
+use App\GraphQL\Query\RoleQuery;
+use App\GraphQL\Query\MembreQuery;
 
 
 return [
@@ -35,7 +41,7 @@ return [
     'graphiql' => [
         'routes' => '/graphiql/{graphql_schema?}',
         'controller' => \Folklore\GraphQL\GraphQLController::class.'@graphiql',
-        'middleware' => [],
+        'middleware' => [ ],
         'view' => 'graphql::graphiql'
     ],
 
@@ -44,12 +50,15 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-                'produits' => ProduitQuery::class,
                 'categories' => CategorieQuery::class,
-                'surfaces' => SurfaceQuery::class,
-                'listes' => ListeQuery::class,
+                'souscategories' => SouscategorieQuery::class,
+                'produits' => ProduitQuery::class,
+                'membres' => MembreQuery::class,
                 'commandes' => CommandeQuery::class,
+                'listes' => ListeQuery::class,
+                'surfaces' => SurfaceQuery::class,
                 'users' => UserQuery::class,
+                'roles' => RoleQuery::class,
             ],
             'mutation' => [
 
@@ -59,13 +68,16 @@ return [
 
     'types' => [
         'categories' => CategorieType::class,
-        'commandes' => CommandeType::class,
-        'detailscommandes' => DetailsCommandeType::class,
-        'detailslistes' => DetailsListeType::class,
+        'souscategories' => SouscategorieType::class,
         'produits' => ProduitType::class,
+        'membres' => MembreType::class,
+        'detailscommandes' => DetailsCommandeType::class,
+        'commandes' => CommandeType::class,
+        'detailslistes' => DetailsListeType::class,
         'listes' => ListeType::class,
         'surfaces' => SurfaceType::class,
         'users' => UserType::class,
+        'roles' => RoleType::class,
     ],
 
     'error_formatter' => [\Folklore\GraphQL\GraphQL::class, 'formatError'],

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cedric
- * Date: 02/09/17
- * Time: 06:03
- */
 
 namespace App;
 
@@ -22,4 +16,15 @@ class Outils
 
         return $data;
     }
+
+    public static function generatecode()
+    {
+        return substr(str_shuffle(env('CODE_POOL')), 0, env('CODE_LENGTH'));
+    }
+
+    public static function formatdate()
+    {
+        return "Y-m-d H:i:s";
+    }
+
 }

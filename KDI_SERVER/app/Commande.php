@@ -22,7 +22,7 @@ class Commande extends Model
     }
 
     public function user() {
-        return $this->hasOne(User::class, 'code', 'client_code');
+        return $this->hasOne(User::class, 'code', 'membre_code');
     }
 
 }

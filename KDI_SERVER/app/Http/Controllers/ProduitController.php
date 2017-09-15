@@ -29,24 +29,31 @@ class ProduitController extends Controller
 
     public function create()
     {
-        $code = '';
-        do
-        {
-            $code = \App\Utilities::generatecode();
-            $produit = Produit::where('code', $code)->first();
-        }
-        while($produit != null);
 
-        $produit = new Produit();
-        $produit->code = $code;
+        $code = Input::get('code');
+        if(!empty($code))
+            $produit = Produit::where('code', $code)->first();
+        else
+        {
+            do
+            {
+                $code = Outils::generatecode();
+                $produit = Produit::where('code', $code)->first();
+            }
+            while($produit != null);
+            $produit = new Produit();
+            $produit->code = $code;
+        }
+
         $produit->designation = Input::get('designation');
-        $produit->description = Input::get('description');
+        $produit->description = !empty(Input::get('description')) ? Input::get('description') : '';
         $produit->quantite = Input::get('quantite');
         $produit->prix = Input::get('prix');
-        $produit->categorie_code = Input::get('categorie');
-        $produit->image = Outils::image(Input::file('image'));
+        $produit->categorie_code = Input::get('souscategorie');
+        !empty(Input::file('image')) ? $produit->image = Outils::image(Input::file('image')) : '';
         $produit->save();
-        return json_encode($produit);
+        $path='{ produits(code : "'.$produit->code.'") { code, designation, description, quantite, prix image, created_at, updated_at, souscategorie { code,nom } } }';
+        return redirect('graphql?query='.urlencode($path));
     }
 
     public function fetch()
@@ -59,24 +66,9 @@ class ProduitController extends Controller
         return null;
     }
 
-    public function update($code) {
+    public function delete($code)
+    {
         $produit = Produit::where('code', $code)->first();
-
-        if (Input::get('designation')) $produit->designation = Input::get('designation');
-        if (Input::get('description')) $produit->description = Input::get('description');
-        if (Input::get('quantite')) $produit->quantite = Input::get('quantite');
-        if (Input::get('prix')) $produit->prix = Input::get('prix');
-        if (Input::get('categorie')) $produit->categorie_code = Input::get('categorie');
-        if (Input::get('image')) $produit->image = Outils::image(Input::file('image'));
-        $produit->save();
-
-        return 'Le produit a  bien été mise a jour';
-    }
-
-    public function delete($code) {
-        $produit = Produit::where('code', $code)->first();
-        $produit->delete();
-
-        return 'Le produit a  bien été supprimé';
+        return json_encode($produit->delete());
     }
 }

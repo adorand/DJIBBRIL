@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cedric
- * Date: 06/09/17
- * Time: 01:08
- */
-
 namespace App\GraphQL\Type;
 
 use App\Commande;
@@ -22,10 +15,10 @@ class CommandeType extends GraphQLType
 
     public function fields() {
         return [
-            'code' => [ 'type' => Type::nonNull(Type::string()), 'description' => ''],
-            'etat' => [ 'type' => Type::int(), 'description' => ''],
-            'client' => [ 'type' => GraphQL::type('users'), 'description', ''],
-            'details' => [ 'type' => Type::listOf(GraphQL::type('detailscommandes')), 'description', '']
+            'code'     => [ 'type' => Type::nonNull(Type::string()), 'description' => ''],
+            'etat'     => [ 'type' => Type::int(), 'description' => ''],
+            'membre'   => [ 'type' => GraphQL::type('membres'), 'description', ''],
+            'details'  => [ 'type' => Type::listOf(GraphQL::type('detailscommandes')), 'description', '']
         ];
     }
 }

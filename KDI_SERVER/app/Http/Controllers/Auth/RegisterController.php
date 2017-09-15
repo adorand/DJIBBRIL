@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Outils;
 use App\Authority\Role;
-use App\Surface;
+use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -49,9 +50,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'username' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'image' => 'required',
         ]);
     }
 
@@ -64,22 +66,24 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $code = '';
-        do {
-            $code = substr(str_shuffle(env('CODE_POOL')), 0, env('CODE_LENGTH'));
-            $surface = Surface::where('code', $code)->first();
-        } while($surface != null);
+        do
+        {
+            $code = Outils::generatecode();
+            $user = User::where('code', $code)->first();
+        } while($user != null);
 
-        $surface=new Surface();
-        $surface->code=$code;
-        $surface->name=$data['name'];
-        $surface->email=$data['email'];
-        $surface->password = bcrypt($data['password']);
+        $user=new User();
+        $user->code=$code;
+        $user->username=$data['username'];
+        $user->email=$data['email'];
+        $user->password = bcrypt($data['password']);
+        !empty($data['image']) ? $user->image = Outils::image($data['image']) : '';
 
-        $surface->save();
+        $user->save();
 
-        $role = Role::where('name', 'vendor')->first();
+        $role = Role::where('name', 'admin')->first();
 
-        $surface->roles()->attach($role);
-        return $surface;
+        $user->roles()->attach($role);
+        return $user;
     }
 }

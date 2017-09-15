@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cedric
- * Date: 06/09/17
- * Time: 05:19
- */
-
 namespace App\GraphQL\Query;
 
 use App\DetailsListe;
@@ -41,11 +34,11 @@ class ListeQuery extends Query
         return $query->get()->map(function (Liste $liste)
         {
             return [
-                'code' => $liste->code,
-                'libelle' => $liste->libelle,
-                'etat' => $liste->etat,
-                'client' => $liste->user,
-                'details' => $liste->produits
+                'code'     => $liste->code,
+                'libelle'  => $liste->libelle,
+                'etat'     => $liste->etat,
+                'membre'   => $liste->membre,
+                'details'  => $liste->produits
             ];
         });
     }

@@ -124,6 +124,10 @@ small, .small
 .thumbnail
 {
     border-color: $border-color;
+    //padding: 0px !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 5px;
 }
 
 .popover-content
