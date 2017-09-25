@@ -19,7 +19,11 @@
                             </button>
                         </div>
                         <ul class="nav scrollable animated zoomIn" style="max-height: 400px;">
-                            <li class="" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12);box-shadow: 2px 0px 3px rgba(0, 0, 0, 0.5);"><a href="#" class="text-ellipsis"><i class="fa fa-chevron-right pull-right m-t-xs text-xs icon-muted"></i>Admin</a></li>
+                            <li class="" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12);box-shadow: 2px 0px 3px rgba(0, 0, 0, 0.5);" ng-repeat="role in roles | orderBy:'-updated_at' track by $index">
+                                <a href="#" class="text-ellipsis">
+                                    <i class="fa fa-chevron-right pull-right m-t-xs text-xs icon-muted"></i>{{role.name}}
+                                </a>
+                            </li>
                         </ul>
                     </aside>
                     <aside>
@@ -33,16 +37,16 @@
                                         </a>
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-sm bg-templateblue" data-toggle="tooltip" data-placement="top" data-title="Rafraichir la liste des utilisateurs">
-                                                <i class="fa fa-refresh"></i>
+                                                <i class="fa fa-refresh text-white"></i>
                                             </button>
                                         </div>
-                                        <a href="#" class="btn btn-sm bg-templateblue" data-toggle="tooltip" data-placement="top" data-title="Ajouter un utilisateur" onclick="showModal('modal-addUser')">
+                                        <a class="btn btn-sm bg-templateblue cursor-pointer" data-toggle="tooltip" data-placement="top" data-title="Ajouter un utilisateur"  ng-click="showModalAdd('user')">
                                             <i class="fa fa-user-plus text-white"></i>
                                         </a>
                                     </div>
                                     <div class="col-xs-5 col-sm-4 m-b-xs">
                                         <div class="input-group">
-                                            <input type="text" class="form-control input-sm no-borders" placeholder="Recherher">
+                                            <input type="text" class="form-control input-sm no-borders" placeholder="Recherher" ng-model="searchusernameuser">
                                             <span class="input-group-btn border-radius">
                                                 <button style="" type="button" class="btn btn-sm bg-white b-white btn-icon">
                                                     <i class="fa fa-search"></i>
@@ -62,35 +66,31 @@
                                                     <tr class="panel">
                                                         <th class="browser-icons"></th>
                                                         <th>Nom</th>
-                                                        <th>Prénoms</th>
                                                         <th>Email</th>
                                                         <th>Rôle(s)</th>
                                                         <th class="text-right">actions</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr>
-                                                        <td><img width="50" height="50" src="images/login-w-icon.png" class="img-circle b-a b-light b-3x" style="border-radius: 25px;"></td>
+                                                    <tr ng-repeat="user in users | filter: {username :searchusernameuser } | orderBy:'-updated_at' track by $index ">
+                                                        <td><img width="50" height="50" src="data:image/png;base64,{{user.image}}" class="img-circle b-a b-light b-3x" style="border-radius: 25px;"></td>
                                                         <td>
-                                                            <strong>DEMBI</strong>
+                                                            <strong class="text-u-c text-white">{{user.username}}</strong>
                                                         </td>
                                                         <td>
-                                                            <strong>Adorand</strong>
+                                                            <strong>{{user.email}}</strong>
                                                         </td>
-                                                        <td>
-                                                            <strong>merveilledembi@yahoo.fr</strong>
-                                                        </td>
-                                                        <td>
-                                                            <strong>admin, caissier</strong>
+                                                        <td class="text-u-c">
+                                                            <strong ng-repeat="role in user.roles"> {{role.name}}</strong>,
                                                         </td>
                                                         <td class="text-right">
-                                                            <button href="#" class=" b-2x btn btn-sm btn-default btn-rounded btn-icon active" data-toggle="tooltip" data-placement="left" data-title="Editer">
+                                                            <button href="#" class=" b-2x btn btn-sm btn-default btn-rounded btn-icon active" data-toggle="tooltip" data-placement="left" data-title="Editer" ng-click="showModalUpdate('user', user)">
                                                                 <i class="fa fa-edit text-white box-shadow"></i>
                                                             </button>
                                                             <button href="#" class="b-2x btn btn-sm bg-warning btn-rounded btn-icon active" data-toggle="tooltip" data-placement="top" data-title="Désactiver">
                                                                 <i class="fa fa-user-secret text-white box-shadow"></i>
                                                             </button>
-                                                            <button href="#" class="b-2x btn btn-sm bg-danger btn-rounded btn-icon active" data-toggle="tooltip" data-placement="bottom" data-title="Supprimer">
+                                                            <button href="#" class="b-2x btn btn-sm bg-danger btn-rounded btn-icon active" data-toggle="tooltip" data-placement="bottom" data-title="Supprimer"  ng-click="deleteElement('user', user)">
                                                                 <i class="fa fa-user-times text-white box-shadow"></i>
                                                             </button>
                                                         </td>

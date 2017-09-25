@@ -2,12 +2,13 @@
 
 namespace App\GraphQL\Serializers;
 use App\Outils;
+use App\Produit;
 
 
 class ProduitSerializer extends AbstractSerializer
 {
 
-    public function toArray($prod): array
+    public static function to($prod)
     {
         return [
             'code'        => $prod->code,
@@ -17,8 +18,7 @@ class ProduitSerializer extends AbstractSerializer
             'updated_at'  => $prod->updated_at->format(Outils::formatdate()),
             'quantite'    => $prod->quantite,
             'prix'        => $prod->prix,
-            'image'       => $prod->image,
-            'souscategorie'   => $prod->categorie
+            'image'       => $prod->image
         ];
     }
 

@@ -69,7 +69,7 @@ class CategorieQuery extends Query
                         'created_at'   => $ssctg->created_at->format(Outils::formatdate()),
                         'updated_at'   => $ssctg->updated_at->format(Outils::formatdate()),
                         'parent'       => $ssctg->parent,
-                        'produits'     => $ssctg->products->map(function (Produit $prod){
+                        'produits'     => $ssctg->produits->map(function (Produit $prod){
                             return [
                                 'code'         => $prod->code,
                                 'designation'  => $prod->designation,

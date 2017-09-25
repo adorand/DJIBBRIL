@@ -35,13 +35,13 @@ class SurfaceQuery extends Query
         return $query->map(function (Surface $surface)
         {
             return [
-                'code'   => $surface->code,
-                'nom'    => $surface->nom,
-                'nom'    => $surface->nom,
-                'image'  => $surface->image,
+                'code'        => $surface->code,
+                'nom'         => $surface->nom,
+                'nom'         => $surface->nom,
+                'image'       => $surface->image,
                 'created_at'  => $surface->created_at->format(Outils::formatdate()),
                 'updated_at'  => $surface->updated_at->format(Outils::formatdate()),
-                'user'  => $surface->user
+                'user'        => $surface->user,
             ];
         });
     }

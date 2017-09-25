@@ -12,7 +12,7 @@ class Categorie extends Model
 
     public $incrementing = false;
 
-    public function products() {
+    public function produits() {
         return $this->hasMany(Produit::class, 'categorie_code','code');
     }
 

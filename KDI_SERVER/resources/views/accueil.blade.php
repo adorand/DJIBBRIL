@@ -231,7 +231,7 @@
                                             </li>
                                             @if(Auth::user()->hasrole('admin')==1)
                                             <li>
-                                                <a href="#!/utilisateur">
+                                                <a href="#!/user">
                                                     <span class="pull-right text-muted">
                                                         <i class="i i-circle-sm-o text"></i>
                                                     </span>
@@ -522,6 +522,64 @@
             </div>
         </div>
 
+
+        <!-- MODAL USER -->
+        <div class="modal fade" id="modal_adduser">
+            <div class="modal-dialog modal-compose scrollable">
+                <div class="modal-content bg-empty">
+                    <div class="modal-body ">
+                        <div class="row color-template">
+                            <div class="col-sm-12 bg-templateblue" style="margin: -15px 0px -15px 0px;">
+                                <div class="row m-b" style="padding-bottom: 15px; ">
+                                    <div class="m-t m-l m-r" >
+                                        <h3 class="m-t-none m-l m-b pull-left text-u-c text-white">utilisateur</h3>
+                                        <button data-dismiss="modal" class="btn btn-sm bg-white btn-rounded btn-icon pull-right m-r"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <form id="form_adduser" role="form" enctype="multipart/form-data" accept-charset="UTF-8" ng-submit="addElement($event,'membre')" class="m-l m-r text-center">
+                                    <div class="inline m-b m-t-n-md">
+                                        <div class="easypiechart" data-percent="100" data-line-width="7" data-bar-color="#fff" data-track-Color="#2796de" data-scale-Color="false" data-size="140" data-line-cap='butt' data-animate="1000">
+                                            <div class="thumb-lg avatar text-center" id="afffichieruser" >
+                                                <img alt="" class="thumbnail" style="width: 100%;height: 135px;margin-bottom: 10px;" id="affimguser" src="images/login-w-icon.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-t-n-md" >
+                                        <input type="file" accept='image/*' id="imguser" name="image" class="filestyle" data-icon="true" data-classButton="btn bg-white" data-classInput="form-control inline v-middle input-modal" onchange='Chargerphoto("user")' required>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group" style="border: 1px solid #cbd5dd;">
+                                                <span class="input-group-btn" >
+                                                    <button class="btn btn-sm bg-white b-white btn-icon"><i class="fa fa-user"></i></button>
+                                                </span>
+                                            <input type="text" id="usernameuser" name="username" class="form-control input-sm" style="border: 1px solid transparent;" placeholder="Nom">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group" style="border: 1px solid #cbd5dd;">
+                                            <span class="input-group-btn" >
+                                                <button class="btn btn-sm bg-white b-white btn-icon"><i class="fa fa-envelope"></i></button>
+                                            </span>
+                                            <input type="email" id="emailuser" name="email" class="form-control input-sm" style="border: 1px solid transparent;" placeholder="Adresse Mail">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group" style="border: 1px solid #cbd5dd;">
+                                            <span class="input-group-btn" >
+                                                <button class="btn btn-sm bg-white b-white btn-icon"><i class="fa fa-lock"></i></button>
+                                            </span>
+                                            <input type="password" id="passworduser" name="password" class="form-control input-sm" style="border: 1px solid transparent;" placeholder="Mot de passe">
+                                        </div>
+                                    </div>
+                                    <a href="#" class=" btn bg-white m-b-md">S'inscrire</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
 
         <script src="js/angular/angular.min.js"></script>

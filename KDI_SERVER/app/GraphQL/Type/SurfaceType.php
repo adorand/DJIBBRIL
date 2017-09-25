@@ -20,7 +20,9 @@ class SurfaceType extends GraphQLType
             'image'       => [ 'type' => Type::string(), 'description', ''],
             'created_at'  => [ 'type' => Type::string(), 'description' => ''],
             'updated_at'  => [ 'type' => Type::string(), 'description' => ''],
-            'user'        => [ 'type' => GraphQL::type('users'), 'description' => '']
+            'user'        => [ 'type' => GraphQL::type('users'), 'description' => ''],
+            'categories'  => [ 'type' => Type::listOf(GraphQL::type('categories')), 'description', '']
+
 
         ];
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 class UserController extends Controller
@@ -17,6 +18,22 @@ class UserController extends Controller
     public function  auth() {
         $path='{ users(code: "'.Auth::user()->code.'") { code, username, email, image, created_at, updated_at } }';
         return redirect('graphql?query='.urlencode($path));
+    }
+
+    public function alltables()
+    {
+        // Get the default database name
+        /*$dbName = config('database.connections.' . config('database.default') . '.database');
+
+        $tables = DB::select("");
+
+        foreach($tables as $table)
+        {
+            Schema::table($table->{'Tables_in_' . $dbName}, function($table) {
+                // Add the column
+                $table->string('some_column');
+            });
+        }*/
     }
 
     public function  create() {

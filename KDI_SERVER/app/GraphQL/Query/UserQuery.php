@@ -24,7 +24,7 @@ class UserQuery extends Query
     public function args()
     {
         return [
-            'id' => ['name' => 'id', 'type' => Type::id()],
+            'code' => ['name' => 'code', 'type' => Type::string()],
         ];
     }
 

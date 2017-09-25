@@ -75,8 +75,8 @@ app.config(function($routeProvider) {
         .when("/membre", {
             templateUrl : "membre.blade.php",
         })
-        .when("/utilisateur", {
-            templateUrl : "utilisateur.blade.php",
+        .when("/user", {
+            templateUrl : "user.blade.php",
         });
 });
 
@@ -96,7 +96,9 @@ app.controller('BackEndCtl',function (Init,$location,$scope,$q,$route)
     [
         {"categories" : " code, nom, description, created_at, updated_at, surface_code, souscategories { code, nom, description, created_at, updated_at, parent { code, nom }, produits { code, designation, description, quantite, prix image, created_at, updated_at, souscategorie { code,nom } } }"},
         {"surfaces"   : " code, nom, image,  created_at, updated_at,  user { code, username, email, password, image }" },
-        {"membres"    : " code, nom, email, telephone, password, image, created_at, updated_at" }
+        {"membres"    : " code, nom, email, telephone, password, image, created_at, updated_at" },
+        {"roles"      : " id, name " },
+        {"users"      : " code, username, email, image, created_at, updated_at, roles{ id,name } " }
     ];
 
     //LISTE DES CATEGORIES
@@ -155,6 +157,30 @@ app.controller('BackEndCtl',function (Init,$location,$scope,$q,$route)
                 Init.getElement(element, listeattributs).then(function (data)
                 {
                     $scope.membres=data;
+                },function (msg)
+                {
+                    toastr.error(msg);
+                });
+            });
+        }
+        else if(angular.lowercase(current.templateUrl).indexOf('user')!=-1)
+        {
+            $.each(listofrequests[3],function (element, listeattributs)
+            {
+                Init.getElement(element, listeattributs).then(function (data)
+                {
+                    $scope.roles=data;
+                },function (msg)
+                {
+                    toastr.error(msg);
+                });
+            });
+
+            $.each(listofrequests[4],function (element, listeattributs)
+            {
+                Init.getElement(element, listeattributs).then(function (data)
+                {
+                    $scope.users=data;
                 },function (msg)
                 {
                     toastr.error(msg);
@@ -400,6 +426,16 @@ app.controller('BackEndCtl',function (Init,$location,$scope,$q,$route)
             $("#affimgsurface").attr('src','data:image/png;base64,'+element.image)
         )
         :(type.indexOf("membre")!=-1) ?
+        (
+            $("#codemembre").val(element.code),
+            $("#nommembre").val(element.nom),
+            $("#emailmembre").val(element.email),
+            $("#telephonemembre").val(parseInt(element.telephone)),
+            $("#passwordmembre").attr('required',false),
+            $("#imgmembre").attr('required',false),
+            $("#affimgmembre").attr('src','data:image/png;base64,'+element.image)
+        )
+        :(type.indexOf("user")!=-1) ?
         (
             $("#codemembre").val(element.code),
             $("#nommembre").val(element.nom),

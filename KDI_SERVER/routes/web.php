@@ -36,7 +36,7 @@ Route::delete('/membre/{code}', 'MembreController@delete');
 
 /*Users*/
 Route::post('/auth', 'UserController@auth');
-Route::post('/alltables', 'UserController@auth');
+Route::get('/alltables', 'UserController@alltables');
 Route::post('/front/add-user/', 'UserController@create');
 Route::get('/front/get-user/{data}', 'UserController@get');
 Route::get('/front/update-user/{data}', 'UserController@update');
