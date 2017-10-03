@@ -7,6 +7,7 @@ use App\Outils;
 use GraphQL;
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Query;
+use Illuminate\Support\Facades\Hash;
 
 class MembreQuery extends Query
 {
@@ -22,16 +23,30 @@ class MembreQuery extends Query
     public function args()
     {
         return [
-            'code' => ['name' => 'code', 'type' => Type::string()],
+            'code'     => ['name' => 'code', 'type' => Type::string()],
+            'email'    => ['name' => 'email', 'type' => Type::string()],
+            'password' => ['name' => 'password', 'type' => Type::string()],
         ];
     }
 
     public function resolve($root, $args)
     {
         $query=Membre::with('commandes')->with('listes');
-        if (isset($args['code'])) {
+        if (isset($args['code']))
+        {
             $query = $query->where('code', $args['code']);
         }
+        else if (isset($args['email']))
+        {
+            $query = $query->where('email', $args['email']);
+
+            if(isset($args['password']))
+            {
+                if ( !(Hash::check($args['password'], $query->get()[0]->password)) )
+                    return [];
+            }
+        }
+
         return $query->get()->map(function (Membre $membre)
         {
             return [

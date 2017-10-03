@@ -6,6 +6,7 @@ use App\Membre;
 use App\Outils;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 
 class MembreController extends Controller
@@ -42,6 +43,20 @@ class MembreController extends Controller
         $path='{ membres(code : "'.$membre->code.'") { code, nom, email, telephone, image, created_at, updated_at } }';
         return redirect('graphql?query='.urlencode($path));
     }
+
+//    public function login($data) {
+//        $email = json_decode($data)->email;
+//        $password = json_decode($data)->password;
+//
+//        if ($membre = Membre::where('email', $email)->first())
+//        {
+//            if(Hash::check($password, $membre->password))
+//            {
+//                return json_encode($membre);
+//            }
+//        }
+//        return null;
+//    }
 
 
     public function delete($code)

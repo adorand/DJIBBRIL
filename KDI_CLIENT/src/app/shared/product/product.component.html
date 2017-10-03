@@ -8,26 +8,26 @@
         <div class="panel-body">
             <img [src]="'data:image/png;base64,'+produit.image" alt="Produit Image">
             <div class="pull-right small-btn">
-                <!--<a class="btn btn-default " href="javascript:void(0)" [popover]="content" popoverTitle='Ajout a la liste' popoverPlacement="right">-->
-                  <!--<i class="fa fa-ellipsis-h" aria-hidden="true"></i>-->
-                <!--</a>-->
-                <!--<popover-content #content>-->
-                    <!--<div class="form-horizontal" style="width: 150px;height: 100%">-->
-                        <!--<div class="form-group">-->
-                            <!--<div class="col-xs-9">-->
-                                <!--<select name="liste" id="" class="form-control" [(ngModel)]="selectedListe">-->
-                                    <!--<option value="" selected>-&#45;&#45;Listes-&#45;&#45;</option>-->
-                                    <!--<option *ngFor="let data of user[0].listes" [value]="data.code">-->
-                                        <!--<span class="text-ellipsis" title="{{data.libelle}}" data-toggle="tooltip" data-placement="bottom" data-html="true">{{data.libelle}}</span>-->
-                                    <!--</option>-->
-                                <!--</select>-->
-                            <!--</div>-->
-                            <!--<div class="col-xs-3 row">-->
-                              <!--<button class="btn btn-default" (click)="addToListe()"><i class="fa fa-plus"></i></button>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</popover-content>-->
+                <a class="btn btn-default " href="javascript:void(0)" [popover]="content" popoverTitle='Ajout a la liste' popoverPlacement="right">
+                  <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                </a>
+                <popover-content #content>
+                    <div class="form-horizontal" style="width: 150px;height: 100%">
+                        <div class="form-group">
+                            <div class="col-xs-9">
+                                <select name="liste" id="" class="form-control" [(ngModel)]="selectedListe">
+                                    <option value="" selected>---Listes---</option>
+                                    <option *ngFor="let data of user[0].listes" [value]="data.code">
+                                        <span class="text-ellipsis" title="{{data.libelle}}" data-toggle="tooltip" data-placement="bottom" data-html="true">{{data.libelle}}</span>
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-xs-3 row">
+                                <button class="btn btn-default" (click)="addToListe()"><i class="fa fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </popover-content>
             </div>
         </div>
         <div class="panel-footer">

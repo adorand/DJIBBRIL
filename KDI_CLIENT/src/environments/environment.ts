@@ -5,5 +5,5 @@
 
 export const environment = {
     production: false,
-    api: 'http://192.168.1.26:8000/ext'
+    api: '/graphql?query='
 };

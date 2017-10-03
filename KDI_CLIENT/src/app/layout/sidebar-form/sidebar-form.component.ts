@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import {HttpClient} from '@angular/common/http';
+import {LocalStorage, LocalStorageService} from 'ng2-webstorage';
 
-import {UserClass} from '../services/User/user.class';
-import {UserService} from '../services/User/user.service';
+import {MembreClass} from '../services/membre/membre.class';
+import {MembreService} from '../services/membre/membre.service';
 
 @Component({
   selector: 'app-sidebar-form',
@@ -12,22 +13,33 @@ import {UserService} from '../services/User/user.service';
 })
 export class SidebarFormComponent implements OnInit {
 
-    // user = new UserClass(0, '', '', '', '', [], []);
-    user: UserClass;
-    constructor(private userService: UserService, private location: Location, private httpclient: HttpClient) {
+    membre: MembreClass;
+    login: string;
+    password: string;
+    errorlogin: string;
+
+    constructor(
+        private membreService: MembreService,
+        private location: Location,
+        private httpclient: HttpClient,
+        private storage: LocalStorageService) {
 
     }
 
     ngOnInit(): void {
-        // this.user = new UserClass(0, '', '', '',
-        //     '', [], []);
-        this.user = {code: '', name: 'fgf', email: '', password: '', telephone: '', commandes: [], listes: [] };
+        this.membre = {code: '', nom: 'fgf', email: '', password: '', telephone: '', image: '', commandes: [], listes: [] };
     }
 
-    save(): void {
-        this.userService.createget(this.user).then(user => console.log(this.user));
+    doAuthentificate()
+    {
 
-        console.log(this.user.code);
+    }
+
+    save(): void
+    {
+        this.membreService.createget(this.membre).then(user => console.log(this.membre));
+
+        console.log(this.membre.code);
     }
 
 
@@ -42,6 +54,6 @@ export class SidebarFormComponent implements OnInit {
         this.location.back();
     }
 
-    get diagnostic() { return JSON.stringify(this.user); }
+    get diagnostic() { return JSON.stringify(this.membre); }
 
 }

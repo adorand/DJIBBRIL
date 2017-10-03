@@ -32,6 +32,7 @@ Route::delete('/surface/{code}', 'SurfaceController@delete');
 
 /*Membres*/
 Route::post('/membre', 'MembreController@create');
+//Route::get('/membre/{data}', 'MembreController@login');
 Route::delete('/membre/{code}', 'MembreController@delete');
 
 /*Users*/

@@ -14,6 +14,7 @@ class DetailsCommandeType extends GraphQLType
 
     public function fields() {
         return [
+            'id'        => [ 'type' => Type::id(), 'description' => ''],
             'quantite'  => [ 'type' => Type::int(), 'description' => ''],
             'produit'   => [ 'type' => GraphQL::type('produits'), 'description', ''],
             'commande'  => [ 'type' => GraphQL::type('commandes'), 'description', '']
