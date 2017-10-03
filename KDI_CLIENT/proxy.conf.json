@@ -1,12 +1,12 @@
 {
   "/front/*": {
-    "target": "http://192.168.1.27:8000",
+    "target": "http://192.168.1.27:8080",
     "secure": false,
     "loglevel": "debug"
   },
-  "/graphql*":
+  "/graphql":
   {
-    "target": "localhost:8081",
+    "target": "http://192.168.1.110:8080",
     "secure": false,
     "loglevel": "debug"
   }

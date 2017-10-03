@@ -1,7 +1,9 @@
 <?php
 
 namespace App\GraphQL\Query;
+use App\Categorie;
 use App\Surface;
+use App\Produit;
 use App\Outils;
 use GraphQL;
 use GraphQL\Type\Definition\Type;
@@ -37,11 +39,43 @@ class SurfaceQuery extends Query
             return [
                 'code'        => $surface->code,
                 'nom'         => $surface->nom,
-                'nom'         => $surface->nom,
                 'image'       => $surface->image,
                 'created_at'  => $surface->created_at->format(Outils::formatdate()),
                 'updated_at'  => $surface->updated_at->format(Outils::formatdate()),
                 'user'        => $surface->user,
+                'categories'   => $surface->categories->map(function (Categorie $ctg){
+                    return [
+                        'code' => $ctg->code,
+                        'nom' => $ctg->nom,
+                        'description' => $ctg->description,
+                        'surface_code' => $ctg->surface_code,
+                        'created_at' => $ctg->created_at->format(Outils::formatdate()),
+                        'updated_at' => $ctg->updated_at->format(Outils::formatdate()),
+                        'souscategories' => $ctg->souscategories->map(function (Categorie $ssctg){
+                            return [
+                                'code'         => $ssctg->code,
+                                'nom'          => $ssctg->nom,
+                                'description'  => $ssctg->description,
+                                'created_at'   => $ssctg->created_at->format(Outils::formatdate()),
+                                'updated_at'   => $ssctg->updated_at->format(Outils::formatdate()),
+                                'parent'       => $ssctg->parent,
+                                'produits'     => $ssctg->produits->map(function (Produit $prod){
+                                    return [
+                                        'code'         => $prod->code,
+                                        'designation'  => $prod->designation,
+                                        'description'  => $prod->description,
+                                        'created_at'   => $prod->created_at->format(Outils::formatdate()),
+                                        'updated_at'   => $prod->updated_at->format(Outils::formatdate()),
+                                        'quantite'     => $prod->quantite,
+                                        'prix'         => $prod->prix,
+                                        'image'        => $prod->image,
+                                        'souscategorie'   => $prod->categorie
+                                    ];
+                                })
+                            ];
+                        })
+                    ];
+                })
             ];
         });
     }

@@ -44,7 +44,7 @@ class CategorieController extends Controller
         //$addcritere = Auth::user()->hasrole('surface')==1 ? ', surface_code : "'.Auth::user()->code.'")' : '';
 
         $path = empty($categorie->code_parent) ? '{ categories( code : "'.$categorie->code.'") { code, nom, description, created_at, updated_at, surface_code, souscategories { code, nom, description, created_at, updated_at, parent { code, nom }, produits { code, designation, description, quantite, prix image, created_at, updated_at, souscategorie { code,nom } } } } }'
-            :'{ souscategories(code : "'.$categorie->code.'") { code, nom, description, created_at, updated_at, parent { code, nom }, produits { code, designation, description, quantite, prix image, created_at, updated_at, souscategorie { code,nom } } } }';
+            :'{ souscategories(code : "'.$categorie->code.'") { code, nom, description, created_at, updated_at, parent { code, nom }, produits { code, designation, description, quantite, prix, image, created_at, updated_at, souscategorie { code,nom } } } }';
         return redirect('graphql?query='.urlencode($path));
     }
 

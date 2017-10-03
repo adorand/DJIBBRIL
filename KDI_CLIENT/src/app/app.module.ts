@@ -18,6 +18,7 @@ import { HistoryComponent } from './history/history.component';
 import { ListComponent } from './list/list.component';
 import { ProductsSearchComponent } from './products-search/products-search.component';
 import { ProductsVendorComponent } from './products-vendor/products-vendor.component';
+import { ProductComponent } from './shared/product/product.component';
 import { DeliveryComponent } from './delivery/delivery.component';
 import { SettingsComponent } from './settings/settings.component';
 
@@ -26,6 +27,7 @@ import {UserService} from './layout/services/User/user.service';
 import {ApiService} from './layout/services/api.service';
 
 import {Ng2Webstorage} from 'ng2-webstorage';
+import {PopoverModule} from 'ngx-popover';
 
 @NgModule({
     declarations: [
@@ -40,7 +42,8 @@ import {Ng2Webstorage} from 'ng2-webstorage';
         ProductsSearchComponent,
         ProductsVendorComponent,
         DeliveryComponent,
-        SettingsComponent
+        SettingsComponent,
+        ProductComponent
     ],
     imports: [
         BrowserModule,
@@ -50,7 +53,8 @@ import {Ng2Webstorage} from 'ng2-webstorage';
         FormsModule,
         BrowserAnimationsModule,
         ToastModule.forRoot(),
-        Ng2Webstorage
+        Ng2Webstorage,
+        PopoverModule
     ],
     providers: [UserService, ApiService],
     bootstrap: [AppComponent]

@@ -1,13 +1,12 @@
 import {CategorieClass} from '../categorie/categorie.class';
 
 export class SurfaceClass {
-    id: number;
-    name: string;
-    email: string;
-    password: string;
-    logo: string;
+    code: string;
+    nom: string;
+    image: string;
+    created_at: string;
+    updated_at: string;
     categories: CategorieClass[];
-
 }
 
 

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, URLSearchParams } from '@angular/http';
 
 import { SurfaceClass } from './surface.class';
-import { SURFACES } from './mock-surfaces';
 
 @Injectable()
 export class SurfaceService
@@ -11,39 +10,12 @@ export class SurfaceService
 
     private urlgraphql = '/graphql?query=';
 
-    all: string = 'query surfaces \n' +
-        '{\n' +
-        '  surfaces\n' +
-        '  {\n' +
-        '    code,\n' +
-        '    name,\n' +
-        '    logo,\n' +
-        '    categories\n' +
-        '    {\n' +
-        '      code,\n' +
-        '      nom,\n' +
-        '      souscategories\n' +
-        '      {\n' +
-        '        code,\n' +
-        '      \tnom,\n' +
-        '        parent\n' +
-        '        {\n' +
-        '          code,\n' +
-        '          nom\n' +
-        '        }\n' +
-        '      },\n' +
-        '      produits\n' +
-        '      {\n' +
-        '        code\n' +
-        '      }\n' +
-        '    }\n' +
-        '  }\n' +
-        '}';
+    all: string = '{surfaces{code, nom, image,  created_at, updated_at, categories{ code, nom, description, created_at, updated_at, surface_code, souscategories { code, nom, description, created_at, updated_at, parent { code, nom }, produits { code, designation, description, quantite, prix, image, created_at, updated_at, souscategorie { code,nom } } }}}}';
 
     getall(): Promise<SurfaceClass[]> {
         return this.http.get(this.urlgraphql + this.all)
             .toPromise()
-            .then(response => response.json().data as SurfaceClass[]);
+            .then(response => response.json().data.surfaces as SurfaceClass[]);
     }
 
     get(): Promise<SurfaceClass> {

@@ -1,10 +1,15 @@
-import {ProduitClass} from '../produit/produit.class';
+
+
+import {SouscategorieClass} from '../souscategorie/souscategorie.class';
 
 export class CategorieClass {
-    id: number;
+    code: string;
     nom: string;
+    surface_code: string;
     description: string;
-    produits: ProduitClass[];
+    created_at: string;
+    updated_at: string;
+    souscategories: SouscategorieClass[];
 }
 
 

@@ -282,7 +282,8 @@ app.controller('BackEndCtl',function (Init,$location,$scope,$q,$route)
                     data:data,
                     success:function(data)
                     {
-                        var obj=data['data'][type+'s'][0];
+                        alert(JSON.stringify(data));
+                        var obj=data['data'][(type.indexOf('souscategorie')!=-1 ? 'categorie' : type)+'s'][0];
                         console.log(obj);
                         (type.indexOf('souscategorie')!=-1) ?
                         (

@@ -1,4 +1,4 @@
-import {CategorieClass} from '../categorie/categorie.class';
+import {SouscategorieClass} from '../souscategorie/souscategorie.class';
 
 export class ProduitClass {
     code: string;
@@ -7,7 +7,9 @@ export class ProduitClass {
     quantite: number;
     prix: number;
     image: string;
-    categorie: CategorieClass;
+    created_at: string;
+    updated_at: string;
+    // souscategorie: SouscategorieClass;
 }
 
 

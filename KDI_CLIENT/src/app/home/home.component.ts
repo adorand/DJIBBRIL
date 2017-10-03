@@ -11,19 +11,23 @@ import {SurfaceService} from '../layout/services/surface/surface.service';
 })
 export class HomeComponent implements OnInit{
 
-    @LocalStorage()
-    public listesurfaces: SurfaceClass[];
 
-    private surfaces: SurfaceClass[];
+    @LocalStorage('surfaces')
+    public surfaces: SurfaceClass[];
 
-    constructor(private storage: LocalStorageService, private surfaceservice: SurfaceService) {}
+    // private surfaces: SurfaceClass[];
+
+    constructor(
+        private storage: LocalStorageService,
+        private surfaceservice: SurfaceService
+    ) {}
 
     ngOnInit() {
-        this.surfaceservice.getall().then(data => this.storage.store('listesurfaces', data ));
-        // Configuration
-        this.surfaces = null;
-        console.log( JSON.stringify(this.storage.retrieve('listesurfaces')));
+        this.surfaceservice.getall().then(data => this.storage.store('surfaces', data ));
+        console.log( JSON.stringify(this.storage.retrieve('surfaces')));
     }
+
+
 
 
 

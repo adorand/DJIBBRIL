@@ -42,7 +42,7 @@ class CategorieQuery extends Query
     public function resolve($root, $args)
     {
 
-        $query=Categorie::with('products');
+        $query=Categorie::with('produits');
         if (isset($args['code'])) {
             $query = $query->where('code', $args['code']);
         }
