@@ -3,16 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Produit extends Model
 {
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
 
     protected $primaryKey = 'code';
-    /**
-     * Indicates if the IDs are auto-incrementing.
-     *
-     * @var bool
-     */
+
     public $incrementing = false;
 
     public function categorie() {

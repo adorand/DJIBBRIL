@@ -17,7 +17,7 @@ class ListeType extends GraphQLType
             'code'     => [ 'type' => Type::nonNull(Type::string()), 'description' => ''],
             'libelle'  => [ 'type' => Type::string(), 'description' => ''],
             'etat'     => [ 'type' => Type::int(), 'description' => ''],
-            'membre'   => [ 'type' => GraphQL::type('membres'), 'description', ''],
+            'client'   => [ 'type' => GraphQL::type('clients'), 'description', ''],
             'details'  => [ 'type' => Type::listOf(GraphQL::type('detailslistes')), 'description', '']
         ];
     }

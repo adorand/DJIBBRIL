@@ -12,10 +12,6 @@
         <link rel="stylesheet" href="css/font.css" type="text/css" />
         <link rel="stylesheet" href="css/app.css" type="text/css" />
         <link rel="stylesheet" href="js/chosen/chosen.css" />
-
-
-
-
     </head>
     <body ng-controller="BackEndCtl">
         <section class="vbox">
@@ -43,14 +39,14 @@
                 <ul class="nav navbar-nav hidden-xs">
 
                     <li data-toggle="tooltip" data-placement="bottom" data-title="FULLSCREEN">
-                        <a class="dropdown-toggle" data-toggle="fullscreen">
+                        <a class="dropdown-toggle cursor-pointer" data-toggle="fullscreen">
                             <i class="fa fa-arrows-alt"></i>
                         </a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user user">
                     <li class="hidden-xs">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="javascript:void()" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="i i-chat3"></i>
                             <span class="badge badge-sm up bg-danger count">2</span>
                         </a>
@@ -89,7 +85,7 @@
                     <li class="dropdown">
                         <a class="cursor-pointer dropdown-toggle" data-toggle="dropdown">
                             <span class="thumb-sm avatar pull-left">
-                                <img src="data:image/png;base64,{{Auth::user()->image}}" alt="...">
+                                <img src="{{Auth::user()->image}}" alt="...">
                             </span>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight">
@@ -108,15 +104,15 @@
                                 </a>
                             </li>
                             @if(Auth::user()->hasrole('admin')==1)
-                                <li >
-                                    <a href="#">
-                                        <span class="badge bg-danger pull-right">3</span>
+                                <li>
+                                    <a href="javascript:void()">
+                                        <span class="badge bg-danger pull-right">@{{users.length}}</span>
                                         Utilisateurs
                                     </a>
                                 </li>
                             @endif
                             <li>
-                                <a href="#">Aide</a>
+                                <a href="javascript:void()">Aide</a>
                             </li>
                             <li class="divider"></li>
                             <li>
@@ -140,7 +136,7 @@
                                         <div class="dropdown">
                                             <a class="cursor-pointerdropdown-toggle" data-toggle="dropdown">
                                                 <span class="thumb avatar pull-left m-r">
-                                                    <img src="data:image/png;base64,{{Auth::user()->image}}" class="dker" alt="...">
+                                                    <img src="{{Auth::user()->image}}" class="dker" alt="...">
                                                 </span>
                                                 <span class="hidden-nav-xs clear">
                                                     <span class="block m-t-xs">
@@ -219,17 +215,24 @@
                                                     <span class="font-bold">Surface</span>
                                                 </a>
                                             </li>
-                                            @endif
                                             <li>
-                                                <a href="#!/membre">
+                                                <a href="#!/client">
+                                                <span class="pull-right text-muted">
+                                                    <i class="i i-circle-sm-o text"></i>
+                                                </span>
+                                                    <i class="i i-users3 text"></i>
+                                                    <span class="font-bold">Clients</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#!/commande">
                                                     <span class="pull-right text-muted">
                                                         <i class="i i-circle-sm-o text"></i>
                                                     </span>
-                                                    <i class="i i-users3 text"></i>
-                                                    <span class="font-bold">Membres</span>
+                                                    <i class="fa fa-th-large text"></i>
+                                                    <span class="font-bold">Commandes</span>
                                                 </a>
                                             </li>
-                                            @if(Auth::user()->hasrole('admin')==1)
                                             <li>
                                                 <a href="#!/user">
                                                     <span class="pull-right text-muted">
@@ -465,8 +468,8 @@
 
 
 
-        <!--MODAL MEMBRE-->
-        <div class="modal fade" id="modal_addmembre">
+        <!--MODAL client-->
+        <div class="modal fade" id="modal_addclient">
             <div class="modal-dialog modal-compose">
                 <div class="modal-content bg-empty">
                     <div class="modal-body ">
@@ -474,38 +477,38 @@
                             <div class="col-sm-12 bg-templateblue m-t-n m-b-n">
                                 <div class="row " style="padding-bottom: 15px; ">
                                     <div class="m-t" >
-                                        <h3 class="m-t-xs m-l m-b pull-left text-white text-u-c"><strong>membre</strong></h3>
+                                        <h3 class="m-t-xs m-l m-b pull-left text-white text-u-c"><strong>client</strong></h3>
                                         <button data-dismiss="modal" class="b-2x b-white btn btn-sm bg-white active btn-rounded btn-icon pull-right m-r">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </div>
                                 </div>
                                 <div class="row ">
-                                    <form id="form_addmembre" role="form" enctype="multipart/form-data" accept-charset="UTF-8" ng-submit="addElement($event,'membre')">
+                                    <form id="form_addclient" role="form" enctype="multipart/form-data" accept-charset="UTF-8" ng-submit="addElement($event,'client')">
                                         {{ csrf_field() }}
-                                        <input type="hidden" id="codemembre" name="code">
+                                        <input type="hidden" id="codeclient" name="code">
                                         <div class="col-sm-12">
                                             <div class="form-group">
-                                                <input type="text" id="nommembre" name="nom" class="form-control input-sm no-borders" placeholder="Nom" required>
+                                                <input type="text" id="nomclient" name="nom" class="form-control input-sm no-borders" placeholder="Nom" required>
                                             </div>
                                             <div class="form-group">
-                                                <input type="email" id="emailmembre" name="email" class="form-control input-sm no-borders" placeholder="Email" required>
+                                                <input type="email" id="emailclient" name="email" class="form-control input-sm no-borders" placeholder="Email" required>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <input type="number" id="telephonemembre" name="telephone" class="form-control input-sm no-borders" placeholder="Telephone" required>
+                                                <input type="number" id="telephoneclient" name="telephone" class="form-control input-sm no-borders" placeholder="Telephone" required>
                                             </div>
                                             <div class="form-group">
-                                                <input type="password" id="passwordmembre" name="password" class="form-control input-sm no-borders" placeholder="Mot de passe" required>
+                                                <input type="password" id="passwordclient" name="password" class="form-control input-sm no-borders" placeholder="Mot de passe" required>
                                             </div>
                                             <div class="form-group">
-                                                <input type="file" accept='image/*' id="imgmembre" name="image" class="filestyle" data-icon="true" data-classButton="btn bg-white" data-classInput="form-control inline v-middle input-modal" onchange='Chargerphoto("membre")' required>
+                                                <input type="file" accept='image/*' id="imgclient" name="image" class="filestyle" data-icon="true" data-classButton="btn bg-white" data-classInput="form-control inline v-middle input-modal" onchange='Chargerphoto("client")'>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
-                                            <div id="afffichiermembre" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);">
-                                                <img alt="" class="thumbnail" style="width: 100%;height: 135px;margin-bottom: 10px;" id="affimgmembre" >
+                                            <div id="afffichierclient" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);">
+                                                <img alt="" class="thumbnail" style="width: 100%;height: 135px;margin-bottom: 10px;" id="affimgclient" >
                                             </div>
                                             <div class="text-right m-b">
                                                 <button type="submit" class="b-2x b-white btn btn-sm bg-templateblue btn-icon">
@@ -536,7 +539,7 @@
                                         <button data-dismiss="modal" class="btn btn-sm bg-white btn-rounded btn-icon pull-right m-r"><i class="fa fa-times"></i></button>
                                     </div>
                                 </div>
-                                <form id="form_adduser" role="form" enctype="multipart/form-data" accept-charset="UTF-8" ng-submit="addElement($event,'membre')" class="m-l m-r text-center">
+                                <form id="form_adduser" role="form" enctype="multipart/form-data" accept-charset="UTF-8" ng-submit="addElement($event,'client')" class="m-l m-r text-center">
                                     <div class="inline m-b m-t-n-md">
                                         <div class="easypiechart" data-percent="100" data-line-width="7" data-bar-color="#fff" data-track-Color="#2796de" data-scale-Color="false" data-size="140" data-line-cap='butt' data-animate="1000">
                                             <div class="thumb-lg avatar text-center" id="afffichieruser" >

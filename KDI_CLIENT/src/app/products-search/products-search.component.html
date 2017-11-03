@@ -5,76 +5,74 @@
         <br/><br />
         <div class="wrapsemibox">
             <div class="semiboxshadow text-center">
-                <img src="assets/assets/assets/images/shp.png" class="img-responsive" alt="">
+                <img [src]="'assets/images/shp.png'" class="img-responsive" alt="">
             </div>
             <div class="container">
-                <div class="row">
+                <div class="row" *ngIf="produits.length > 10">
                     <div class="col-sm-12">
                         <nav aria-label="Page navigation">
                             <ul class="pagination pull-right">
                                 <li class="disabled">
                                     <a href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
+                                        <span aria-hidden="true"><i class="fa fa-chevron-left"></i></span>
                                     </a>
                                 </li>
                                 <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
+                                <li><a href="javascript:void()" *ngFor="let pg of (produits.length%10 - 1)">{{pg}}</a></li>
                                 <li>
                                     <a href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
+                                        <span aria-hidden="true"><i class="fa fa-chevron-right"></i></span>
                                     </a>
                                 </li>
                             </ul>
                         </nav>
                     </div>
                 </div>
-
-
                 <div class="row product-section">
                     <div class="col-lg-2 col-md-12 rayon-block scrollable">
-                        <div class="rayon-row col-lg-12 col-md-2 col-xs-4 animated fadeInLeft" *ngFor="let surface of surfaces" (click)="filterBySurface(surface.nom)">
+                        <div class="rayon-row col-lg-12 col-md-2 col-xs-4 animated fadeInLeft" (click)="filterByVendor('')">
                             <div class="content box-shadow-materialize">
-                                <img [src]="'data:image/png;base64,'+surface.image" alt="{{surface.nom}} Logo">
-                                <div class="alert border-radius card">
+                                <div class="alert border-radius card text-u-c">
+                                    RECHERCHE
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rayon-row col-lg-12 col-md-2 col-xs-4 animated fadeInLeft" *ngFor="let surface of surfaces" (click)="filterByVendor(surface.code)">
+                            <div class="content box-shadow-materialize">
+                                <img *ngIf="surface.image" [src]="surface.image" alt="Logo {{surface.nom}}">
+                                <div class="alert border-radius card text-u-c">
                                     {{surface.nom}}
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-12 product-block">
-                      <div class="row">
-                        <app-product *ngFor="let produit of produits" [produit]="produit" [surface]="true"></app-product>
-                      </div>
+
+                        <div class="row">
+                            <app-product *ngFor="let produit of produits" [produit]="produit" [surface]="getsurfaceofproduit(produit.souscategorie.code)"></app-product>
+                        </div>
                     </div>
                 </div>
-
-                <div class="row" *ngIf="produits.length > 8">
+                <div class="row" *ngIf="produits.length > 10">
                     <div class="col-sm-12">
-                          <nav aria-label="Page navigation">
-                              <ul class="pagination pull-right">
-                                  <li class="disabled">
-                                      <a href="#" aria-label="Previous">
-                                          <span aria-hidden="true"><i class="fa fa-chevron-left"></i></span>
-                                      </a>
-                                  </li>
-                                  <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                                  <li><a href="#">2</a></li>
-                                  <li><a href="#">3</a></li>
-                                  <li><a href="#">4</a></li>
-                                  <li><a href="#">5</a></li>
-                                  <li>
-                                      <a href="#" aria-label="Next">
-                                          <span aria-hidden="true"><i class="fa fa-chevron-right"></i></span>
-                                      </a>
-                                  </li>
-                              </ul>
-                          </nav>
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination pull-right">
+                                <li class="disabled">
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true"><i class="fa fa-chevron-left"></i></span>
+                                    </a>
+                                </li>
+                                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                                <li><a href="javascript:void()" *ngFor="let pg of (produits.length%10 - 1)">{{pg}}</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true"><i class="fa fa-chevron-right"></i></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

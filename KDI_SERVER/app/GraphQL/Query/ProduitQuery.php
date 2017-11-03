@@ -1,6 +1,7 @@
 <?php
 
 namespace App\GraphQL\Query;
+use App\Categorie;
 use App\GraphQL\Serializers\ProduitSerializer;
 use App\Outils;
 use App\Produit;
@@ -50,7 +51,7 @@ class ProduitQuery extends Query
                 'quantite'    => $prod->quantite,
                 'prix'        => $prod->prix,
                 'image'       => $prod->image,
-                'souscategorie'   => $prod->categorie
+                'souscategorie'   => $prod->categorie,
             ];
         });
 

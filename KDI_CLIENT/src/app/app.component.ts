@@ -1,35 +1,22 @@
 import {Component, OnInit} from '@angular/core';
 
-import { SurfaceClass } from './layout/services/surface/surface.class';
-import { SurfaceService } from './layout/services/surface/surface.service';
-
+import { CookieService } from 'ngx-cookie-service';
+import {ShoppingCart} from './layout/models/shopping-cart.model';
+import {ShoppingCartService} from './layout/services/shopping-cart.service';
 
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-    providers: [SurfaceService]
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
     title = 'app';
 
-    surfaces: SurfaceClass[];
-    getSurfaces(): void {
-        this.surfaceService.getall().then(surfaces => this.surfaces = surfaces);
+    constructor(private cookies: CookieService) {
     }
-
-
-
-    constructor(private surfaceService: SurfaceService)
-    {
-
-    }
-
-
 
     ngOnInit(): void {
-      this.getSurfaces();
+
     }
 
 }

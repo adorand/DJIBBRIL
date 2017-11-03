@@ -14,7 +14,7 @@
           </div>
           <p class="m-b-n-xxs"  style="z-index: 0;position: relative;">
               <br /> <br /><br />
-              <img class="img-responsive marginzeroauto" src="assets/images/panier.jpg" />
+              <img class="img-responsive marginzeroauto" [src]="'assets/images/panier.jpg'" />
               <span id="header_shadow" style="top: 100%;"></span>
           </p>
       </div>
@@ -24,20 +24,19 @@
           <br/><br />
           <div class="wrapsemibox card">
               <div class="semiboxshadow text-center">
-                  <img src="assets/images/shp.png" class="img-responsive" alt="">
+                  <img [src]="'assets/images/shp.png'" class="img-responsive" alt="">
               </div>
               <br/>
 
               <div class="container">
                   <section class="scrollable" style="height:500px;">
                       <div *ngFor="let surface of surfaces" class="col-xs-6 col-sm-4 col-md-3 m-t-lg animated zoomIn" style="height: 225px;">
-                          <div class="thumbnail card box-shadow-materialize cursor-pointer" routerLink="/produits-surface/{{surface.nom}}" style="height: 100%;padding: 20% 0;">
-                              <a ><img [src]="'data:image/png;base64,'+surface.image" style="height:100%;width: 50%;" alt="{{surface.nom}}"></a>
+                          <div class="thumbnail card box-shadow-materialize cursor-pointer" (click)="gotosurface(surface.code)" routerLink="/produits-surface/{{surface.nom}}" style="height: 100%;padding: 20% 0;">
+                              <a ><img [src]="surface.image" style="height:100%;width: 50%;" alt="{{surface.nom}}"></a>
                           </div>
                       </div>
-
                   </section>
               </div>
-        </div>
+          </div>
       </div>
   </div>

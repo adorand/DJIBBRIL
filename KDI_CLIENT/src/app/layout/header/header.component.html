@@ -13,56 +13,54 @@
             <div class="row">
                 <div class="col-sm-6 col-md-7">
                     <div class="form-group">
-                        <div class="input-group m-t-xs box-shadow header-search cardhover">
-                            <input type="search"  class="form-control input-sm no-borders" style="height: 100% !important;font-size:16px; " [(ngModel)]="nomproduit">
-                            <span class="input-group-btn border-radius">
-                                <button (click)="gotosearch()" type="button"  class="btn btn-sm bg-white b-white btn-icon pull-right" style="height: 100% !important;border: 1px solid rgba(255,255,255,0.1);">
-                                    <a><i class="fa fa-search text-primary"></i></a>
-                                </button>
-                            </span>
-                        </div>
+                        <form (ngSubmit)="gotosearch()">
+                            <div class="input-group m-t-xs box-shadow header-search cardhover">
+                                <input type="search"  class="form-control input-sm no-borders" style="height: 100% !important;font-size:16px; "  name="nomProduit" [(ngModel)]="nomproduit">
+                                <span class="input-group-btn border-radius">
+                                    <button type="submit"  class="btn btn-sm bg-white b-white btn-icon pull-right" style="height: 100% !important;border: 1px solid rgba(255,255,255,0.1);">
+                                        <a><i class="fa fa-search text-primary"></i></a>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-5">
                     <ul class="nav navbar-nav navbar-right hidden-xs nav-user user">
                         <li class=" hidden-xs active m-r" data-toggle="tooltip" data-placement="bottom" data-title="CADDY">
-                            <a class="dropdown-toggle text-black m-b-sm active" data-toggle="dropdown">
+                            <a class="dropdown-toggle text-black m-b-sm active cursor-pointer" data-toggle="dropdown">
                                 <i class="fa fa-shopping-cart" ></i> <span class="hidden-md hidden-sm ">CADDY</span>
-                                <span class="badge badge-sm up bg-danger count">2</span>
+                                <span class="badge badge-sm up bg-danger">{{panier ? panier.items.length : 0}}</span>
                             </a>
                             <section class="m-t-lg dropdown-menu aside-lg on animated fadeInUp" >
                                 <span class="arrow top "></span>
                                 <div class="row text-black m-l-none m-r-none m-t-n-xxs m-b text-center">
-                                    <div class="row m-t m-l-sm m-r-sm" style="padding: 0px 5px 0px 5px ;">
-                                        <div class="pull-left">
-                                            <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
-                                            <span class="m-l-sm m-r">Laitcrans</span>
+
+                                    <ng-container *ngIf="panier">
+                                        <div *ngFor="let item of panier.items | slice:0:3 " class="row m-t m-l-sm m-r-sm" style="padding: 0px 5px 0px 5px ;">
+                                            <div class="pull-left">
+                                                <button class="btn btn-sm btn-danger" (click)="removeFromCommande(item.productId)"><i class="fa fa-times"></i></button>
+                                                <span class="m-l-sm m-r">{{item.quantity}} <i class="fa fa-arrow-right fa-lg"></i> {{item.productDesignation}}</span>
+                                            </div>
+                                            <div class="m-t-xs pull-right">
+                                                <span><u>{{item.quantity * item.prix}} Fcfa</u></span>
+                                            </div>
                                         </div>
-                                        <div class="m-t-xs pull-right">
-                                            <span><u>20000 Fcfa</u></span>
+
+                                        <div *ngIf="panier.items.length > 3" class="row m-t m-l-sm m-r-sm" style="padding: 0px 5px 0px 5px ;">
+                                            <div class="pull-right small-btn">
+                                                <a  type="button" class="btn btn-default" data-toggle="popover" data-html="true" data-placement="top"><i aria-hidden="true" class="fa fa-ellipsis-h"></i></a>
+                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row  m-t m-l-sm m-r-sm" style="padding: 0px 5px 0px 5px ;">
-                                        <div class="pull-left">
-                                            <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
-                                            <span class="m-l-sm m-r">Laitcrans</span>
-                                        </div>
-                                        <div class="m-t-xs pull-right">
-                                            <span><u>20000 Fcfa</u></span>
-                                        </div>
-                                    </div>
-                                    <div class="row m-t m-l-sm m-r-sm" style="padding: 0px 5px 0px 5px ;">
-                                        <div class="pull-left">
-                                            <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
-                                            <span class="m-l-sm m-r">Laitcrans</span>
-                                        </div>
-                                        <div class="m-t-xs pull-right">
-                                            <span><u>20000 Fcfa</u></span>
-                                        </div>
-                                    </div>
+                                    </ng-container>
+
                                     <p class="text-center m-t-md ">
                                         <button type="button" class="btn bg-primary text-white card m-b-n" style="border:10px solid #177bbb;">
-                                            <i class="fa fa-arrow-right"></i> <a routerLink="/livraison" class="text-white"><strong>VOIR DETAILS</strong></a>
+                                            <i class="fa fa-arrow-right"></i>
+                                            <a routerLink="/historique" class="text-white">
+                                                <strong *ngIf="panier && panier.items.length>0">VOIR DETAILS</strong>
+                                                <strong *ngIf="!panier || panier.items.length==0">VIDE</strong>
+                                            </a>
                                         </button>
                                     </p>
                                 </div>
@@ -81,20 +79,22 @@
                         <li class=" dropdown active m-r">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <span class="thumb avatar bg-gradient pull-left">
-                                    <img src="assets/images/a0.png"  class="dker" alt="...">
+                                    <img [src]="client ? client.image ? client.image  : 'assets/images/login-w-icon.png' : 'assets/images/a0.png'"  class="dker" alt="...">
                                 </span>
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-right animated fadeInRight">
                                 <li class="" style="cursor: pointer;">
-                                    <a id="aff_sidebar_form" href="#sidebar_form" data-toggle="class:hide">Connexion</a>
+                                    <a id="aff_sidebar_form" href="#sidebar_form" data-toggle="class:hide" *ngIf="!client">Connexion</a>
                                 </li>
                                 <li>
-                                    <a routerLink="/parametres">Paramètres</a>
+                                    <a routerLink="/parametres" *ngIf="client">Paramètres</a>
+                                </li>
+                                <li>
+                                    <a class="cursor-pointer" (click)="deconnexion()" *ngIf="client">Deconnexion</a>
                                 </li>
                             </ul>
                         </li>
-
                     </ul>
                 </div>
             </div>

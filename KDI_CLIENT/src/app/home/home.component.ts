@@ -1,31 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { SurfaceClass} from '../layout/services/surface/surface.class';
-import {LocalStorage, LocalStorageService, SessionStorageService} from 'ng2-webstorage';
-import {SurfaceService} from '../layout/services/surface/surface.service';
+import { Surface } from '../layout/models/surface.model';
+import {SurfaceService} from '../layout/services/surface.service';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
     selector: 'app-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css'],
-    providers: [SurfaceService]
+    templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit{
 
 
-    @LocalStorage('surfaces')
-    public surfaces: SurfaceClass[];
+    public surfaces: Surface[];
 
-    // private surfaces: SurfaceClass[];
 
     constructor(
-        private storage: LocalStorageService,
-        private surfaceservice: SurfaceService
+        private surfaceservice: SurfaceService,
+        private cookieService: CookieService
     ) {}
 
     ngOnInit() {
-        this.surfaceservice.getall().then(data => this.storage.store('surfaces', data ));
-        console.log( JSON.stringify(this.storage.retrieve('surfaces')));
+        this.getsurfaces();
     }
+
+    getsurfaces() {
+        this.surfaceservice.getall('').then(surfaces => {
+            this.surfaces = surfaces;
+        });
+    }
+
+    gotosurface(codesurface) {
+        this.surfaceservice.activatedsurface(codesurface);
+    }
+
 
 
 

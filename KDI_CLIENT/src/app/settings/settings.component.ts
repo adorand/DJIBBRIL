@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { Client } from '../layout/models/client.model';
+import {LocalStorage, LocalStorageService} from 'ng2-webstorage';
 
 @Component({
-  selector: 'app-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.css']
+    selector: 'app-settings',
+    templateUrl: './settings.component.html'
 })
 export class SettingsComponent implements OnInit {
 
-  constructor() { }
+    public client: Client;
 
-  ngOnInit() {
-  }
+    constructor(private storage: LocalStorageService){ }
+
+    ngOnInit() {
+    }
 
 }

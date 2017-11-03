@@ -1,43 +1,42 @@
-<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 img-product animated fadeInUp">
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 img-product animated zoomIn">
     <div class="panel panel-default card border-card ">
         <div class="floation-img" *ngIf="surface">
             <div class="rayon-logo">
-                <img [src]="'data:image/png;base64,'+ surface.image" alt="">
+                <img [src]="surface.image" alt="">
             </div>
         </div>
         <div class="panel-body">
-            <img [src]="'data:image/png;base64,'+produit.image" alt="Produit Image">
+            <img *ngIf="produit" [src]="produit.image" alt="Produit Image">
             <div class="pull-right small-btn">
-                <a class="btn btn-default " href="javascript:void(0)" [popover]="content" popoverTitle='Ajout a la liste' popoverPlacement="right">
-                  <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
-                </a>
-                <popover-content #content>
-                    <div class="form-horizontal" style="width: 150px;height: 100%">
-                        <div class="form-group">
-                            <div class="col-xs-9">
-                                <select name="liste" id="" class="form-control" [(ngModel)]="selectedListe">
-                                    <option value="" selected>---Listes---</option>
-                                    <option *ngFor="let data of user[0].listes" [value]="data.code">
-                                        <span class="text-ellipsis" title="{{data.libelle}}" data-toggle="tooltip" data-placement="bottom" data-html="true">{{data.libelle}}</span>
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="col-xs-3 row">
-                                <button class="btn btn-default" (click)="addToListe()"><i class="fa fa-plus"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </popover-content>
+                <!--<a class="btn btn-default " href="javascript:void(0)" [popover]="content" popoverTitle='Ajout a la liste' popoverPlacement="right">-->
+                  <!--<i class="fa fa-ellipsis-h" aria-hidden="true"></i>-->
+                <!--</a>-->
+                <!--<popover-content #content>-->
+                    <!--<div class="form-horizontal" style="width: 150px;height: 100%">-->
+                        <!--<div class="form-group">-->
+                            <!--&lt;!&ndash;<div class="col-xs-9">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<select name="liste" id="" class="form-control" [(ngModel)]="selectedListe">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<option value="" selected>-&#45;&#45;Listes-&#45;&#45;</option>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<option *ngFor="let data of user[0].listes" [value]="data.code">&ndash;&gt;-->
+                                        <!--&lt;!&ndash;<span class="text-ellipsis" title="{{data.libelle}}" data-toggle="tooltip" data-placement="bottom" data-html="true">{{data.libelle}}</span>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</select>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="col-xs-3 row">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<button class="btn btn-default" (click)="addToListe()"><i class="fa fa-plus"></i></button>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</popover-content>-->
             </div>
         </div>
         <div class="panel-footer">
             <div class="pull-left btn-group-vertical">
-                <button type="button" class="btn bg-white btn-product-cart-plus" (click)="addToCmd()"><i class="fa fa-plus"></i></button>
+                <button type="button" class="btn bg-white btn-product-cart-plus" (click)="actionToCommande('+')"><i class="fa fa-plus"></i></button>
                 <button type="button" class="btn bg-white disabled box-shadow" >
-                    <span *ngIf="detailCMD">{{detailCMD.quantite}}</span>
-                    <span *ngIf="!detailCMD">0</span>
+                    <span >{{ cartItem ? cartItem.quantity : 0}}</span>
                 </button>
-                <button type="button" class="btn  bg-white btn-product-cart-minus" (click)="removeFromCMD()"><i class="fa fa-minus"></i></button>
+                <button type="button" [ngClass]=" cartItem ? cartItem.quantity > 0 ? '' : 'disabled' : 'disabled' " class="btn  bg-white btn-product-cart-minus" (click)="actionToCommande('-')"><i class="fa fa-minus"></i></button>
             </div>
             <div class="list-group">
                 <div *ngIf="produit.description.length > 25" class="list-group-item text-ellipsis" data-toggle="tooltip" data-placement="bottom" data-html="true" title="{{produit.description}}">

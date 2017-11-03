@@ -55,12 +55,13 @@ class CategorieQuery extends Query
         })->map(function (Categorie $ctg)
         {
             return [
-                'code' => $ctg->code,
-                'nom' => $ctg->nom,
-                'description' => $ctg->description,
-                'surface_code' => $ctg->surface_code,
-                'created_at' => $ctg->created_at->format(Outils::formatdate()),
-                'updated_at' => $ctg->updated_at->format(Outils::formatdate()),
+                'code'           => $ctg->code,
+                'nom'            => $ctg->nom,
+                'description'    => $ctg->description,
+                'surface_code'   => $ctg->surface_code,
+                'surface'        => $ctg->surface,
+                'created_at'     => $ctg->created_at->format(Outils::formatdate()),
+                'updated_at'     => $ctg->updated_at->format(Outils::formatdate()),
                 'souscategories' => $ctg->souscategories->map(function (Categorie $ssctg){
                     return [
                         'code'         => $ssctg->code,

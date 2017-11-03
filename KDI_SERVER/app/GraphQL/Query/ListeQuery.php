@@ -37,7 +37,7 @@ class ListeQuery extends Query
                 'code'     => $liste->code,
                 'libelle'  => $liste->libelle,
                 'etat'     => $liste->etat,
-                'membre'   => $liste->membre,
+                'client'   => $liste->client,
                 'details'  => $liste->produits
             ];
         });

@@ -72,15 +72,22 @@ app.config(function($routeProvider) {
         .when("/surface", {
             templateUrl : "surface.blade.php",
         })
-        .when("/membre", {
-            templateUrl : "membre.blade.php",
+        .when("/client", {
+            templateUrl : "client.blade.php",
         })
+        .when("/commande", {
+            templateUrl : "commande.blade.php",
+        })
+        .when("/commande/:codecmd", {
+            templateUrl : "commandedetail.blade.php",
+        })
+
         .when("/user", {
             templateUrl : "user.blade.php",
         });
 });
 
-app.controller('BackEndCtl',function (Init,$location,$scope,$q,$route)
+app.controller('BackEndCtl',function (Init,$location,$scope,$q,$route, $routeParams)
 {
 
     //get authentified user
@@ -96,7 +103,7 @@ app.controller('BackEndCtl',function (Init,$location,$scope,$q,$route)
     [
         {"categories" : " code, nom, description, created_at, updated_at, surface_code, souscategories { code, nom, description, created_at, updated_at, parent { code, nom }, produits { code, designation, description, quantite, prix image, created_at, updated_at, souscategorie { code,nom } } }"},
         {"surfaces"   : " code, nom, image,  created_at, updated_at,  user { code, username, email, password, image }" },
-        {"membres"    : " code, nom, email, telephone, password, image, created_at, updated_at" },
+        {"clients"    : " code, nom, email, telephone, password, image, created_at, updated_at" },
         {"roles"      : " id, name " },
         {"users"      : " code, username, email, image, created_at, updated_at, roles{ id,name } " }
     ];
@@ -150,13 +157,13 @@ app.controller('BackEndCtl',function (Init,$location,$scope,$q,$route)
                 });
             });
         }
-        else if(angular.lowercase(current.templateUrl).indexOf('membre')!=-1)
+        else if(angular.lowercase(current.templateUrl).indexOf('client')!=-1)
         {
             $.each(listofrequests[2],function (element, listeattributs)
             {
                 Init.getElement(element, listeattributs).then(function (data)
                 {
-                    $scope.membres=data;
+                    $scope.clients=data;
                 },function (msg)
                 {
                     toastr.error(msg);
@@ -186,6 +193,11 @@ app.controller('BackEndCtl',function (Init,$location,$scope,$q,$route)
                     toastr.error(msg);
                 });
             });
+        }
+        else if(angular.lowercase(current.templateUrl).indexOf('commandedetail')!=-1)
+        {
+
+            console.log(JSON.stringify(current.params.codecmd));
         }
     });
 
@@ -235,16 +247,16 @@ app.controller('BackEndCtl',function (Init,$location,$scope,$q,$route)
             $("#imgsurface").attr('required',true),
             $("#affimgsurface").attr('src','')
         )
-        :(type.indexOf("membre")!=-1) ?
+        :(type.indexOf("client")!=-1) ?
         (
-            $("#codemembre").val(""),
-            $("#nommembre").val(""),
-            $("#emailmembre").val(""),
-            $("#telephonemembre").val(""),
-            $("#passwordmembre").val(""),
-            $("#passwordmembre").attr('required',true),
-            $("#imgmembre").attr('required',true),
-            $("#affimgmembre").attr('src',''),
+            $("#codeclient").val(""),
+            $("#nomclient").val(""),
+            $("#emailclient").val(""),
+            $("#telephoneclient").val(""),
+            $("#passwordclient").val(""),
+            $("#passwordclient").attr('required',true),
+            $("#imgclient").attr('required',false),
+            $("#affimgclient").attr('src',''),
             $('.input-modal').val("")
         ): '' ;
         return dfd.promise();
@@ -364,14 +376,14 @@ app.controller('BackEndCtl',function (Init,$location,$scope,$q,$route)
                                 (value.code==obj.code) ? $scope.surfaces[key]=obj : '';
                             })
                         )
-                        :(type.indexOf('membre')!=-1) ?
+                        :(type.indexOf('client')!=-1) ?
                         (
                             obj.updated_at==obj.created_at ?
-                                $scope.membres.splice(0,0,obj)
+                                $scope.clients.splice(0,0,obj)
                             :
-                            $.each($scope.membres,function (key,value)
+                            $.each($scope.clients,function (key,value)
                             {
-                                (value.code==obj.code) ? $scope.membres[key]=obj : '';
+                                (value.code==obj.code) ? $scope.clients[key]=obj : '';
                             })
                         ): '';
                         $scope.$apply();
@@ -426,25 +438,25 @@ app.controller('BackEndCtl',function (Init,$location,$scope,$q,$route)
             $("#imgsurface").attr('required',false),
             $("#affimgsurface").attr('src','data:image/png;base64,'+element.image)
         )
-        :(type.indexOf("membre")!=-1) ?
+        :(type.indexOf("client")!=-1) ?
         (
-            $("#codemembre").val(element.code),
-            $("#nommembre").val(element.nom),
-            $("#emailmembre").val(element.email),
-            $("#telephonemembre").val(parseInt(element.telephone)),
-            $("#passwordmembre").attr('required',false),
-            $("#imgmembre").attr('required',false),
-            $("#affimgmembre").attr('src','data:image/png;base64,'+element.image)
+            $("#codeclient").val(element.code),
+            $("#nomclient").val(element.nom),
+            $("#emailclient").val(element.email),
+            $("#telephoneclient").val(parseInt(element.telephone)),
+            $("#passwordclient").attr('required',false),
+            $("#imgclient").attr('required',false),
+            $("#affimgclient").attr('src','data:image/png;base64,'+element.image)
         )
         :(type.indexOf("user")!=-1) ?
         (
-            $("#codemembre").val(element.code),
-            $("#nommembre").val(element.nom),
-            $("#emailmembre").val(element.email),
-            $("#telephonemembre").val(parseInt(element.telephone)),
-            $("#passwordmembre").attr('required',false),
-            $("#imgmembre").attr('required',false),
-            $("#affimgmembre").attr('src','data:image/png;base64,'+element.image)
+            $("#codeclient").val(element.code),
+            $("#nomclient").val(element.nom),
+            $("#emailclient").val(element.email),
+            $("#telephoneclient").val(parseInt(element.telephone)),
+            $("#passwordclient").attr('required',false),
+            $("#imgclient").attr('required',false),
+            $("#affimgclient").attr('src','data:image/png;base64,'+element.image)
         ) : '';
     };
 
@@ -473,11 +485,11 @@ app.controller('BackEndCtl',function (Init,$location,$scope,$q,$route)
                 $scope.searchsurfacecategorie=$('#searchsurfacecategorie').val()
             :$searchnomcategorie = $scope.searchcodecategorie = $scope.searchsurfacecategorie = ''
         )
-        : (type.indexOf('membre')!=-1) ?
+        : (type.indexOf('client')!=-1) ?
         (
             propriete.match('nom') ?
-                $scope.searchnommembre=element.nom
-            :  $scope.searchnommembre=''
+                $scope.searchnomclient=element.nom
+            :  $scope.searchnomclient=''
         )
         : '' ;
     };
@@ -535,11 +547,11 @@ app.controller('BackEndCtl',function (Init,$location,$scope,$q,$route)
                 return sortir
             })
         )
-        : (type.indexOf('membre')!=-1) ?
+        : (type.indexOf('client')!=-1) ?
         (
-            $.each($scope.membres,function (mbr,membre)
+            $.each($scope.clients,function (mbr,client)
             {
-                (membre.code == element.code) ?
+                (client.code == element.code) ?
                 (
                     msg="Cette surface est reliée à des catégories\n"+msg,
                     sortir = false
@@ -626,13 +638,13 @@ app.controller('BackEndCtl',function (Init,$location,$scope,$q,$route)
                         return sortir
                     })
                 )
-                :(type.indexOf('membre')!=-1) ?
+                :(type.indexOf('client')!=-1) ?
                 (
-                    $.each($scope.membres,function (surf,surface)
+                    $.each($scope.clients,function (surf,surface)
                     {
                         (surface.code == element.code) ?
                         (
-                            $scope.membres.splice(surf, 1),
+                            $scope.clients.splice(surf, 1),
                                 sortir = false
                         ): ''
                         return sortir

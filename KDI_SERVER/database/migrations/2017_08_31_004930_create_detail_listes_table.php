@@ -13,10 +13,10 @@ class CreateDetailListesTable extends Migration
             $table->string('liste_code');
             $table->string('produit_code');
             $table->integer('quantite');
-
             $table->foreign('liste_code')->references('code')->on('listes');
             $table->foreign('produit_code')->references('code')->on('produits');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -13,7 +13,9 @@ import { SettingsComponent } from './settings/settings.component';
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
+    { path: 'produits-recherche', component: ProductsSearchComponent },
     { path: 'produits-recherche/:produit', component: ProductsSearchComponent },
+    { path: 'produits-surface', component: ProductsVendorComponent },
     { path: 'produits-surface/:surface', component: ProductsVendorComponent },
     { path: 'livraison', component: DeliveryComponent },
     { path: 'historique', component: HistoryComponent },

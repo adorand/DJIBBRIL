@@ -18,8 +18,8 @@ class CreateProduitsTable extends Migration
             $table->string('categorie_code');
             $table->foreign('categorie_code')->references('code')->on('categories')->onDelete('cascade');
             $table->timestamps();
-
             $table->primary('code');
+            $table->softDeletes();
         });
     }
 

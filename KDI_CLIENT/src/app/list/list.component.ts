@@ -3,9 +3,7 @@ import {LocalStorageService} from 'ng2-webstorage';
 
 @Component({
     selector: 'app-list',
-    templateUrl: './list.component.html',
-    styleUrls: ['./list.component.css'],
-    providers: []
+    templateUrl: './list.component.html'
 })
 export class ListComponent {
 

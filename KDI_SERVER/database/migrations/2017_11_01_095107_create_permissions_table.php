@@ -14,8 +14,8 @@ class CreatePermissionsTable extends Migration
             $table->string('resource');
             $table->string('user_code');
             $table->timestamps();
-
             $table->index('user_code');
+            $table->softDeletes();
         });
     }
 

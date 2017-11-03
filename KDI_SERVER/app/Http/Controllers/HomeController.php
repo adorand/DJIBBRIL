@@ -2,26 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Outils;
 use App\Surface;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
     public function __construct()
     {
+        Outils::FirstLaunch();
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         return view('accueil');

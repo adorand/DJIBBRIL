@@ -5,22 +5,24 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\DetailsListe;
 use App\User;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Liste extends Model
 {
+    use SoftDeletes;
+    protected $dates=['deleted_at'];
+
     protected $primaryKey = 'code';
-    /**
-     * Indicates if the IDs are auto-incrementing.
-     *
-     * @var bool
-     */
+
     public $incrementing = false;
 
-    public function produits() {
+    public function details()
+    {
         return $this->hasMany(DetailsListe::class, 'liste_code', 'code');
     }
 
-    public function user() {
-        return $this->hasOne(User::class, 'code', 'membre_code');
+    public function client()
+    {
+        return $this->hasOne(User::class, 'code', 'client_code');
     }
 }

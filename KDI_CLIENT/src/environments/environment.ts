@@ -5,5 +5,6 @@
 
 export const environment = {
     production: false,
-    api: '/graphql?query='
+    api:  '/graphql?query=',
+    front: '/front/',
 };

@@ -17,8 +17,8 @@ class CreateUsersTable extends Migration
             $table->binary('image')->nullable();
             $table->rememberToken();
             $table->timestamps();
-
             $table->primary('code');
+            $table->softDeletes();
         });
     }
 

@@ -18,8 +18,8 @@ class CreateCategoriesTable extends Migration
             $table->foreign('surface_code')->references('code')->on('surfaces')->onDelete('cascade');
             $table->foreign('code_parent')->references('code')->on('categories')->onDelete('cascade');
             $table->timestamps();
-
             $table->primary('code');
+            $table->softDeletes();
         });
     }
 

@@ -22,8 +22,6 @@
     <section class="scrollable panel wrapper" style="margin-bottom: 0px !important;">
         <section class="panel-default">
             <div class="row row-sm">
-
-
                 <div ng-repeat="surface in surfaces | filter: {nom :searchnomsurface} | orderBy:'-updated_at' track by $index " class="col-xs-6 col-sm-4 col-md-2 m-t-lg on animated zoomIn">
                     <div class="thumbnail text-center panel" style="background:none;box-shadow:none;margin-bottom: -2px;">
                         <div class="multiplebtn" style="z-index: 10;position: relative;">
@@ -38,12 +36,12 @@
                                 <i class="fa fa-trash-o text-white"></i>
                             </button>
                         </div>
-                        <img src="data:image/png;base64,{{surface.image}}" style="box-shadow:rgba(0,0,0,0.5) 0 15px 15px -6px;border-radius:5px;box-sizing: border-box;width:100%;height: 150px;margin-top: -40px;z-index:100;" class="img-responsive" alt="">
+                        <img src="{{surface.image}}" style="box-shadow:rgba(0,0,0,0.5) 0 15px 15px -6px;border-radius:5px;box-sizing: border-box;width:100%;height: 150px;margin-top: -40px;z-index:100;" class="img-responsive" alt="">
                         <p class="m-t-sm m-b-sm text-ellipsis"  data-toggle="tooltip" data-placement="bottom" title="{{surface.nom}}">
                             <strong class="text-u-c">{{surface.nom}}</strong>
                         </p>
                     </div>
-                    <div class="tp-bannershadow tp-shadow1" style="width: 100%; margin: 0 auto;"></div>
+                    <!--<div class="tp-bannershadow tp-shadow1" style="width: 100%; margin: 0 auto;"></div>-->
                 </div>
 
 

@@ -11,11 +11,11 @@ class CreateCommandesTable extends Migration
         Schema::create('commandes', function (Blueprint $table) {
             $table->string('code');
             $table->integer("etat");
-            $table->string('membre_code')->nullable();
-            $table->foreign("membre_code")->references('code')->on('membres');
+            $table->string('client_code')->nullable();
+            $table->foreign("client_code")->references('code')->on('clients');
             $table->timestamps();
-
             $table->primary('code');
+            $table->softDeletes();
         });
     }
 

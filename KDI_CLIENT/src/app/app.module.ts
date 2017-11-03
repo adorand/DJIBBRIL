@@ -22,12 +22,18 @@ import { ProductComponent } from './shared/product/product.component';
 import { DeliveryComponent } from './delivery/delivery.component';
 import { SettingsComponent } from './settings/settings.component';
 
-
-import {UserService} from './layout/services/User/user.service';
 import {ApiService} from './layout/services/api.service';
+import {SurfaceService} from './layout/services/surface.service';
+import { ClientService } from './layout/services/client.service';
+import {DetailcommandeService} from './layout/services/detailcommande.service';
 
 import {Ng2Webstorage} from 'ng2-webstorage';
-import {PopoverModule} from 'ngx-popover';
+import { ProductHistoComponent } from './shared/product-histo/product-histo.component';
+
+import { CookieService } from 'ngx-cookie-service';
+
+import {ShoppingCartService} from './layout/services/shopping-cart.service';
+import {ProduitService} from './layout/services/produit.service';
 
 @NgModule({
     declarations: [
@@ -43,7 +49,8 @@ import {PopoverModule} from 'ngx-popover';
         ProductsVendorComponent,
         DeliveryComponent,
         SettingsComponent,
-        ProductComponent
+        ProductComponent,
+        ProductHistoComponent
     ],
     imports: [
         BrowserModule,
@@ -53,10 +60,9 @@ import {PopoverModule} from 'ngx-popover';
         FormsModule,
         BrowserAnimationsModule,
         ToastModule.forRoot(),
-        Ng2Webstorage,
-        PopoverModule
+        Ng2Webstorage
     ],
-    providers: [UserService, ApiService],
+    providers: [ ShoppingCartService, CookieService, ApiService, SurfaceService, ClientService, ProduitService, DetailcommandeService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

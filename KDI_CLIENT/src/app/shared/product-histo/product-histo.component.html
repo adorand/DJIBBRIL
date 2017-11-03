@@ -1,0 +1,27 @@
+<li class="list-group-item bg-white card m-t-sm animated fadeIn">
+    <div class="row m-t-sm">
+        <div class="col-sm-1 col-xs-6 text-center">
+            <img class="" *ngIf="detail.productImg" [src]="detail.productImg" style="height: 80px;">
+        </div>
+        <div class="col-sm-8 col-xs-6 text-center-xs">
+            <div class="btn-group-vertical text-left text-center-xs text-uppercase">
+                <p><strong>{{ detail.productDesignation }}</strong></p>
+                <p><strong>{{ detail.productNamessctg }}</strong></p>
+                <p><strong>{{ detail.productNamesurface }}</strong></p>
+            </div>
+        </div>
+        <div class="col-sm-1 text-center">
+            <div class="btn-group-vertical m-t-n-sm">
+                <button type="button" class="btn bg-white btn-product-cart-plus" (click)="actionToCommande('+')"><i class="fa fa-plus"></i></button>
+                <button type="button" class="btn bg-white disabled box-shadow" >{{ detail.quantity }}</button>
+                <button type="button" class="btn  bg-white btn-product-cart-minus" (click)="actionToCommande('-')"><i class="fa fa-minus"></i></button>
+            </div>
+        </div>
+        <div class="col-sm-2 m-t-md text-right text-center-xs">
+            <p class="m-r m-r-n-xs">
+                <strong class="i-2x hidden-sm">{{ detail.quantity * detail.prix }} Fcfa</strong>
+                <strong class="visible-sm">{{ detail.quantity * detail.prix }} Fcfa</strong>
+            </p>
+        </div>
+    </div>
+</li>

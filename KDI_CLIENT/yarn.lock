@@ -158,6 +158,10 @@
   dependencies:
     tsickle "^0.21.0"
 
+"@cedx/ngx-cookies@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@cedx/ngx-cookies/-/ngx-cookies-1.3.0.tgz#499c0d067707fbaaab2a03c89d29f364937f1870"
+
 "@ngtools/json-schema@1.1.0", "@ngtools/json-schema@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@ngtools/json-schema/-/json-schema-1.1.0.tgz#c3a0c544d62392acc2813a42c8a0dc6f58f86922"
@@ -3320,9 +3324,9 @@ ng2-webstorage@^1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/ng2-webstorage/-/ng2-webstorage-1.8.0.tgz#02bac5f29cecc2b7a4dfea17d9cebc720edf6b49"
 
-ngx-popover@^0.0.16:
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/ngx-popover/-/ngx-popover-0.0.16.tgz#b2c10923fb6988fbd3ad0088ae1ca4782fd4f5f3"
+ngx-cookie-service@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/ngx-cookie-service/-/ngx-cookie-service-1.0.9.tgz#b88ef198299c93d363608545036dd38ed767b0ec"
 
 no-case@^2.2.0:
   version "2.3.1"

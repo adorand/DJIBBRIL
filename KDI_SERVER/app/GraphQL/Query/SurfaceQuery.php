@@ -34,6 +34,7 @@ class SurfaceQuery extends Query
             $query = Surface::where('code', $args['code'])->get();
         }
 
+
         return $query->map(function (Surface $surface)
         {
             return [
@@ -43,7 +44,9 @@ class SurfaceQuery extends Query
                 'created_at'  => $surface->created_at->format(Outils::formatdate()),
                 'updated_at'  => $surface->updated_at->format(Outils::formatdate()),
                 'user'        => $surface->user,
-                'categories'   => $surface->categories->map(function (Categorie $ctg){
+                'categories'   => $surface->categories->filter(function(Categorie $ctg){
+                    return $ctg->parent==null;
+                })->map(function (Categorie $ctg){
                     return [
                         'code' => $ctg->code,
                         'nom' => $ctg->nom,
@@ -56,6 +59,7 @@ class SurfaceQuery extends Query
                                 'code'         => $ssctg->code,
                                 'nom'          => $ssctg->nom,
                                 'description'  => $ssctg->description,
+                                'surface'      => $ssctg->surface,
                                 'created_at'   => $ssctg->created_at->format(Outils::formatdate()),
                                 'updated_at'   => $ssctg->updated_at->format(Outils::formatdate()),
                                 'parent'       => $ssctg->parent,

@@ -161,7 +161,7 @@
                                             </p>
                                         </div>
                                         <a>
-                                            <img src="data:image/png;base64,{{produit.image}}" alt="">
+                                            <img src="{{produit.image}}" alt="">
                                         </a>
                                     </div>
                                 </div>

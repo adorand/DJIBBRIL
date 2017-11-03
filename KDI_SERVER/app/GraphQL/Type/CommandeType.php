@@ -17,7 +17,9 @@ class CommandeType extends GraphQLType
         return [
             'code'     => [ 'type' => Type::nonNull(Type::string()), 'description' => ''],
             'etat'     => [ 'type' => Type::int(), 'description' => ''],
-            'membre'   => [ 'type' => GraphQL::type('membres'), 'description', ''],
+            'client'   => [ 'type' => GraphQL::type('clients'), 'description', ''],
+            'created_at'  => [ 'type' => Type::string(), 'description' => ''],
+            'updated_at'  => [ 'type' => Type::string(), 'description' => ''],
             'details'  => [ 'type' => Type::listOf(GraphQL::type('detailscommandes')), 'description', '']
         ];
     }

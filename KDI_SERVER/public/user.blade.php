@@ -73,7 +73,7 @@
                                                     </thead>
                                                     <tbody>
                                                     <tr ng-repeat="user in users | filter: {username :searchusernameuser } | orderBy:'-updated_at' track by $index ">
-                                                        <td><img width="50" height="50" src="data:image/png;base64,{{user.image}}" class="img-circle b-a b-light b-3x" style="border-radius: 25px;"></td>
+                                                        <td><img width="50" height="50" src="{{user.image}}" class="img-circle b-a b-light b-3x" style="border-radius: 25px;"></td>
                                                         <td>
                                                             <strong class="text-u-c text-white">{{user.username}}</strong>
                                                         </td>
@@ -127,8 +127,6 @@
                     </aside>
                 </section>
             </aside>
-            <!--List of User-->
-
         </section>
     </section>
 </section>

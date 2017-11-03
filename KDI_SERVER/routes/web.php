@@ -31,9 +31,10 @@ Route::post('/surface', 'SurfaceController@create');
 Route::delete('/surface/{code}', 'SurfaceController@delete');
 
 /*Membres*/
-Route::post('/membre', 'MembreController@create');
-//Route::get('/membre/{data}', 'MembreController@login');
-Route::delete('/membre/{code}', 'MembreController@delete');
+Route::post('/client', 'ClientController@create');
+Route::post('/front/client', 'ClientController@createjson');
+Route::post('/front/client/login', 'ClientController@login');
+Route::delete('/client/{code}', 'ClientController@delete');
 
 /*Users*/
 Route::post('/auth', 'UserController@auth');
@@ -42,6 +43,13 @@ Route::post('/front/add-user/', 'UserController@create');
 Route::get('/front/get-user/{data}', 'UserController@get');
 Route::get('/front/update-user/{data}', 'UserController@update');
 Route::get('/front/delete-user/{data}', 'UserController@delete');
+
+
+/*Detailcommande*/
+Route::post('/front/detailcommande', 'DetailcommandeController@createjson');
+Route::post('/front/detailcommande_liste', 'DetailcommandeController@createjson_liste');
+Route::post('/front/detailcommande_delete', 'DetailcommandeController@deletejson');
+
 
 /*Commande*/
 Route::post('/front/add-to-commande/{data}', 'CommandeController@create');

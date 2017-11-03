@@ -5,81 +5,83 @@
         <br/><br />
         <div class="wrapsemibox">
             <div class="semiboxshadow text-center">
-              <img src="assets/assets/images/shp.png" class="img-responsive" alt="">
+                <img [src]="'assets/images/shp.png'" class="img-responsive" alt="">
             </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination pull-right">
-                                    <li class="disabled">
-                                        <a href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li>
-                                        <a href="#" aria-label="Next">
-                                          <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
+            <div class="container">
+                <div class="row" *ngIf="produits.length > 10">
+                    <div class="col-sm-12">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination pull-right">
+                                <li class="disabled">
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true"><i class="fa fa-chevron-left"></i></span>
+                                    </a>
+                                </li>
+                                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                                <li><a href="javascript:void()" *ngFor="let pg of (produits.length%10 - 1)">{{pg}}</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true"><i class="fa fa-chevron-right"></i></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
+                </div>
 
-                    <div class="row product-section">
-                      <div class="col-lg-2 col-md-12 rayon-block scrollable">
+                <div class="row product-section">
+                    <div class="col-lg-2 col-md-12 rayon-block scrollable">
                         <div class="rayon-img col-lg-12 col-md-3 hidden-md hidden-sm hidden-xs">
-                          <img [src]="'data:image/png;base64,'+surface.image" alt="">
+                            <img *ngIf="surface.image" [src]="surface.image" alt="Logo {{surface.nom}}">
                         </div>
                         <div class="rayon-info col-lg-12 col-md-9 col-sm-12 scrollable">
-                          <div class="row">
-                            <div class="panel panel-default">
-                              <ul class="list-group">
-                                <a *ngFor="let categorie of surface.categories; let i = index" (click)="filterProducts($event,categorie.nom)" style="cursor:pointer;border-bottom: 1px solid #eeeeee">
-                                  <li  class="list-group-item list-group-item-info" *ngIf="i === 0">{{categorie.nom}}</li>
-                                  <li  class="list-group-item" *ngIf="i !== 0">{{categorie.nom}}</li>
-                                </a>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-10 col-md-12 product-block scrollable">
-                        <div class="row">
-                          <app-product *ngFor="let produit of produits" [produit]="produit" [surface]="false"></app-product>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row" *ngIf="produits.length > 8">
-                        <div class="col-sm-12">
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination pull-right">
-                                    <li class="disabled">
-                                      <a href="#" aria-label="Previous">
-                                        <span aria-hidden="true"><i class="fa fa-chevron-left"></i></span>
-                                      </a>
-                                    </li>
-                                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li>
-                                        <a href="#" aria-label="Next">
-                                          <span aria-hidden="true"><i class="fa fa-chevron-right"></i></span>
-                                        </a>
-                                    </li>
+                            <div class="row">
+                                <div class="panel panel-default">
+                                <ul class="list-group">
+                                    <a *ngFor="let categorie of surface.categories; let i = index" (click)="filterProducts($event,categorie.nom)" style="cursor:pointer;border-bottom: 1px solid #eeeeee">
+                                        <li  class="list-group-item" [ngClass]="{'list-group-item-info':i===0}">
+                                            <strong class="list-group-item-info text-u-c">{{categorie.nom}}</strong>
+                                            <br />
+                                            <a class="m-l m-t" *ngFor="let souscategorie of categorie.souscategories; let j = index" (click)="filterProducts($event,categorie.nom)" style="cursor:pointer;border-bottom: 1px solid #eeeeee">
+                                                <li  class="border-radius card list-group-item" [ngClass]="{'list-group-item-white':j===0}">
+                                                    <span class="text-u-c">{{souscategorie.nom}}</span>
+                                                </li>
+                                            </a>
+                                        </li>
+
+                                    </a>
                                 </ul>
-                            </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-md-12 product-block scrollable">
+                        <div class="row">
+                            <app-product *ngFor="let produit of produits | slice:pagination:10 " [produit]="produit" [surface]="null"></app-product>
                         </div>
                     </div>
                 </div>
+                <div class="row" *ngIf="produits.length > 10">
+                    <div class="col-sm-12">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination pull-right">
+                                <li class="disabled">
+                                  <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true"><i class="fa fa-chevron-left"></i></span>
+                                  </a>
+                                </li>
+                                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                                <li><a href="javascript:void()" *ngFor="let pg of (produits.length%10 - 1)">{{pg}}</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                      <span aria-hidden="true"><i class="fa fa-chevron-right"></i></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

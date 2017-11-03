@@ -13,10 +13,10 @@ class CreateDetailCommandesTable extends Migration
             $table->string('commande_code')->unsigned();
             $table->string('produit_code')->unsigned();
             $table->integer('quantite')->unsigned();
-
             $table->foreign('commande_code')->references('code')->on('commandes');
             $table->foreign('produit_code')->references('code')->on('produits');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

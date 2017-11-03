@@ -4,25 +4,26 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\DetailsCommande;
-use App\User;
+use App\Client;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Commande extends Model
 {
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
 
     protected $primaryKey = 'code';
-    /**
-     * Indicates if the IDs are auto-incrementing.
-     *
-     * @var bool
-     */
+
     public $incrementing = false;
 
-    public function produits() {
+    public function details()
+    {
         return $this->hasMany(DetailsCommande::class, 'commande_code', 'code');
     }
 
-    public function user() {
-        return $this->hasOne(User::class, 'code', 'membre_code');
+    public function client()
+    {
+        return $this->hasOne(Client::class, 'code', 'client_code');
     }
 
 }

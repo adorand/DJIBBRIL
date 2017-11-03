@@ -12,6 +12,7 @@ class CreateRoleUserTable extends Migration
             $table->integer('role_id')->unsigned();
             $table->string('user_code');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

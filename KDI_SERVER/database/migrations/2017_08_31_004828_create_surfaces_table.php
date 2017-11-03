@@ -15,9 +15,9 @@ class CreateSurfacesTable extends Migration
             $table->binary('image');
             $table->string('user_code');
             $table->foreign("user_code")->references('code')->on('users');
-
             $table->timestamps();
             $table->primary('code');
+            $table->softDeletes();
         });
     }
 
