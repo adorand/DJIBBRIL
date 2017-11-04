@@ -31,19 +31,19 @@
 
                 <div class="row product-section">
                     <div class="col-lg-2 col-md-12 rayon-block scrollable">
-                        <div class="rayon-img col-lg-12 col-md-3 hidden-md hidden-sm hidden-xs">
+                        <div class="rayon-img col-lg-12 col-md-3 hidden-md hidden-sm hidden-xs cursor-pointer" (click)="filterProducts()">
                             <img *ngIf="surface.image" [src]="surface.image" alt="Logo {{surface.nom}}">
                         </div>
                         <div class="rayon-info col-lg-12 col-md-9 col-sm-12 scrollable">
                             <div class="row">
                                 <div class="panel panel-default">
                                 <ul class="list-group">
-                                    <a *ngFor="let categorie of surface.categories; let i = index" (click)="filterProducts($event,categorie.nom)" style="cursor:pointer;border-bottom: 1px solid #eeeeee">
-                                        <li  class="list-group-item" [ngClass]="{'list-group-item-info':i===0}">
-                                            <strong class="list-group-item-info text-u-c">{{categorie.nom}}</strong>
+                                    <a class="cursor-pointer" *ngFor="let categorie of surface.categories; let i = index">
+                                        <li class="m-t list-group-item list-group-item-info" style="border-radius: 3px;" [ngClass]="{'list-group-item-success':i===0}">
+                                            <strong class="text-u-c" (click)="filterProducts($event,'ctg',categorie.code)">{{categorie.nom}}</strong>
                                             <br />
-                                            <a class="m-l m-t" *ngFor="let souscategorie of categorie.souscategories; let j = index" (click)="filterProducts($event,categorie.nom)" style="cursor:pointer;border-bottom: 1px solid #eeeeee">
-                                                <li  class="border-radius card list-group-item" [ngClass]="{'list-group-item-white':j===0}">
+                                            <a class="m-l m-t" *ngFor="let souscategorie of categorie.souscategories; let j = index" (click)="filterProducts('ssctg',souscategorie.code)" style="cursor:pointer;border-bottom: 1px solid #eeeeee">
+                                                <li  class="border-radius card list-group-item" style="border-radius: 3px;" [ngClass]="{'list-group-item-white':j===0}">
                                                     <span class="text-u-c">{{souscategorie.nom}}</span>
                                                 </li>
                                             </a>
