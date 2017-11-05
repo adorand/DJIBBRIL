@@ -8,6 +8,8 @@ import { CookieService } from 'ngx-cookie-service';
 import {Commande} from '../models/commande.model';
 import { DetailcommandeService } from './detailcommande.service';
 import {Client} from '../models/client.model';
+import {SousCategorie} from '../models/souscategorie.model';
+import {SouscategorieService} from './souscategorie.service';
 
 
 const CART_KEY = 'panier';
@@ -19,7 +21,8 @@ export class ShoppingCartService {
     private client: Client;
 
     public constructor(private cookies: CookieService,
-                       private detailcommandeService: DetailcommandeService) {
+                       private detailcommandeService: DetailcommandeService,
+                       private souscategorieService: SouscategorieService) {
         this.subscriptionObservable = new Observable<ShoppingCart>((observer: Observer<ShoppingCart>) => {
             this.subscribers.push(observer);
             observer.next(this.retrieve());
@@ -83,10 +86,23 @@ export class ShoppingCartService {
         const cart = new ShoppingCart();
         const items = [];
         commande.details.forEach(detail => {
-            const cartItem = new CartItem();
-            cartItem.quantity = detail.quantite;
-            cartItem.productId = detail.produit.code;
-            items.push(cartItem);
+            const item = new CartItem();
+
+            item.productId = detail.produit.code;
+            item.productDesignation = detail.produit.designation;
+
+            this.souscategorieService.get(detail.produit.categorie_code).then(souscategorie => {
+                alert('tester');
+                item.productNamessctg = souscategorie.nom;
+                item.productNamesurface = souscategorie.parent.surface.nom;
+                alert(souscategorie.nom);
+            });
+
+            item.prix = detail.produit.prix;
+
+            item.quantity = detail.quantite;
+            // item.productId = detail.produit.code;
+            items.push(item);
         });
         cart.updateFrom({ 'items': items } as ShoppingCart);
         this.save(cart);

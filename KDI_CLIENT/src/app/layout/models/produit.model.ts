@@ -7,6 +7,7 @@ export class Produit {
     quantite: number;
     prix: number;
     image: string;
+    categorie_code: string;
     created_at: string;
     updated_at: string;
     souscategorie: SousCategorie;

@@ -51,6 +51,7 @@ class ProduitQuery extends Query
                 'quantite'    => $prod->quantite,
                 'prix'        => $prod->prix,
                 'image'       => $prod->image,
+                'categorie_code'       => $prod->categorie_code,
                 'souscategorie'   => $prod->categorie,
             ];
         });

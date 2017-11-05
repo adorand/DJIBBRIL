@@ -32,6 +32,7 @@ class CategorieQuery extends Query
     {
         return [
             'code'           => ['name' => 'code', 'type' => Type::string()],
+            'ssctg'          => ['name' => 'ssctg', 'type' => Type::string()],
             'nom'            => ['name' => 'nom', 'type' => Type::string()],
             'surface_code'   => ['name' => 'surface_code', 'type' => Type::string()],
             'produits'       => ['name' => 'produits', 'type' => Type::listOf(GraphQL::type('produits'))],
@@ -50,9 +51,23 @@ class CategorieQuery extends Query
             //On récupère les cateogires propres à chaque surface et ceux ajoutés de manière globale par l'adaministrateur
             $query = $query->where('surface_code', $args['surface_code'])->orWhereNotIn('surface_code',Surface::all('user_code'));
         }
-        return $query->get()->filter(function (Categorie $ctg){
-            return $ctg->parent == null;
-        })->map(function (Categorie $ctg)
+        $query = $query->get();
+
+        // Pour récupérer soit les catégories ou soit les sous-catégories
+        if (isset($args['ssctg']))
+        {
+            $query = $query->filter(function (Categorie $ctg){
+                return $ctg->parent != null;
+            });
+        }
+        else
+        {
+            $query = $query->filter(function (Categorie $ctg){
+                return $ctg->parent == null;
+            });
+        }
+
+        return $query->map(function (Categorie $ctg)
         {
             return [
                 'code'           => $ctg->code,
@@ -60,6 +75,7 @@ class CategorieQuery extends Query
                 'description'    => $ctg->description,
                 'surface_code'   => $ctg->surface_code,
                 'surface'        => $ctg->surface,
+                'parent'         => $ctg->parent,
                 'created_at'     => $ctg->created_at->format(Outils::formatdate()),
                 'updated_at'     => $ctg->updated_at->format(Outils::formatdate()),
                 'souscategories' => $ctg->souscategories->map(function (Categorie $ssctg){

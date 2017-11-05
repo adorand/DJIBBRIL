@@ -34,6 +34,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 import {ShoppingCartService} from './layout/services/shopping-cart.service';
 import {ProduitService} from './layout/services/produit.service';
+import {SouscategorieService} from './layout/services/souscategorie.service';
 
 @NgModule({
     declarations: [
@@ -62,7 +63,7 @@ import {ProduitService} from './layout/services/produit.service';
         ToastModule.forRoot(),
         Ng2Webstorage
     ],
-    providers: [ ShoppingCartService, CookieService, ApiService, SurfaceService, ClientService, ProduitService, DetailcommandeService],
+    providers: [ ShoppingCartService, CookieService, ApiService, SurfaceService, ClientService, ProduitService, SouscategorieService, DetailcommandeService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

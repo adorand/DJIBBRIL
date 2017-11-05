@@ -43,16 +43,17 @@ export class ProductsVendorComponent implements OnInit {
 
     filterProducts(event: any = '', by = '', codeelement = '') {
 
-        /*Ajout de la classe*/
-        // document.getElementsByClassName('list-group-item-info').item(0).classList.remove('list-group-item-info');
-        // document.getElementsByClassName('list-group-item-info').item(0).classList.add('list-group-item-success');
-        /*(event.target).parent.classList.remove('list-group-item-info');
-        event.target.parent.classList.add('list-group-item-success');*/
         if (event !== '') {
-            document.getElementsByClassName('list-group-item').item(0).classList.remove('list-group-item-success');
-            document.getElementsByClassName('list-group-item').item(0).classList.add('list-group-item-info');
-            event.path[1].classList.remove('list-group-item-info');
-            event.path[1].classList.add('list-group-item-success');
+             console.log(document.getElementsByClassName('list-group-item-success').length);
+            for (let i = 0 ; i < document.getElementsByClassName('list-group-item-success').length; i++) {
+                document.getElementsByClassName('list-group-item-success').item(i).classList.add('list-group-item-info');
+                document.getElementsByClassName('list-group-item-success').item(i).classList.remove('list-group-item-success');
+            }
+            const pathparent = by === 'ssctg' ? 3 : 1;
+            // document.getElementsByClassName('list-group-item-success').item(0).classList.remove('list-group-item-success');
+            // document.getElementsByClassName('list-group-item').item(0).classList.add('list-group-item-info');
+            event.path[pathparent].classList.remove('list-group-item-info');
+            event.path[pathparent].classList.add('list-group-item-success');
         }
 
         this.produits = [];

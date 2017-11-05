@@ -6,6 +6,9 @@ import {CartItem} from '../../layout/models/cart-item.model';
 import {ShoppingCartService} from '../../layout/services/shopping-cart.service';
 import {Produit} from '../../layout/models/produit.model';
 import {ProduitService} from '../../layout/services/produit.service';
+import {SousCategorie} from '../../layout/models/souscategorie.model';
+import {Categorie} from '../../layout/models/categorie.model';
+import {Surface} from '../../layout/models/surface.model';
 
 @Component({
   selector: 'app-product-histo',
@@ -22,33 +25,25 @@ export class ProductHistoComponent implements OnInit {
 
     ngOnInit() {
 
-        this.shoppingCartService.get().forEach(value => {
+        /*this.shoppingCartService.get().forEach(value => {
             this.panier = value;
             let existe = false;
             this.panier.items.forEach(item => {
                 if (item.productId === this.detail.productId) {
-                    this.detail = item;
-                    this.getimage();
+                    this.detail.quantity = item.quantity;
                     existe = true;
                 }
             });
             existe === false ? this.detail = new CartItem() : '' ;
-        });
+        });*/
     }
-
-
-    getimage(): void {
-        this.produitService.getimage(this.detail.productId).then(image => this.detail.productImg = image);
-        //return this.detail.productImg;
-    }
-
 
 
     actionToCommande(action: string) {
         const prod = new Produit();
         prod.code = this.detail.productId;
         prod.designation = this.detail.productDesignation;
-        this.detail = this.shoppingCartService.actionItem(prod, action);
+        this.detail.quantity = this.shoppingCartService.actionItem(prod, action).quantity;
     }
 
 }

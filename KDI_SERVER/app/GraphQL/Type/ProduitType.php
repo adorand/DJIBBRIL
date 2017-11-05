@@ -24,6 +24,7 @@ class ProduitType extends GraphQLType
             'quantite'       => [ 'type' => Type::float(), 'description' => ''],
             'prix'           => [ 'type' => Type::float(), 'description' => ''],
             'image'          => [ 'type' => Type::string(), 'description' => ''],
+            'categorie_code'       => [ 'type' => Type::string(), 'description' => ''],
             'souscategorie'  => [ 'type' => GraphQL::type('categories'), 'description' => '']
         ];
     }

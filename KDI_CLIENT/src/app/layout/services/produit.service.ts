@@ -8,7 +8,7 @@ import {environment} from '../../../environments/environment';
 @Injectable()
 export class ProduitService
 {
-    constructor(private http: Http,private cookies: CookieService) {}
+    constructor(private http: Http, private cookies: CookieService) {}
 
     url: string;
     getall(): Promise<Produit[]> {
@@ -20,12 +20,12 @@ export class ProduitService
     }
 
 
-    getimage(code: string): Promise<string> {
-        this.url = '{produits(code:"' + code + '"){image}}';
+    getinfos(code: string, reqinfos): Promise<Produit> {
+        this.url = '{produits(code:"' + code + '"){ ' + reqinfos + '}}';
 
         return this.http.get(environment.api + this.url)
             .toPromise()
-            .then(response => (response.json().data.produits[0] as Produit).image)
+            .then(response => (response.json().data.produits[0] as Produit))
             .catch(this.handleError);
     }
 

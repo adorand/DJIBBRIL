@@ -35,6 +35,8 @@ export class HeaderComponent implements OnInit {
         };
         this.router.events.subscribe((evt) => {
             if (evt instanceof NavigationEnd) {
+
+                console.log(location.href);
                 this.router.navigated = false;
             }
         });
@@ -44,6 +46,7 @@ export class HeaderComponent implements OnInit {
 
         /*Pour afficher le nom du produit recherhé dans la barre de recherche lorsqu'il y a un rechargement*/
         if (location.href.indexOf('home') !== -1) {
+
             this.produitservice.nomproduit_cookie('');
         }
         this.nomproduit = this.cookieService.check('nomproduit') ? this.cookieService.get('nomproduit') : '' ;
