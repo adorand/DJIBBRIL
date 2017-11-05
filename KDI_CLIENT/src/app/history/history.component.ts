@@ -7,6 +7,7 @@ import {ShoppingCart} from '../layout/models/shopping-cart.model';
 import {SurfaceService} from '../layout/services/surface.service';
 import {Surface} from '../layout/models/surface.model';
 import {ProduitService} from '../layout/services/produit.service';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-history',
@@ -16,20 +17,27 @@ export class HistoryComponent implements OnInit {
 
     panier: ShoppingCart;
     details: any[];
-    private surfaces: Surface[];
+    total: number;
+    pagination: number;
+    parpages: number = 3;
+    pages: any;
 
-
-    constructor(private surfaceservice: SurfaceService, private produitservice: ProduitService,
-                private shoppingCartService: ShoppingCartService) {
-
-    }
+    constructor(private produitservice: ProduitService, private shoppingCartService: ShoppingCartService) {}
 
     ngOnInit() {
 
+        this.pagination = 1;
+
         let unefois = false;
+        this.total = 0;
         this.shoppingCartService.get().forEach(value => {
             this.panier = value;
+            this.panier.items.forEach(item => {
+               this.total += item.quantity * item.prix;
+            });
 
+            // On récupère les informations sur le panier, juste la première fois et ensuite les changements sont détectés
+            // depuis product-histo
             if (unefois === false) {
                 this.details = [];
                 this.panier.items.forEach(item => {
@@ -41,35 +49,21 @@ export class HistoryComponent implements OnInit {
                         this.details.push(item);
                     });
                 });
+
+
+
+                const nb: number =  Math.round( (this.panier.items.length / this.parpages) );
+                console.log("array =>" + (this.panier.items.length / this.parpages));
+                this.pages = Array(nb ).fill(nb ).map((x, i) => i);
+
                 unefois = true;
             }
         });
     }
 
-    getDetail(productId: string): any {
-        let det ;
-        let surface_existe=false ;
-        this.panier.items.forEach(item => {
+    setpagination(pagination: number) {
 
-            if (!surface_existe) {
-                this.surfaceservice.getall('').then(surfaces => {
-                    this.surfaces = surfaces;
-                });
-                surface_existe = true;
-            }
-            else this.surfaces.forEach((surface, surf) => {
-                surface.categories.forEach((categorie, ctg) => {
-                    categorie.souscategories.forEach((souscategorie, ssctg) => {
-                        souscategorie.produits.forEach((produit, prod) => {
-                            if (produit.code === item.productId && item.productId === productId) {
-                                det = { 'produit': produit, 'surface': surface };
-                            }
-                        });
-                    });
-                });
-            });
-        });
-        return det;
+        this.pagination = pagination;
     }
 
 }

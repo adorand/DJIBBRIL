@@ -23,11 +23,12 @@ export class ProductComponent implements OnInit {
     cartItem: CartItem;
     detailcommande: DetailCommande;
 
+
+    // TODO: INTÉGRATION DU MODULE AJOUT A LA LISTE ET PAGINATION AU NIVEAU DES PRODUITS
+
     nom: string;
 
-    constructor(
-        private cookies: CookieService,
-        private shoppingCartService: ShoppingCartService) { }
+    constructor( private cookies: CookieService, private shoppingCartService: ShoppingCartService) { }
 
     ngOnInit() {
         this.client = this.cookies.check('client') ? JSON.parse(this.cookies.get('client')) as Client : null;

@@ -36,6 +36,7 @@ export class ProductHistoComponent implements OnInit {
             });
             existe === false ? this.detail = new CartItem() : '' ;
         });*/
+
     }
 
 

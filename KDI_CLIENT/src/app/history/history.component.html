@@ -28,19 +28,17 @@
                     <div class="text-center col-xs-12 m-t">
                         <div class="text-u-c">
                           <a href="#" class="btn btn-sm btn-primary m-r card">
-                            <strong class="hidden-xs">Total :</strong> 20 000 Fcfa <i class="fa fa-book"></i>
+                            <strong class="hidden-xs">Total : {{total}} Fcfa</strong>  <i class="fa fa-book"></i>
                           </a>
                           <strong><span class="">Livré  Le </span>18/08/2017 à 15H30</strong>
                         </div>
                         <br/>
                         <ul class=" pagination pagination bg-primary m-t">
-                            <li><a href="#"><i class="fa fa-chevron-left "></i></a></li>
-                            <li><a href="#" >1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li class="active"><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+                            <li ><a><i class="fa fa-chevron-left "></i></a></li>
+                            <li *ngFor="let page of pages" class="cursor-pointer" [ngClass]="{'active': this.pagination === page + 1 }">
+                                <a (click)="setpagination(page+1)" >{{page+1}}</a>
+                            </li>
+                            <li><a><i class="fa fa-chevron-right"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -48,7 +46,7 @@
                     <div class=" m-r m-l">
                         <ul class="list-group gutter list-group-lg list-group-sp sortable">
 
-                            <app-product-histo *ngFor="let detail of details" [detail]="detail" [liste]="false"></app-product-histo>
+                            <app-product-histo *ngFor="let detail of details | slice:(pagination - 1):(pagination * parpages )" [detail]="detail" [liste]="false"></app-product-histo>
 
                         </ul>
                     </div>
