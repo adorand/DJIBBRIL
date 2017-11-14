@@ -58,7 +58,7 @@
                     </div>
                     <div class="col-lg-10 col-md-12 product-block scrollable">
                         <div class="row">
-                            <app-product *ngFor="let produit of produits | slice:pagination:10 " [produit]="produit" [surface]="null"></app-product>
+                            <app-product *ngFor="let produit of produits | slice:pagination:10 " [produit]="produit" [surface]="null" [listes]="listes"></app-product>
                         </div>
                     </div>
                 </div>

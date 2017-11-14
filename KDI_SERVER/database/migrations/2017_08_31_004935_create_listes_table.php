@@ -10,8 +10,7 @@ class CreateListesTable extends Migration
     {
         Schema::create('listes', function (Blueprint $table) {
             $table->string('code');
-            $table->string('libelle');
-            $table->integer('etat');
+            $table->string('nom');
             $table->string('client_code')->nullable();
             $table->foreign("client_code")->references('code')->on('clients');
             $table->timestamps();

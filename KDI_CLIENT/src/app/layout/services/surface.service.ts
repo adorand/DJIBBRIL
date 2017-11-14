@@ -5,11 +5,12 @@ import { Headers, Http, URLSearchParams } from '@angular/http';
 import { Surface } from '../models/surface.model';
 import {environment} from '../../../environments/environment';
 import {CookieService} from 'ngx-cookie-service';
+import {OutilsService} from './Outils.service';
 
 @Injectable()
 export class SurfaceService {
 
-    constructor(private http: Http, private cookies: CookieService)
+    constructor(private http: Http, private outilsService: OutilsService, private cookies: CookieService)
     {}
 
     private urlgraphql = '/graphql?query=';
@@ -26,22 +27,11 @@ export class SurfaceService {
         return this.http.get(environment.api + this.getreq(code))
             .toPromise()
             .then(response => response.json().data.surfaces as Surface[])
-            .catch(this.handleError);
+            .catch(this.outilsService.handleError);
     }
 
     activatedsurface(codesurface: string): void {
         this.cookies.set('activatedsurface', codesurface, null, '/');
     }
-
-
-    private handleError(error: any): Promise<any> {
-        console.error('Une erreur est survenue -> ', error);
-        return Promise.reject(error.message || error);
-    }
-
-
-
-
-
 
 }

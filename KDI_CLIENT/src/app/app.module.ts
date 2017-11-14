@@ -13,7 +13,6 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { SidebarFormComponent } from './layout/sidebar-form/sidebar-form.component';
-import { ModalComponent } from './layout/modal/modal.component';
 import { HistoryComponent } from './history/history.component';
 import { ListComponent } from './list/list.component';
 import { ProductsSearchComponent } from './products-search/products-search.component';
@@ -36,6 +35,13 @@ import {ShoppingCartService} from './layout/services/shopping-cart.service';
 import {ProduitService} from './layout/services/produit.service';
 import {SouscategorieService} from './layout/services/souscategorie.service';
 import {PopoverModule} from 'ngx-popover';
+import {ModalService} from './layout/services/modal.service';
+import {ModalComponent} from './layout/modal/modal.component';
+import {ListeService} from './layout/services/liste.service';
+import {OutilsService} from './layout/services/Outils.service';
+import { ListCardComponent } from './shared/list-card/list-card.component';
+import {OrderModule} from 'ngx-order-pipe';
+import {DetaillisteService} from './layout/services/detailliste.service';
 
 
 @NgModule({
@@ -45,7 +51,6 @@ import {PopoverModule} from 'ngx-popover';
         FooterComponent,
         HomeComponent,
         SidebarFormComponent,
-        ModalComponent,
         HistoryComponent,
         ListComponent,
         ProductsSearchComponent,
@@ -53,7 +58,9 @@ import {PopoverModule} from 'ngx-popover';
         DeliveryComponent,
         SettingsComponent,
         ProductComponent,
-        ProductHistoComponent
+        ProductHistoComponent,
+        ModalComponent,
+        ListCardComponent
     ],
     imports: [
         BrowserModule,
@@ -64,9 +71,10 @@ import {PopoverModule} from 'ngx-popover';
         BrowserAnimationsModule,
         ToastModule.forRoot(),
         Ng2Webstorage,
-        PopoverModule
+        PopoverModule,
+        OrderModule
     ],
-    providers: [ ShoppingCartService, CookieService, ApiService, SurfaceService, ClientService, ProduitService, SouscategorieService, DetailcommandeService],
+    providers: [ ShoppingCartService, CookieService, ApiService, SurfaceService, ClientService, ProduitService, SouscategorieService, DetailcommandeService, ListeService, OutilsService, ModalService, DetaillisteService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

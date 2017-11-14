@@ -104,7 +104,7 @@ class ClientController extends Controller
         // Pour enrégistrer le Panier
         $this->save_panier($panier,$client->code);
 
-        $path = '{ clients(email: "'.$email.'",password: "'.$password.'") {code, nom, email, telephone, password, image, created_at, updated_at,commandes{code,etat,details{id,quantite,produit{code,designation,prix,quantite, categorie_code},created_at,updated_at}}, listes{code,libelle,etat}}}';
+        $path = '{ clients(email: "'.$email.'",password: "'.$password.'") {code, nom, email, telephone, password, image, created_at, updated_at,commandes{code,etat,details{id,quantite,produit{code,designation,prix,quantite, categorie_code},created_at,updated_at}}, listes{code,nom,created_at,updated_at}}}';
         return redirect('graphql?query='.urlencode($path));
     }
 
@@ -143,6 +143,7 @@ class ClientController extends Controller
     public function delete($code)
     {
         $client = Client::where('code', $code)->first();
-        return json_encode($client->delete());
+        $client->delete();
+        return "".$client->trashed();
     }
 }

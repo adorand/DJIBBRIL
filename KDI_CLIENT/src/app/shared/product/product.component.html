@@ -1,5 +1,5 @@
-<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 img-product animated zoomIn">
-    <div class="panel panel-default card border-card ">
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 img-product">
+    <div class="panel panel-default card border-card">
         <div class="floation-img" *ngIf="surface">
             <div class="rayon-logo">
                 <img class="img-responsive img-rounded" [src]="surface.image" alt="">
@@ -8,70 +8,28 @@
         <div class="panel-body">
             <img *ngIf="produit" [src]="produit.image" alt="Produit Image">
             <div class="pull-right small-btn dropup">
-                <a class="btn btn-default dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown">
+                <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
                 </a>
-                <ul class="dropdown-menu animated dropdown-menu-left fadeInLeft">
+                <ul class="dropdown-menu animated fadeInLeft" data-close-onclick="true">
                     <li class="panel panel-default list-courses scrollable">
-                        <div class="list-group">
-                            <div class="list-group-item">
-                                <span class="text-ellipsis m-l-n-sm " data-toggle="tooltip" title="Liste courses 1 fdf" data-placement="left">
-                                    <a href="javascript:void(0);" class="btn btn-product-cart-plus" >
+                        <div class="list-group m-t">
+                            <div class="list-group-item" *ngFor="let liste of listes">
+                                <span class="text-ellipsis m-l-n-sm m-t-n" data-toggle="tooltip" title="{{liste.nom}}" data-placement="left">
+                                    <a (click)="actionToListe('+', liste.code, $event)" class="btn btn-product-cart-plus m-t" >
                                         <i class="fa fa-plus"></i>
+                                        <ng-container *ngFor="let detailliste of liste.details; let i=index">
+                                            <span class="badge badge-sm up bg-danger" *ngIf="detailliste.produit.code===produit.code">
+                                                {{detailliste.quantite }}
+                                            </span>
+                                        </ng-container>
                                     </a>
-                                    Liste courses 1 fdf
-                                </span>
-                            </div>
-                            <div class="list-group-item">
-                                <span class="text-ellipsis m-l-n-sm " data-toggle="tooltip" title="Liste courses 1 fdf" data-placement="left">
-                                    <a href="javascript:void(0);" class="btn btn-product-cart-plus" >
-                                        <i class="fa fa-plus"></i>
-                                    </a>
-                                    Liste courses 1 fdf
-                                </span>
-                            </div>
-                            <div class="list-group-item">
-                                <span class="text-ellipsis m-l-n-sm " data-toggle="tooltip" title="Liste courses 1 fdf" data-placement="left">
-                                    <a href="javascript:void(0);" class="btn btn-product-cart-plus" >
-                                        <i class="fa fa-plus"></i>
-                                    </a>
-                                    Liste courses 1 fdf
-                                </span>
-                            </div>
-                            <div class="list-group-item">
-                                <span class="text-ellipsis m-l-n-sm " data-toggle="tooltip" title="Liste courses 1 fdf" data-placement="left">
-                                    <a href="javascript:void(0);" class="btn btn-product-cart-plus" >
-                                        <i class="fa fa-plus"></i>
-                                    </a>
-                                    Liste courses 1 fdf
+                                    {{liste.nom}}
                                 </span>
                             </div>
                         </div>
                     </li>
                 </ul>
-                <!--<a class="btn btn-default " href="javascript:void(0)" [popover]="content" popoverTitle='Ajout a la liste' popoverPlacement="left">-->
-                    <!--<i class="fa fa-ellipsis-h" aria-hidden="true"></i>-->
-
-                <!--</a>-->
-                <!--<popover-content #content>-->
-                    <!--<div class="form-inline" style="width: 140px; text-align: center;"><div class="form-group"><select class="form-control bg-primary" style="width: 70px;"><option>List</option><option>Liste course 1</option><option>Liste course 2</option><option>Liste course 3</option><option>Liste course 4</option></select>&nbsp;<button class="btn btn-default"><i class="fa fa-plus"></i></button></div></div>-->
-                    <!--&lt;!&ndash;<div class="" style="width: 150px;height: 100%">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
-                            <!--&lt;!&ndash;&lt;!&ndash;<div class="col-xs-9">&ndash;&gt;&ndash;&gt;-->
-                            <!--&lt;!&ndash;&lt;!&ndash;<select name="liste" id="" class="form-control" [(ngModel)]="selectedListe">&ndash;&gt;&ndash;&gt;-->
-                            <!--&lt;!&ndash;&lt;!&ndash;<option value="" selected>-&#45;&#45;Listes-&#45;&#45;</option>&ndash;&gt;&ndash;&gt;-->
-                            <!--&lt;!&ndash;&lt;!&ndash;<option *ngFor="let data of user[0].listes" [value]="data.code">&ndash;&gt;&ndash;&gt;-->
-                            <!--&lt;!&ndash;&lt;!&ndash;<span class="text-ellipsis" title="{{data.libelle}}" data-toggle="tooltip" data-placement="bottom" data-html="true">{{data.libelle}}</span>&ndash;&gt;&ndash;&gt;-->
-                            <!--&lt;!&ndash;&lt;!&ndash;</option>&ndash;&gt;&ndash;&gt;-->
-                            <!--&lt;!&ndash;&lt;!&ndash;</select>&ndash;&gt;&ndash;&gt;-->
-                            <!--&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
-                            <!--&lt;!&ndash;&lt;!&ndash;<div class="col-xs-3 row">&ndash;&gt;&ndash;&gt;-->
-                            <!--&lt;!&ndash;&lt;!&ndash;<button class="btn btn-default" (click)="addToListe()"><i class="fa fa-plus"></i></button>&ndash;&gt;&ndash;&gt;-->
-                            <!--&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
-                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                <!--</popover-content>-->
-
             </div>
         </div>
         <div class="panel-footer">
@@ -95,3 +53,5 @@
         </div>
     </div>
 </div>
+
+

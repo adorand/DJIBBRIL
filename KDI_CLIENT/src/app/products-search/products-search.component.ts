@@ -7,6 +7,8 @@ import {SurfaceService} from '../layout/services/surface.service';
 import {CookieService} from 'ngx-cookie-service';
 import {isUndefined} from 'util';
 import {ProduitService} from '../layout/services/produit.service';
+import {Liste} from '../layout/models/liste.model';
+import {ListeService} from '../layout/services/liste.service';
 
 @Component({
   selector: 'app-products-search',
@@ -17,6 +19,7 @@ export class ProductsSearchComponent implements OnInit, DoCheck {
     public surfaces: Surface[];
     public surface: Surface;
     public produits: Produit[];
+    public listes: Liste[];
     nomproduit: string;
     codesurface: string;
 
@@ -26,9 +29,13 @@ export class ProductsSearchComponent implements OnInit, DoCheck {
         private route: ActivatedRoute,
         private surfaceservice: SurfaceService,
         private produitservice: ProduitService,
-        private cookieService: CookieService
+        private cookieService: CookieService,
+        private listeService: ListeService
     ) {
         this.route.params.subscribe(params => this.nomproduit = params['produit']);
+        this.listeService.getall((JSON.parse(this.cookieService.get('client'))).code).then(listes => {
+            this.listes = listes;
+        });
 
     }
 

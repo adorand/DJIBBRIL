@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class DetailsListe extends Model
 {
     use SoftDeletes;
-    protected $dates=['deleted_at'];
+    protected $dates = ['deleted_at'];
 
     public function produit()
     {

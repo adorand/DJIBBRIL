@@ -4,11 +4,12 @@ import { Produit } from '../models/produit.model';
 import {CookieService} from 'ngx-cookie-service';
 import {Http} from '@angular/http';
 import {environment} from '../../../environments/environment';
+import {OutilsService} from './Outils.service';
 
 @Injectable()
 export class ProduitService
 {
-    constructor(private http: Http, private cookies: CookieService) {}
+    constructor(private http: Http, private outilsService: OutilsService, private cookies: CookieService) {}
 
     url: string;
     getall(): Promise<Produit[]> {
@@ -26,13 +27,6 @@ export class ProduitService
         return this.http.get(environment.api + this.url)
             .toPromise()
             .then(response => (response.json().data.produits[0] as Produit))
-            .catch(this.handleError);
+            .catch(this.outilsService.handleError);
     }
-
-
-    private handleError(error: any): Promise<any> {
-        console.error('Une erreur est survenue -> ', error);
-        return Promise.reject(error.message || error);
-    }
-
 }

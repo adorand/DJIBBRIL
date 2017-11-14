@@ -9,6 +9,7 @@ import {environment} from '../../../environments/environment';
 import {ShoppingCart} from '../models/shopping-cart.model';
 import {ShoppingCartService} from './shopping-cart.service';
 import {CookieService} from 'ngx-cookie-service';
+import {OutilsService} from './Outils.service';
 
 @Injectable()
 export class ClientService {
@@ -20,12 +21,13 @@ export class ClientService {
 
     panier: ShoppingCart;
 
-    constructor(private http: Http, public toastr: ToastsManager, private shoppingCartService: ShoppingCartService, private cookies: CookieService)
+    constructor(private http: Http, private outilsService: OutilsService, public toastr: ToastsManager, private shoppingCartService: ShoppingCartService, private cookies: CookieService)
     {
         this.shoppingCartService.get().forEach(value => {
             this.panier = value;
         });
     }
+
 
     login(email: string, password: string): Promise<Client> {
         const data = new URLSearchParams();
@@ -34,20 +36,21 @@ export class ClientService {
         data.append('panier', JSON.stringify(this.panier.items));
         return this.http.post(environment.front + 'client/login', data).toPromise()
             .then(response => {
-                //this.toastr.success('You are awesome!', 'Success!');
                 return response.json().data.clients[0] as Client;
             })
-            .catch(this.handleError);
+            .catch(this.outilsService.handleError);
     }
+
 
     client_cookie(client: Client): void {
         this.cookies.set('client', JSON.stringify(client), null, '/');
     }
 
-    save(membre: Client) {
+
+    save(client: Client) {
         const data = new URLSearchParams();
-        data.append('data', JSON.stringify(membre));
-        return this.http.post(environment.front + 'client', data ).toPromise().then(res => res.json().data.membres[0]  as Client);
+        data.append('data', JSON.stringify(client));
+        return this.http.post(environment.front + 'client', data ).toPromise().then(res => res.json().data.clients[0]  as Client);
     }
 
 
@@ -56,27 +59,18 @@ export class ClientService {
         return this.http.get(url)
             .toPromise()
             .then(response => response.json().data as Client)
-            .catch(this.handleError);
+            .catch(this.outilsService.handleError);
     }
+
 
     delete(code: string): Promise<void> {
         const url = `${environment.api}/${code}`;
         return this.http.delete(url, {headers: this.headers})
             .toPromise()
             .then(() => null)
-            .catch(this.handleError);
+            .catch(this.outilsService.handleError);
     }
 
-
-
-    // save(user: Client): void{
-    //     // this.httpcli.post('/ext/add-user/',JSON.stringify(user)).subscribe(data => {
-    //     //     console.log(data);
-    //     // });
-    //
-    //     this.toastr.success('You are awesome!', 'Success!');
-    //
-    // }
 
     update(user: Client): Promise<Client> {
         const url = `${environment.api}/${user.code}`;
@@ -84,12 +78,7 @@ export class ClientService {
             .put(url, JSON.stringify(user), {headers: this.headers})
             .toPromise()
             .then(() => user)
-            .catch(this.handleError);
-    }
-
-    private handleError(error: any): Promise<any> {
-        console.error('Une erreur est survenue -> ', error);
-        return Promise.reject(error.message || error);
+            .catch(this.outilsService.handleError);
     }
 
 }

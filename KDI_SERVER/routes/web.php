@@ -47,6 +47,8 @@ Route::get('/front/delete-user/{data}', 'UserController@delete');
 
 /*Detailcommande*/
 Route::post('/front/detailcommande', 'DetailcommandeController@createjson');
+
+
 Route::post('/front/detailcommande_liste', 'DetailcommandeController@createjson_liste');
 Route::post('/front/detailcommande_delete', 'DetailcommandeController@deletejson');
 
@@ -58,9 +60,13 @@ Route::put('/front/update-commande/{data}', 'CommandeController@update');
 Route::delete('/front/delete-commande/{data}', 'CommandeController@delete');
 
 /*Liste*/
-Route::post('/front/add-liste/{data}', 'ListeController@create');
+Route::post('/front/liste', 'ListeController@createjson');
+
+
+/*Detailliste*/
+Route::post('/front/detailliste', 'DetaillisteController@createjson');
+
 Route::post('/front/add-to-liste/{data}', 'ListeController@addToListe');
 Route::put('/front/update-liste/{data}', 'ListeController@update');
-Route::delete('/front/delete-liste/{data}', 'ListeController@delete');
 /*Surface*/
 Route::resource('users', 'UsersController');

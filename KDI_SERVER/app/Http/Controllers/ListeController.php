@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\DetailsListe;
 use App\Liste;
+use App\Outils;
 use App\Produit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class ListeController extends Controller
 {
@@ -13,24 +15,31 @@ class ListeController extends Controller
     {
         //$this->middleware('guest');
     }
-    public function create($data) {
-        $liste_json = json_decode($data);
 
+    public function createjson() {
+        $data = json_decode(Input::get('data'));
         $code = '';
-        do {
-            $code = substr(str_shuffle(env('CODE_POOL')), 0, env('CODE_LENGTH'));
+
+        if(!empty($code))
             $liste = Liste::where('code', $code)->first();
-        } while($liste != null);
+        else
+        {
+            do
+            {
+                $code = Outils::generatecode();
+                $liste = Liste::where('code', $code)->first();
+            }
+            while($liste != null);
+            $liste = new Liste();
+            $liste->code = $code;
+        }
 
-        $liste = new Liste();
-        $liste->code = $code;
-        if ($liste_json->libelle) $liste->libelle = $liste_json->libelle;
-        $liste->client_code = $liste_json->userCode;
-        $liste->etat = 0;
-
+        $liste->nom = $data->nom;
+        $liste->client_code = Input::get('client_code');
         $liste->save();
 
-        return json_encode($liste);
+        $path = '{listes(code: "' . $liste->code . '" ) {code, nom, client{code},created_at,updated_at,details{id,quantite,produit{code,designation,prix, image } } } } ';
+        return redirect('graphql?query='.urlencode($path));
     }
 
     public function addToListe($data)

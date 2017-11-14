@@ -5,6 +5,8 @@ import {Produit} from '../layout/models/produit.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
 import {SurfaceService} from '../layout/services/surface.service';
+import {ListeService} from '../layout/services/liste.service';
+import {Liste} from '../layout/models/liste.model';
 
 @Component({
     selector: 'app-products-vendor',
@@ -15,14 +17,20 @@ export class ProductsVendorComponent implements OnInit {
     public surfaces: Surface[];
     public surface: Surface;
     public produits: Produit[];
+    public listes: Liste[];
     public pagination: number;
 
     constructor(
         private router: Router,
         private route: ActivatedRoute,
         private cookieService: CookieService,
-        private surfaceservice: SurfaceService
-    ) {}
+        private surfaceservice: SurfaceService,
+        private listeService: ListeService
+    ) {
+        this.listeService.getall((JSON.parse(this.cookieService.get('client'))).code).then(listes => {
+            this.listes = listes;
+        });
+    }
 
     ngOnInit() {
         this.surface = new Surface();

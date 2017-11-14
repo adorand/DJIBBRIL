@@ -3,8 +3,6 @@
 namespace App\GraphQL\Query;
 use App\Commande;
 use App\DetailsCommande;
-use App\Client;
-use App\Produit;
 use App\Outils;
 use GraphQL;
 use GraphQL\Type\Definition\Type;

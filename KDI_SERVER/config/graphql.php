@@ -1,23 +1,25 @@
 <?php
-use \App\GraphQL\Type\CategorieType;
+
+use \App\GraphQL\Type\ProduitType;
 use \App\GraphQL\Type\SouscategorieType;
+use \App\GraphQL\Type\CategorieType;
 use \App\GraphQL\Type\SurfaceType;
 use \App\GraphQL\Type\ClientType;
 use \App\GraphQL\Type\DetailsCommandeType;
 use \App\GraphQL\Type\CommandeType;
 use \App\GraphQL\Type\DetailsListeType;
-use \App\GraphQL\Type\ProduitType;
 use \App\GraphQL\Type\ListeType;
 use \App\GraphQL\Type\UserType;
 use \App\GraphQL\Type\RoleType;
 
 use App\GraphQL\Query\ProduitQuery;
-use App\GraphQL\Query\CategorieQuery;
 use App\GraphQL\Query\SouscategorieQuery;
+use App\GraphQL\Query\CategorieQuery;
 use App\GraphQL\Query\SurfaceQuery;
 use App\GraphQL\Query\ClientQuery;
 use App\GraphQL\Query\DetailsCommandeQuery;
 use App\GraphQL\Query\CommandeQuery;
+use App\GraphQL\Query\DetailsListeQuery;
 use App\GraphQL\Query\ListeQuery;
 use App\GraphQL\Query\UserQuery;
 use App\GraphQL\Query\RoleQuery;
@@ -51,14 +53,15 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-                'categories' => CategorieQuery::class,
                 'souscategories' => SouscategorieQuery::class,
+                'categories' => CategorieQuery::class,
+                'surfaces' => SurfaceQuery::class,
                 'produits' => ProduitQuery::class,
                 'clients' => ClientQuery::class,
-                'commandes' => CommandeQuery::class,
                 'detailscommandes' => DetailsCommandeQuery::class,
+                'commandes' => CommandeQuery::class,
+                'detailslistes' => DetailsListeQuery::class,
                 'listes' => ListeQuery::class,
-                'surfaces' => SurfaceQuery::class,
                 'users' => UserQuery::class,
                 'roles' => RoleQuery::class,
             ],
@@ -69,15 +72,15 @@ return [
     ],
 
     'types' => [
-        'categories' => CategorieType::class,
         'souscategories' => SouscategorieType::class,
+        'categories' => CategorieType::class,
         'produits' => ProduitType::class,
+        'surfaces' => SurfaceType::class,
         'clients' => ClientType::class,
         'detailscommandes' => DetailsCommandeType::class,
         'commandes' => CommandeType::class,
         'detailslistes' => DetailsListeType::class,
         'listes' => ListeType::class,
-        'surfaces' => SurfaceType::class,
         'users' => UserType::class,
         'roles' => RoleType::class,
     ],

@@ -51,7 +51,7 @@
                     <div class="col-lg-10 col-md-12 product-block">
 
                         <div class="row">
-                            <app-product *ngFor="let produit of produits" [produit]="produit" [surface]="getsurfaceofproduit(produit.souscategorie.code)"></app-product>
+                            <app-product *ngFor="let produit of produits" [produit]="produit" [surface]="getsurfaceofproduit(produit.souscategorie.code)" [listes]="listes"></app-product>
                         </div>
                     </div>
                 </div>

@@ -26,6 +26,7 @@
     "ng2-toastr": "^4.1.2",
     "ng2-webstorage": "^1.8.0",
     "ngx-cookie-service": "^1.0.9",
+    "ngx-order-pipe": "^1.1.0",
     "ngx-popover": "0.0.16",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.18"
