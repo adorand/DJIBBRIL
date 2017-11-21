@@ -37,6 +37,7 @@ class DetailsListeQuery extends Query
                 'id'         => $detailsListe->id,
                 'produit'    => $detailsListe->produit,
                 'quantite'   => $detailsListe->quantite,
+                'liste_code' => $detailsListe->liste_code,
                 'liste'      => $detailsListe->liste,
                 'created_at' => $detailsListe->created_at->format(Outils::formatdate()),
                 'updated_at' => $detailsListe->updated_at->format(Outils::formatdate()),

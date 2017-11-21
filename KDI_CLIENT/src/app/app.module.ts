@@ -5,7 +5,6 @@ import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ToastModule} from 'ng2-toastr/ng2-toastr';
 
 
 import { AppComponent } from './app.component';
@@ -42,6 +41,10 @@ import {OutilsService} from './layout/services/Outils.service';
 import { ListCardComponent } from './shared/list-card/list-card.component';
 import {OrderModule} from 'ngx-order-pipe';
 import {DetaillisteService} from './layout/services/detailliste.service';
+import { ProductListeComponent } from './shared/list-card/product-liste/product-liste.component';
+import {ListeobservableService} from './layout/services/Listeobservable.service';
+import {NotificationService} from './layout/services/notification.service';
+import { ToasterModule } from 'angular2-toaster';
 
 
 @NgModule({
@@ -60,7 +63,8 @@ import {DetaillisteService} from './layout/services/detailliste.service';
         ProductComponent,
         ProductHistoComponent,
         ModalComponent,
-        ListCardComponent
+        ListCardComponent,
+        ProductListeComponent
     ],
     imports: [
         BrowserModule,
@@ -69,12 +73,12 @@ import {DetaillisteService} from './layout/services/detailliste.service';
         AppRoutingModule,
         FormsModule,
         BrowserAnimationsModule,
-        ToastModule.forRoot(),
         Ng2Webstorage,
         PopoverModule,
-        OrderModule
+        OrderModule,
+        ToasterModule
     ],
-    providers: [ ShoppingCartService, CookieService, ApiService, SurfaceService, ClientService, ProduitService, SouscategorieService, DetailcommandeService, ListeService, OutilsService, ModalService, DetaillisteService],
+    providers: [ NotificationService, ShoppingCartService, CookieService, ApiService, SurfaceService, ClientService, ProduitService, SouscategorieService, DetailcommandeService, ListeService, OutilsService, ModalService, DetaillisteService, ListeobservableService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

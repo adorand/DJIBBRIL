@@ -52,7 +52,7 @@ export class ProductComponent implements OnInit {
     }
 
     actionToListe(action: string, liste_code, event) {
-        event.stopPropagation()
+        event.stopPropagation();
         let detailliste: DetailListe;
         let add = true;
         try {
@@ -67,32 +67,16 @@ export class ProductComponent implements OnInit {
             detailliste.quantite = 1;
         }
 
-        console.log('nombre =========>' + detailliste.quantite + 2 );
         this.detaillisteService.add({'produit_code': this.produit.code, 'liste_code': liste_code, 'quantite': detailliste.quantite}).then(detail => {
-           console.log(detail);
-           detailliste = detail;
-           if (add) {
-               this.listes.filter(liste =>
-                   liste.code === liste_code)[0].details.push(detailliste);
-           } else {
+            console.log(detail);
+            detailliste = detail;
+            if (add) {
+                this.listes.filter(liste => liste.code === liste_code)[0].details.push(detailliste);
+            } else {
                this.listes.filter(liste =>
                    liste.code === liste_code)[0].details.filter(detail_O => detail_O.produit.code === this.produit.code)[0].quantite = detailliste.quantite;
-           }
-        });
-        /*this.listes.forEach(liste => {
-            if (liste.code === liste_code) {
-
-                let add = true;
-                liste.details.forEach(detail => {
-                    if(detail.id === detailliste.id) {
-                        detailliste = this.listes.filter(listeO =>
-                            detailliste === liste_code)[0].details.filter(detailO => detail.p === this.produit.code)[0];
-                        add = false;
-                    }
-                });
-                add ? liste.details.push(detailliste) : '' ;
             }
-        });*/
+        });
     }
 
     actionToCommande(action: string) {

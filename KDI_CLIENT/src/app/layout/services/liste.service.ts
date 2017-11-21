@@ -15,7 +15,7 @@ export class ListeService {
     getall(clientcode): Promise<Liste[]> {
         const url = '{listes(client_code: "' + clientcode + '" ) {code, nom, ' +
             'client{code},created_at,updated_at,details' +
-            '{id,quantite,produit{code,designation,prix, image } } } } ';
+            '{id,quantite,liste_code,produit{code,designation,prix, image } } } } ';
 
         return this.http.get(environment.api + url).toPromise()
             .then( res => res.json().data.listes as Liste[])
@@ -25,7 +25,7 @@ export class ListeService {
     get(code, clientcode): Promise<Liste> {
         const url = '{listes(code: "' + code + '" , client_code: "' + clientcode + '" ) {code, nom, ' +
             'client{code},created_at,updated_at,details' +
-            '{id,quantite,produit{code,designation,prix, image } } } } ';
+            '{id,quantite,liste_code,produit{code,designation,prix, image } } } } ';
 
         return this.http.get(environment.api + url).toPromise()
             .then( res => res.json().data.listes[0] as Liste)

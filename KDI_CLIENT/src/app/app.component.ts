@@ -17,6 +17,8 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
 
+        // TODO : Mettre des animations pour faire un semblant de réactualisation
+
     }
 
 }

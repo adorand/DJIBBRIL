@@ -18,6 +18,7 @@ class DetailsListeType extends GraphQLType
             'quantite'    => [ 'type' => Type::string(), 'description' => ''],
             'produit'     => [ 'type' => GraphQL::type('produits'), 'description', ''],
             'liste'       => [ 'type' => GraphQL::type('listes'), 'description', ''],
+            'liste_code'  => [ 'type' => Type::string(), 'description' => ''],
             'created_at'  => [ 'type' => Type::string(), 'description' => ''],
             'updated_at'  => [ 'type' => Type::string(), 'description' => '']
         ];

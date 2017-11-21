@@ -6,6 +6,7 @@ export class DetailListe {
     produit: Produit;
     quantite: number;
     liste: Liste;
+    liste_code: string;
     created_at: string;
     updated_at: string;
 }

@@ -7,22 +7,12 @@
         <div class="panel-body">
             <div class="">
                 <ul class="list-group gutter list-group-lg list-group-sp sortable scrollable" style="height: 200px;">
-                    <li class="list-group-item bg-primary  list-course-item">
-                        <span class="pull-right thumb avatar m-l m-r-n-xs bg-gradient box-shadow">
-                            <img src="assets/images/PRODUITS/cereal.png" class="dker img-responsive" alt="...">
-                        </span>
-                        <span class="pull-right" >
-                            <a href="#"><i class="fa fa-plus text-white m-r-xs"></i></a>
-                            <a href="#"><span class="m-r-xs text-white" readonly="true">0</span></a>
-                            <a href="#"><i class="fa fa-minus text-white "></i></a>
-                        </span>
-                        <div class="text-ellipsis text-white">Céréal Cérélac</div>
-                    </li>
+                    <app-product-liste *ngFor="let detailliste of this.liste.details" [detaillisteId]="detailliste.id" [list-card]="liste"></app-product-liste>
                 </ul>
             </div>
         </div>
         <div class="clearfix panel-footer">
-            <div class="text-center text-black">Total: <span>4500 Ffcfa</span></div>
+            <div class="text-center text-black">Total: <span>{{ this.total }} Fcfa</span></div>
         </div>
     </section>
 </div>

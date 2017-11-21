@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {LocalStorage, LocalStorageService} from 'ng2-webstorage';
-import { Commande } from '../layout/models/commande.model';
 
 import { ShoppingCartService } from '../layout/services/shopping-cart.service';
 import {ShoppingCart} from '../layout/models/shopping-cart.model';
-import {SurfaceService} from '../layout/services/surface.service';
-import {Surface} from '../layout/models/surface.model';
 import {ProduitService} from '../layout/services/produit.service';
-import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-history',
@@ -53,7 +48,7 @@ export class HistoryComponent implements OnInit {
 
 
                 const nb: number =  Math.round( (this.panier.items.length / this.parpages) );
-                console.log("array =>" + (this.panier.items.length / this.parpages));
+                console.log('array =>' + (this.panier.items.length / this.parpages));
                 this.pages = Array(nb ).fill(nb ).map((x, i) => i);
 
                 unefois = true;

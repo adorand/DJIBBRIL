@@ -10,10 +10,10 @@
         <div class="container">
             <div class="row m-b-lg">
                 <div class="col-sm-12">
-                    <a routerLink="/liste" routerLinkActive="btn-primary active" class="btn btn-sm m-r" data-toggle="tooltip" data-placement="right" title="Mes listes">
+                    <a routerLink="/liste" class="btn btn-sm btn-primary m-r" data-toggle="tooltip" data-placement="right" title="Mes listes">
                         <i class="fa fa-th-large"></i> <strong class="hidden-xs">Mes Listes</strong>
                     </a>
-                    <a routerLink="/historique" routerLinkActive="btn-primary active" class="btn btn-sm btn-default" data-toggle="tooltip" data-placement="right" title="Historique"><i class="fa fa-history"></i> <strong class="hidden-xs">Historique</strong></a>
+                    <a routerLink="/historique" class="btn btn-sm btn-default" data-toggle="tooltip" data-placement="right" title="Historique"><i class="fa fa-history"></i> <strong class="hidden-xs">Historique</strong></a>
                     <section class="pull-right">
                         <a class="btn btn-sm btn-primary m-r" (click)="modalService.show('addliste')">
                             <i class="fa fa-cart-plus text-white"></i> <strong class=" hidden-nav-xs">Nouvelle liste</strong>
@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="row m-b">
-                <app-list-card *ngFor="let liste of listes | orderBy: 'updated_at' : true" [list-card]="liste"></app-list-card>
+                <app-list-card *ngFor="let liste of listes | orderBy: 'updated_at' : true" [listcardId]="liste.code"></app-list-card>
             </div>
             <div>
                 <div class="btn-group pull-right">

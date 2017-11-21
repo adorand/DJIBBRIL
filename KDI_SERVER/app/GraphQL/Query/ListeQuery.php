@@ -49,6 +49,7 @@ class ListeQuery extends Query
                         'produit'    => $detailsListe->produit,
                         'quantite'   => $detailsListe->quantite,
                         'liste'      => $detailsListe->liste,
+                        'liste_code' => $detailsListe->liste_code,
                         'created_at' => $detailsListe->created_at->format(Outils::formatdate()),
                         'updated_at' => $detailsListe->updated_at->format(Outils::formatdate()),
                     ];

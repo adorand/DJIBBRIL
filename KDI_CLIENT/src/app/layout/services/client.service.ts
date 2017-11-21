@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, URLSearchParams } from '@angular/http';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -21,7 +20,7 @@ export class ClientService {
 
     panier: ShoppingCart;
 
-    constructor(private http: Http, private outilsService: OutilsService, public toastr: ToastsManager, private shoppingCartService: ShoppingCartService, private cookies: CookieService)
+    constructor(private http: Http, private outilsService: OutilsService, private shoppingCartService: ShoppingCartService, private cookies: CookieService)
     {
         this.shoppingCartService.get().forEach(value => {
             this.panier = value;

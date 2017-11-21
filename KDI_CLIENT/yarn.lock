@@ -288,6 +288,10 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+angular2-toaster@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/angular2-toaster/-/angular2-toaster-4.0.0.tgz#716986be9f4bc2e9c26ae31824b015139edbff3e"
+
 ansi-html@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/ansi-html/-/ansi-html-0.0.7.tgz#813584021962a9e9e6fd039f940d12f56ca7859e"
@@ -3316,10 +3320,6 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-ng2-toastr@^4.1.2:
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/ng2-toastr/-/ng2-toastr-4.1.2.tgz#1b452f07139961c38f866c6e24a06247efa21b11"
-
 ng2-webstorage@^1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/ng2-webstorage/-/ng2-webstorage-1.8.0.tgz#02bac5f29cecc2b7a4dfea17d9cebc720edf6b49"
@@ -3327,6 +3327,14 @@ ng2-webstorage@^1.8.0:
 ngx-cookie-service@^1.0.9:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/ngx-cookie-service/-/ngx-cookie-service-1.0.9.tgz#b88ef198299c93d363608545036dd38ed767b0ec"
+
+ngx-order-pipe@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ngx-order-pipe/-/ngx-order-pipe-1.1.0.tgz#6015912385a9eb25ece2c960fdc8bbdd549854c0"
+
+ngx-popover@0.0.16:
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/ngx-popover/-/ngx-popover-0.0.16.tgz#b2c10923fb6988fbd3ad0088ae1ca4782fd4f5f3"
 
 no-case@^2.2.0:
   version "2.3.1"

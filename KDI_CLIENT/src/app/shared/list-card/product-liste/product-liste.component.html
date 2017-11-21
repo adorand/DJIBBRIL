@@ -1,0 +1,15 @@
+<li class="list-group-item bg-primary  list-course-item m-t-md">
+    <span class="pull-right thumb avatar m-l m-r-n-xs bg-gradient box-shadow">
+        <img [src]="detailliste.produit.image" class="dker img-responsive" alt="...">
+    </span>
+    <span class="pull-right" >
+        <a class="cursor-pointer" (click)="actionToListe('+', detailliste.liste_code, $event)"><i class="fa fa-plus text-white m-r-xs"></i></a>
+        <a href="javascript:void()">
+            <span class="m-r-xs text-white" readonly="true">
+                {{ detailliste.quantite }}
+            </span>
+        </a>
+        <a [ngClass]='{ "cursor-pointer" : detailliste.quantite }' (click)="actionToListe('-', detailliste.liste_code, $event)"><i class="fa fa-minus text-white"></i></a>
+    </span>
+    <div class="text-ellipsis text-white">{{ detailliste.produit.designation }}</div>
+</li>
