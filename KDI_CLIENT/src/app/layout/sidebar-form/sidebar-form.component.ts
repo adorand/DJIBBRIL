@@ -1,16 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
-import {HttpClient} from '@angular/common/http';
-import {LocalStorage, LocalStorageService} from 'ng2-webstorage';
 
 import { Client } from '../models/client.model';
 import { ClientService} from '../services/client.service';
-import {CookieService} from 'ngx-cookie-service';
-import { Commande } from '../models/commande.model';
 
 import {ShoppingCartService} from '../../layout/services/shopping-cart.service';
 import {ShoppingCart} from '../models/shopping-cart.model';
-import { DetailcommandeService } from '../services/detailcommande.service';
 
 @Component({
   selector: 'app-sidebar-form',
@@ -27,12 +21,9 @@ export class SidebarFormComponent implements OnInit {
 
     constructor(
         private clientService: ClientService,
-        private cookieService: CookieService,
-        private shoppingCartService: ShoppingCartService,
-        private detailcommandeService: DetailcommandeService
+        private shoppingCartService: ShoppingCartService
     ) {
         this.errorLogin = '';
-
     }
 
     ngOnInit(): void {

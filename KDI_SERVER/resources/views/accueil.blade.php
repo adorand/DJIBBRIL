@@ -253,7 +253,7 @@
                                 <a href="veille.html" data-toggle="ajaxModal" class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs">
                                     <i class="i i-logout"></i>
                                 </a>
-                                <a href="#nav" data-toggle="class:nav-xs" class="btn btn-icon icon-muted btn-inactive m-l-xs m-r-xs">
+                                <a href="#nav" target="_self" data-toggle="class:nav-xs" class="btn btn-icon icon-muted btn-inactive m-l-xs m-r-xs">
                                     <i class="i i-circleleft text-white text"></i>
                                     <i class="i i-circleright text-white text-active"></i>
                                 </a>
@@ -265,7 +265,7 @@
                     <!-- Contenu -->
 
                     <section id="content" class="menupage" ng-view>
-                        <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+                        <a href="#" class="hide nav-off-screen-block" target="_self" data-toggle="class:nav-off-screen" data-target="#nav"></a>
                     </section>
                     <!-- /Contenu -->
                 </section>

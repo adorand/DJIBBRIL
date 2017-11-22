@@ -11,6 +11,7 @@ import {Observable} from 'rxjs/Observable';
 import {CartItem} from '../models/cart-item.model';
 import {Produit} from '../models/produit.model';
 import {ProduitService} from '../services/produit.service';
+import {NotificationService} from '../services/notification.service';
 
 @Component({
   selector: 'app-header',
@@ -29,7 +30,8 @@ export class HeaderComponent implements OnInit {
       private route: ActivatedRoute,
       private produitservice: ProduitService,
       private cookieService: CookieService,
-      private shoppingCartService: ShoppingCartService) {
+      private shoppingCartService: ShoppingCartService,
+      public notificationService: NotificationService) {
         this.router.routeReuseStrategy.shouldReuseRoute = function(){
             return false;
         };
@@ -43,6 +45,8 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit() {
+
+
 
         /*Pour afficher le nom du produit recherhé dans la barre de recherche lorsqu'il y a un rechargement*/
         if (location.href.indexOf('home') !== -1) {
@@ -72,10 +76,12 @@ export class HeaderComponent implements OnInit {
         location.reload();
     }
 
-    removeFromCommande(productId: string) {
+    removeFromCommande(productId: string): void {
+        this.notificationService.showToast('info', 'CADDY' , 'Un produit retiré');
         const prod = new Produit();
         prod.code = productId;
         this.shoppingCartService.actionItem(prod, '-');
+
     }
 
 }

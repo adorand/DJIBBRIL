@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ModalService} from '../layout/services/modal.service';
 import {Liste} from '../layout/models/liste.model';
-import {Client} from '../layout/models/client.model';
 import {ListeService} from '../layout/services/liste.service';
 import {CookieService} from 'ngx-cookie-service';
 import {ListeobservableService} from '../layout/services/Listeobservable.service';
+import {NotificationService} from '../layout/services/notification.service';
 
 declare var jquery: any;
 declare var $: any;
@@ -17,9 +17,15 @@ export class ListComponent implements OnInit {
     liste: Liste;
     listes: Liste[];
 
-    constructor(public listeobservableService: ListeobservableService, public modalService: ModalService, public cookieService: CookieService,  public listeService: ListeService ) { }
+    constructor(public listeobservableService: ListeobservableService,
+                public modalService: ModalService,
+                public cookieService: CookieService,
+                public listeService: ListeService,
+                public notificationService: NotificationService ) { }
 
     ngOnInit() {
+        this.notificationService.showToast('info', 'CADDY' , 'Un produit retiré');
+
         this.liste = new Liste();
         this.listeService.getall((JSON.parse(this.cookieService.get('client'))).code).then(listes => {
             this.listes = listes;
@@ -27,12 +33,13 @@ export class ListComponent implements OnInit {
         });
     }
 
-    doSave() {
+    doSave(): void {
         this.listeService.save(this.liste).then(liste => {
             this.listes.push(liste);
             this.listeobservableService.setListes(this.listes);
             this.liste = new Liste();
             this.modalService.close('addliste');
+
         });
     }
 
