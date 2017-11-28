@@ -33,9 +33,14 @@ export class ProductsSearchComponent implements OnInit, DoCheck {
         private listeService: ListeService
     ) {
         this.route.params.subscribe(params => this.nomproduit = params['produit']);
-        this.listeService.getall((JSON.parse(this.cookieService.get('client'))).code).then(listes => {
-            this.listes = listes;
-        });
+
+        // Juste lorsque le client est connecté
+        if (this.cookieService.check('client')) {
+            this.listeService.getall((JSON.parse(this.cookieService.get('client'))).code).then(listes => {
+                this.listes = listes;
+            });
+        }
+
 
     }
 

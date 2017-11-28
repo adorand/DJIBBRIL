@@ -47,7 +47,6 @@ export class HeaderComponent implements OnInit {
     ngOnInit() {
 
 
-
         /*Pour afficher le nom du produit recherhé dans la barre de recherche lorsqu'il y a un rechargement*/
         if (location.href.indexOf('home') !== -1) {
 

@@ -27,12 +27,15 @@ export class ProductListeComponent implements OnInit {
 
     actionToListe(action: string, liste_code, event) {
         event.stopPropagation();
-        action === '+' ? this.detailliste.quantite++ : this.detailliste.quantite === 0 ? '' : this.detailliste.quantite-- ;
-        if (this.detailliste.quantite !== 0) {
+        action === '+' ? this.detailliste.quantite++ :  this.detailliste.quantite-- ;
+        if (this.detailliste.quantite >= 0) {
             this.listeobservableService.actionItem(liste_code, this.detailliste.id, this.detailliste.quantite);
             this.detaillisteService.add({'produit_code': this.detailliste.produit.code, 'liste_code': liste_code, 'quantite': this.detailliste.quantite}).then(detail => {
-                this.detailliste.quantite = detail.quantite;
+                (detail != null) ? this.detailliste.quantite = detail.quantite : '' ;
             });
+        }
+        else {
+            this.detailliste.quantite = 0;
         }
     }
 

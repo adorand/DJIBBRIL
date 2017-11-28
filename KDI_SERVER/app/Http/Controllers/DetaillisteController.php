@@ -36,7 +36,17 @@ class DetaillisteController extends Controller
         $detailsListe=DetailsListe::where('liste_code', $liste->code)->where('produit_code',$produit_code)->first();
         $path='{detailslistes(id : $id) {id,quantite,produit{code,designation,prix},created_at,updated_at}}';
         $path = str_replace('$id',$detailsListe->id,$path);
-        return redirect('graphql?query='.urlencode($path));
+
+        if ($detailsListe->quantite == 0)
+        {
+            $detailsListe->forceDelete();
+            $retour = new DetailsListe();
+        }
+        else
+        {
+            $retour = redirect('graphql?query='.urlencode($path));
+        }
+        return $retour;
     }
 
 

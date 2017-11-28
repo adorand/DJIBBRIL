@@ -18,6 +18,11 @@ Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
+
+Route::get('test', function (){
+   dd(new \App\Categorie());
+});
+
 /*Categories*/
 Route::post('/categorie', 'CategorieController@create');
 Route::delete('/categorie/{code}', 'CategorieController@delete');

@@ -12,15 +12,13 @@ import {OutilsService} from './Outils.service';
 
 @Injectable()
 export class ClientService {
-    private headers = new Headers({
-        'Access-Control-Allow-Origin': '*' ,
-        'Access-Control-Allow-Methods' : 'POST, GET, OPTIONS, PUT' ,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'});
 
     panier: ShoppingCart;
 
-    constructor(private http: Http, private outilsService: OutilsService, private shoppingCartService: ShoppingCartService, private cookies: CookieService)
+    constructor(private http: Http,
+                private outilsService: OutilsService,
+                private shoppingCartService: ShoppingCartService,
+                private cookies: CookieService)
     {
         this.shoppingCartService.get().forEach(value => {
             this.panier = value;
@@ -46,6 +44,7 @@ export class ClientService {
     }
 
 
+    // Utiliser pour la sauvegarder et la mise à jour d'un client
     save(client: Client) {
         const data = new URLSearchParams();
         data.append('data', JSON.stringify(client));
@@ -58,25 +57,6 @@ export class ClientService {
         return this.http.get(url)
             .toPromise()
             .then(response => response.json().data as Client)
-            .catch(this.outilsService.handleError);
-    }
-
-
-    delete(code: string): Promise<void> {
-        const url = `${environment.api}/${code}`;
-        return this.http.delete(url, {headers: this.headers})
-            .toPromise()
-            .then(() => null)
-            .catch(this.outilsService.handleError);
-    }
-
-
-    update(user: Client): Promise<Client> {
-        const url = `${environment.api}/${user.code}`;
-        return this.http
-            .put(url, JSON.stringify(user), {headers: this.headers})
-            .toPromise()
-            .then(() => user)
             .catch(this.outilsService.handleError);
     }
 

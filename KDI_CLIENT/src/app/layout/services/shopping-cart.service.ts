@@ -10,6 +10,7 @@ import { DetailcommandeService } from './detailcommande.service';
 import {Client} from '../models/client.model';
 import {SousCategorie} from '../models/souscategorie.model';
 import {SouscategorieService} from './souscategorie.service';
+import {NotificationService} from './notification.service';
 
 
 const CART_KEY = 'panier';
@@ -22,6 +23,7 @@ export class ShoppingCartService {
 
     public constructor(private cookies: CookieService,
                        private detailcommandeService: DetailcommandeService,
+                       private notificationService: NotificationService,
                        private souscategorieService: SouscategorieService) {
         this.subscriptionObservable = new Observable<ShoppingCart>((observer: Observer<ShoppingCart>) => {
             this.subscribers.push(observer);
@@ -53,6 +55,7 @@ export class ShoppingCartService {
         this.client = this.cookies.check('client') ? JSON.parse(this.cookies.get('client')) as Client : null;
         this.client !== null ? this.detailcommandeService.add({'produit_code': item.productId, 'client_code': this.client.code, 'quantite': item.quantity}).then(value => {
             item.quantity = value.quantite;
+            this.notificationService.showToast('success', 'PRODUIT', (action === '-' ? 'Retiré du' : 'ajouté au') + ' panier');
         }).catch(reason => {
             item.quantity += action.indexOf('+') !== -1 ?  -1 : +1;
         }) : '' ;

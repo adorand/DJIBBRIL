@@ -24,7 +24,6 @@ export class ListComponent implements OnInit {
                 public notificationService: NotificationService ) { }
 
     ngOnInit() {
-        this.notificationService.showToast('info', 'CADDY' , 'Un produit retiré');
 
         this.liste = new Liste();
         this.listeService.getall((JSON.parse(this.cookieService.get('client'))).code).then(listes => {
@@ -39,7 +38,7 @@ export class ListComponent implements OnInit {
             this.listeobservableService.setListes(this.listes);
             this.liste = new Liste();
             this.modalService.close('addliste');
-
+            this.notificationService.showToast('success', 'LISTE' , 'Nouvelle liste ajoutée avec succès');
         });
     }
 

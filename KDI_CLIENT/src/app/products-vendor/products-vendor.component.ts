@@ -27,9 +27,12 @@ export class ProductsVendorComponent implements OnInit {
         private surfaceservice: SurfaceService,
         private listeService: ListeService
     ) {
-        this.listeService.getall((JSON.parse(this.cookieService.get('client'))).code).then(listes => {
-            this.listes = listes;
-        });
+        // Juste lorsque le client est connecté
+        if (this.cookieService.check('client')) {
+            this.listeService.getall((JSON.parse(this.cookieService.get('client'))).code).then(listes => {
+                this.listes = listes;
+            });
+        }
     }
 
     ngOnInit() {

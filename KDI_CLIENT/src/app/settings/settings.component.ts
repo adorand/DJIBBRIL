@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from '../layout/models/client.model';
-import {LocalStorage, LocalStorageService} from 'ng2-webstorage';
 import {CookieService} from 'ngx-cookie-service';
 import {ClientService} from '../layout/services/client.service';
-import {validate} from 'codelyzer/walkerFactory/walkerFn';
 import {NotificationService} from '../layout/services/notification.service';
 
 @Component({
@@ -51,7 +49,7 @@ export class SettingsComponent implements OnInit {
     }
 
     verifemail(): void {
-        this.validation =(this.client.email === this.password.email) ? 3 : 2;
+        this.validation = (this.client.email === this.password.email) ? 3 : 2;
     }
 
     doSave() {
@@ -68,7 +66,6 @@ export class SettingsComponent implements OnInit {
         }
         else {
             this.notificationService.showToast('info', 'PARAMÈTRES' , 'Aucune modification effectuée');
-
         }
     }
 

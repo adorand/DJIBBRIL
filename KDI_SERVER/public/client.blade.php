@@ -1,94 +1,202 @@
-<section class="vbox">
-    <section class=" wrapper scrollable">
-        <div class="content-top clearfix animated zoomIn" style="padding-right: 21px;padding-left: 21px;">
-            <h1 class="al-title text-u-c">CLIENTS</h1>
-            <ul class="breadcrumb al-breadcrumb no-borders fontpacifico" >
-                <li>
-                    <a href="accueil.html" style="color: #209e91;text-decoration: none !important; transition: color 0.2s ease;">KDI BackEND</a></li>
-                <li class="text-u-c">CLIENTS</li>
-            </ul>
-        </div>
-        <section class="hbox stretch panel">
-            <!--List of User-->
-            <aside class="no-padder">
-                <section class="hbox stretch panel">
+<section class="hbox stretch panel">
 
-                    <aside>
-                        <section class="vbox">
-                            <header class="header panel b-b clearfix">
-                                <div class="row m-t-sm">
-                                    <div class=" col-xs-7 col-sm-8 m-b-xs">
-                                        <a class="btn btn-sm bg-templateblue cursor-pointer" data-toggle="tooltip" data-placement="top" title="Rafraichir" ng-click="trierElement('client','','')">
-                                            <i class="fa fa-refresh text-white"></i>
-                                        </a>
-                                        <a class="btn btn-sm bg-templateblue cursor-pointer" data-toggle="tooltip" data-placement="top" title="Ajouter un utilisateur" ng-click="showModalAdd('client')" >
-                                            <i class="fa fa-user-plus text-white"></i>
-                                        </a>
-                                    </div>
-                                    <div class=" col-xs-5 col-sm-4 m-b-xs">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control input-sm no-borders" placeholder="Rechercher" id="searchnomclient" ng-model="searchnomclient">
-                                            <span class="input-group-btn">
-                                                <button type="button" class="btn btn-sm bg-white">
-                                                    <i class="fa fa-search"></i>
-                                                </button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </header>
-
-                            <section class="scrollable wrapper w-f">
-                                <div ng-repeat="client in clients | filter : { nom : searchnomclient } | orderBy:'-updated_at' track by $index" class="col-xs-6 col-sm-4 col-md-2 m-t-lg on animated zoomIn client">
-                                    <div class="thumbnail text-center panel ">
-                                        <div class="row m-t-n-lg " ng-class="  { 'clientbtns' : surface_code=='' } " style="margin-top: -45px;">
-
-                                            <button ng-if="!surface_code" class="btn btn-sm btn-client bg-templateblue animated fadeIn" type="button" ng-click="showModalUpdate('client', client)">
-                                                <i class="fa fa-edit text-white" data-toggle="tooltip" data-placement="top" title="Editer le client"></i>
-                                            </button>
-                                            <button  class="btn btn-sm btn-client-middle" type="button" style="background:transparent;border-radius: 50%;">
-                                                <img src=" {{ client.image ? client.image  : 'images/login-w-icon.png' }} " class="img-circle" style="height: 90px;width: 90px;box-shadow: inset 0 0 2px 1px rgba(255, 255, 255, 0.08), 0 18px 10px -5px rgba(0, 0, 0, 0.6)">
-                                            </button>
-                                            <!--
-                                            <button  class="btn btn-sm btn-client-middle img-circle" type="button" style="height: 90px;width: 90px;background:url('images/djibbril.jpg') no-repeat;background-size:cover;box-shadow: inset 0 0 2px 1px rgba(255, 255, 255, 0.08), 0 18px 10px -5px rgba(0, 0, 0, 0.6);border-radius: 50%;">
-                                            </button>
-                                            -->
-                                            <button ng-if="!surface_code"  class="btn btn-sm btn-client bg-templateblue animated fadeIn" type="button" ng-click="deleteElement('client', client)"  >
-                                                <i class="fa fa-user-times text-white" data-toggle="tooltip" data-placement="top" title="Supprimer le client"></i>
-                                            </button>
-                                        </div>
-                                        <div class="caption">
-                                            <p class="text-white text-ellipsis" data-toggle="tooltip" data-placement="top" title="N° {{client.code}}"> <i class="fa fa-user-secret fa-lg"></i> <strong class="text-u-l">{{client.code}}</strong></p>
-                                            <p class="text-white text-ellipsis m-b-none text-u-c" data-toggle="tooltip" data-placement="top" title="{{client.nom}}"><i class="i i-users2 fa-lg"></i> <strong class="text-u-l">{{client.nom}}</strong></p>
-                                        </div>
+    <aside class="aside-md bg-template-serveur panel">
+        <section class="vbox">
+            <header class="header clearfix bg b-b b-light">
+                <form method="post">
+                    <div class="input-group m-t-sm">
+                        <input type="text" class="input-sm form-control" placeholder="Rechercher" id="searchnomclient" ng-model="searchnomclient">
+                        <span class="input-group-btn">
+                            <button class="btn btn-sm bg-template"  data-toggle="tooltip" data-placement="top" title="Ajouter un annonceur" ng-click="showModalAdd('client')">
+                                <i class="fa fa-plus text-white"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </header>
+            <section class="scrollable hover">
+                <div class="list-group no-radius no-border no-bg m-t-n-xxs m-b-none">
+                    <a class="list-group-item card cursor-pointer" ng-repeat="client in clients | filter : { nom : searchnomclient } | orderBy:'-updated_at' track by $index" ng-click="viewelement('client',client)">
+                        <strong class="text-white"> {{ client.nom }}</strong>
+                    </a>
+                </div>
+            </section>
+        </section>
+    </aside>
+    <section class="panel">
+        <header class="header bg-template clearfix">
+            <a class="btn btn-sm bg-templateblue" ng-click="showModalUpdate('client',clientview)">
+                <i class="i i-pencil text-white"></i>
+                <strong class="text-white">Editer</strong>
+            </a>
+        </header>
+        <section class="vbox bg-template-serveur">
+            <section class="scrollable ">
+                <div class="wrapper-lg bg-template">
+                    <div class="hbox">
+                        <aside class="aside-md animated zoomIn">
+                            <div class="text-center">
+                                <img src="{{clientview.image}}" alt="..." style="width: 128px;height: 128px;" class="img-circle m-b card">
+                                <div>Profil</div>
+                                <div class="">
+                                    <div class="progress progress-xs progress-striped active inline m-b-none bg-white" style="width:128px">
+                                        <div class="progress-bar bg-templateblue" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div>
                                     </div>
                                 </div>
-
-                            </section>
-                            <footer class="footer bg-templateblue">
-                                <div class="row text-center-xs">
-                                    <div class="col-md-6 hidden-sm">
-                                        <button class="btn btn-sm bg-white m-t-sm box-shadow">Charger plus</button>
-                                    </div>
-                                    <div class="col-md-6 col-sm-12 text-right text-center-xs">
-                                        <ul class="pagination pagination-sm m-t-sm m-b-none">
-                                            <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-                                            <li class="active"><a href="#">2</a></li>
-                                            <li><a href="#">5</a></li>
-                                            <li><a href="#">10</a></li>
-                                            <li><a href="#">15</a></li>
-                                            <li><a href="#">20</a></li>
-                                            <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-                                        </ul>
-                                    </div>
+                                <p>50%</p>
+                            </div>
+                        </aside>
+                        <aside>
+                            <p class="pull-right m-l inline animated">
+                                <a href="#" class="btn btn-sm btn-icon btn-info rounded m-b">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                <a href="#" class="btn btn-sm btn-icon btn-primary rounded m-b">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                                <a href="#" class="btn btn-sm btn-icon btn-danger rounded m-b">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </p>
+                            <h3 class="font-bold m-b-none m-t-none text-white text-u-c animated rotateInDownRight">{{clientview.nom}}</h3>
+                            <p class="animated fadeInRight">
+                                <i class="fa fa-lg fa-circle-o text-white m-r-sm"></i>
+                                <strong class="text-white fontpacifico">Informations</strong>
+                            </p>
+                            <ul class="nav nav-pills nav-stacked aside-lg animated fadeInDown">
+                                <li class="bg-templateblue card animated rotateInUpLeft">
+                                    <a href="#" class="font-bold">
+                                        <i class="i i-phone m-r-sm"></i> {{clientview.phone}}
+                                    </a>
+                                </li>
+                                <li class="bg-templateblue card animated rotateInDownRight">
+                                    <a href="#" class="font-bold">
+                                        <i class="i i-mail m-r-sm"></i> {{clientview.email}}
+                                    </a>
+                                </li>
+                                <li class="bg-templateblue card animated zoomIn">
+                                    <a href="#">
+                                        <i class="i i-chat m-r-sm"></i> Activer / Desactiver
+                                    </a>
+                                </li>
+                            </ul>
+                        </aside>
+                    </div>
+                </div>
+                <ul class="nav nav-tabs m-b-n-xxs bg-template">
+                    <li class="active">
+                        <a href="#demandes" target="_self" data-toggle="tab" class="m-l">
+                            demandes <span class="badge bg-primary badge-sm m-l-xs"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#alertes" target="_self" data-toggle="tab">alertes</a>
+                    </li>
+                    <li>
+                        <a href="#edit" target="_self" data-toggle="tab">Edit profile</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class=" tab-pane active " id="demandes">
+                        <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
+                            <li class="list-group-item">
+                                <a href="#" class="thumb-sm pull-left m-r-sm">
+                                    <img src="images/a0.png" class="img-circle">
+                                </a>
+                                <a href="#" class="clear">
+                                    <small class="pull-right">3 minuts ago</small>
+                                    <strong class="block">Drew Wllon</strong>
+                                    <small>Wellcome and play this web application template ...</small>
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#" class="thumb-sm pull-left m-r-sm">
+                                    <img src="images/a1.png" class="img-circle">
+                                </a>
+                                <a href="#" class="clear">
+                                    <small class="pull-right">1 hour ago</small>
+                                    <strong class="block">Jonathan George</strong>
+                                    <small>Morbi nec nunc condimentum...</small>
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#" class="thumb-sm pull-left m-r-sm">
+                                    <img src="images/a2.png" class="img-circle">
+                                </a>
+                                <a href="#" class="clear">
+                                    <small class="pull-right">2 hours ago</small>
+                                    <strong class="block">Josh Long</strong>
+                                    <small>Vestibulum ullamcorper sodales nisi nec...</small>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane wrapper-lg" id="alertes">
+                        <div class="row m-b">
+                            <div class="col-xs-6">
+                                <small>Cell Phone</small>
+                                <div class="text-lt font-bold">1243 0303 0333</div>
+                            </div>
+                            <div class="col-xs-6">
+                                <small>Family Phone</small>
+                                <div class="text-lt font-bold">+32(0) 3003 234 543</div>
+                            </div>
+                        </div>
+                        <div class="row m-b">
+                            <div class="col-xs-6">
+                                <small>Reporter</small>
+                                <div class="text-lt font-bold">Coch Jose</div>
+                            </div>
+                            <div class="col-xs-6">
+                                <small>Manager</small>
+                                <div class="text-lt font-bold">James Richo</div>
+                            </div>
+                        </div>
+                        <div>
+                            <small>Bio</small>
+                            <div class="text-lt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque
+                                quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales
+                                nisi nec condimentum. Mauris convallis mauris at pellentesque volutpat. Phasellus at
+                                ultricies neque, quis malesuada augue.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane wrapper-lg" id="edit">
+                        <form class="form-horizontal" method="get">
+                            <div class="form-group"><label class="col-sm-3 control-label">Name:</label>
+                                <div class="col-sm-5"><input type="text" class="form-control"></div>
+                            </div>
+                            <div class="line line-dashed b-b line-lg pull-in"></div>
+                            <div class="form-group"><label class="col-sm-3 control-label"
+                                                           for="input-id-1">Email:</label>
+                                <div class="col-sm-5"><input type="text" class="form-control" id="input-id-1"
+                                                             disabled="disabled" value="drew.willon@scale.com"></div>
+                            </div>
+                            <div class="line line-dashed b-b line-lg pull-in"></div>
+                            <div class="form-group"><label class="col-sm-3 control-label">Password:</label>
+                                <div class="col-sm-5"><input type="password" class="form-control"></div>
+                            </div>
+                            <div class="line line-dashed b-b line-lg pull-in"></div>
+                            <div class="form-group"><label class="col-sm-3 control-label">Password Again:</label>
+                                <div class="col-sm-5"><input type="password" class="form-control"></div>
+                            </div>
+                            <div class="line line-dashed b-b line-lg pull-in"></div>
+                            <div class="form-group"><label class="col-sm-3 control-label">Phone:</label>
+                                <div class="col-sm-5"><input type="text" class="form-control"></div>
+                            </div>
+                            <div class="line line-dashed b-b line-lg pull-in"></div>
+                            <div class="form-group"><label class="col-sm-3 control-label">Bio:</label>
+                                <div class="col-sm-5"><textarea class="form-control" rows="5"></textarea></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-5">
+                                    <button type="submit" class="btn btn-sm btn-primary">Update</button>
                                 </div>
-                            </footer>
-                        </section>
-                    </aside>
-                </section>
-            </aside>
-            <!--List of User-->
-
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
         </section>
     </section>
 </section>
